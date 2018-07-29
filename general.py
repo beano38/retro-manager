@@ -9,8 +9,6 @@ import binascii
 
 import rarfile
 
-TIME_STAMP = time.strftime(" %Y%m%d")
-
 LOG_FILE = "arcade.log"
 LOG_STAMP = time.strftime("%Y-%m-%d %H:%M:%S")
 LOG_FORMAT = logging.Formatter("[{}] [%(levelname)s] [%(name)s] : %(message)s".format(LOG_STAMP))
@@ -98,6 +96,8 @@ class Paths:
 
         self.seven_zip_exe = config.get("Compressor", "SevenZip")
         self.rar_exe = config.get("Compressor", "Rar")
+
+        self.hs_path = config.get("FrontEnds", "HyperSpin")
 
 
 class Compressor(Paths):
