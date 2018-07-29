@@ -1,0 +1,75 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["pce"],
+  "year": "1989",
+  "platformType": "Console",
+  "romSets": {
+    "GoodSet": "Good Sets_GoodPCE v1 09a",
+    "NoIntro": "NEC - PC Engine - TurboGrafx 16",
+    "Redump": null,
+    "SoftwareLists": "tg16",
+    "TOSEC": "PC-Engine & TurboGrafx-16",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "34",
+            "Platform": "TurboGrafx 16",
+            "console": "http://www.youtube.com/watch?v=34.png",
+            "controller": "http://www.youtube.com/watch?v=34.png",
+            "overview": "TurboGrafx-16, fully titled as TurboGrafx-16 Entertainment SuperSystem and known in Japan as the PC Engine, is a video game console developed by Hudson Soft and NEC, released in Japan on October 30, 1987, and in North America on August 29, 1989.",
+            "developer": "Hudson Soft",
+            "manufacturer": "NEC",
+            "cpu": "Hudson Soft HuC6280",
+            "memory": "64 kB",
+            "graphics": "HuC6260",
+            "sound": "6 Mini-Wavetable stereo audio channels",
+            "display": "256\u00d7239",
+            "media": "Cartridge",
+            "maxcontrollers": "1",
+            "Youtube": "http://www.youtube.com/watch?v=Xn_xaQ5d5gY",
+            "Rating": "9",
+            "Images": {
+                "fanart": [
+                    {
+                        "original": {
+                            "@width": "1920",
+                            "@height": "1080",
+                            "#text": "platform/fanart/34-1.jpg"
+                        },
+                        "thumb": "platform/fanart/thumb/34-1.jpg"
+                    },
+                    {
+                        "original": {
+                            "@width": "1920",
+                            "@height": "1080",
+                            "#text": "platform/fanart/34-2.jpg"
+                        },
+                        "thumb": "platform/fanart/thumb/34-2.jpg"
+                    }
+                ],
+                "boxart": {
+                    "@side": "back",
+                    "@width": "550",
+                    "@height": "700",
+                    "#text": "platform/boxart/34-2.jpg"
+                },
+                "banner": [
+                    {
+                        "@width": "760",
+                        "@height": "140",
+                        "#text": "platform/banners/34-1.png"
+                    },
+                    {
+                        "@width": "760",
+                        "@height": "140",
+                        "#text": "platform/banners/34-2.jpg"
+                    }
+                ],
+                "consoleart": "platform/consoleart/34.png",
+                "controllerart": "platform/controllerart/34.png"
+            }
+        }
+    }
+}

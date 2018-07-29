@@ -1,0 +1,32 @@
+{
+  "emulator": "WinArcadia",
+  "extensions": "bin",
+  "platformType": "Console",
+  "year": "1982",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": "Emerson - Arcadia 2001",
+    "Redump": null,
+    "SoftwareLists": "arcadia",
+    "TOSEC": "Arcadia 2001",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "4963",
+            "Platform": "Emerson Arcadia 2001",
+            "console": "http://www.youtube.com/watch?v=4963.png",
+            "overview": "Arcadia 2001 is a second-generation 8-bit console released by Emerson Radio in 1982 following the release of ColecoVision. It was discontinued only 18 months later, with a total of 35 games having been released. Emerson licensed the Arcadia 2001 to Bandai, which released it in Japan. Over 30 Arcadia 2001 clones exist.[citation needed]\n\nThe unrelated Arcadia Corporation, manufacturer of the Atari 2600 Supercharger add-on, was sued by Emerson for trademark infringement. Arcadia Corporation then changed its name to Starpath.\n\nThe Arcadia is much smaller than its contemporary competitors and is powered by a standard 12-volt power supply so it can be used in a boat or a vehicle. This portability feature, however, requires a portable television, which was extremely rare in the early 1980s. It also has two outputs (or inputs) headphone jacks on the back of the unit, on the far left and far right sides.\n\nThe system came with two Intellivision-style controllers with a 12 button keypad and &#039;fire&#039; buttons on the sides. The direction pads have a removable joystick attachment. Most games came with BoPET overlays that could be applied to the controller&#039;s keypads. The console itself had five buttons: power, start, reset, option, and select.\n\nThere are at least three different types of cartridge case styles and artwork, with variations on each. Emerson-family carts come in two different lengths (short and long) of black plastic cases.",
+            "developer": "Emerson Radio",
+            "manufacturer": "Emerson",
+            "memory": "1 KB RAM",
+            "graphics": "128 \u00d7 208 / 128 \u00d7 104, 8 Colors",
+            "maxcontrollers": "2",
+            "Images": {
+                "consoleart": "platform/consoleart/4963.png",
+                "controllerart": "platform/controllerart/4963.png"
+            }
+        }
+    }
+}

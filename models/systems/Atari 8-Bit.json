@@ -1,0 +1,38 @@
+{
+  "emulator": "Atari 800",
+  "extensions": ["atr", "atx", "bas", "bin", "cas", "xex"],
+  "year": "1979",
+  "platformType": "Computer",
+  "romSets": {
+    "NoIntro": null,
+    "SoftwareLists": ["a800", "a800_flop"],
+    "TOSEC": "8bit",
+    "GoodSet": null,
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+    "baseImgUrl": "http://thegamesdb.net/banners/",
+    "Platform": {
+      "id": "4943",
+      "Platform": "Atari 800",
+      "console": "http://www.youtube.com/watch?v=4943.png",
+      "overview": "The Atari 8-bit family is a series of 8-bit home computers introduced by Atari, Inc. in 1979 and manufactured until 1992. All are based on the MOS Technology 6502 CPU running at 1.79 MHz, roughly twice that of similar designs, and were the first home computers designed with custom co-processor chips. This architecture allowed the Atari designs to offer graphics and sound capabilities that were more advanced than contemporary machines like the Apple II or Commodore PET, and gaming on the platform was a major draw; Star Raiders is widely considered the platform&#039;s killer app. Machines with similar performance would not appear until the BBC Micro in late 1981 and the Commodore 64 in 1982.",
+      "developer": "Atari",
+      "manufacturer": "Atari",
+      "cpu": "MOS Technology 6502B",
+      "graphics": "384x256",
+      "sound": "4\u00d7 oscillators with noise mixing, or 2\u00d7 AM digital",
+      "Rating": "9",
+      "Images": {
+        "boxart": {
+          "@side": "back",
+          "@width": "500",
+          "@height": "750",
+          "#text": "platform/boxart/4943-1.jpg"
+        },
+        "consoleart": "platform/consoleart/4943.png",
+        "controllerart": "platform/controllerart/4943.png"
+      }
+    }
+  }
+}

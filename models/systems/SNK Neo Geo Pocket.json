@@ -1,0 +1,42 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["bin", "ngp"],
+  "year": "1999",
+  "platformType": "Handheld",
+  "romSets": {
+    "GoodSet": "Good Sets_GoodNGPx v3 14",
+    "NoIntro": "SNK - Neo Geo Pocket",
+    "Redump": null,
+    "SoftwareLists": "ngp",
+    "TOSEC": "Neo-Geo Pocket",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "4922",
+            "Platform": "Neo Geo Pocket",
+            "console": "http://www.youtube.com/watch?v=4922.png",
+            "overview": "The Neo Geo Pocket is a monochrome handheld video game console released by SNK. It was the company&#039;s first handheld system and is part of the Neo Geo family. It debuted in Japan in late 1998, however never saw a western release, being exclusive to Japan and smaller Asian markets such as Hong Kong.",
+            "developer": "SNK",
+            "manufacturer": "SNK",
+            "cpu": "Toshiba TLCS900H",
+            "memory": "4 bit internal memory",
+            "sound": "Z80 8 bit",
+            "display": "Virtual screen 256\u00d7256 - 16 palettes/plane, 64 sprites/frame",
+            "media": "Cartridge",
+            "maxcontrollers": "1",
+            "Rating": "7",
+            "Images": {
+                "boxart": {
+                    "@side": "back",
+                    "@width": "500",
+                    "@height": "750",
+                    "#text": "platform/boxart/4922-1.jpg"
+                },
+                "consoleart": "platform/consoleart/4922.png",
+                "controllerart": "platform/controllerart/4922.png"
+            }
+        }
+    }
+}

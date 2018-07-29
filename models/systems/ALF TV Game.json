@@ -1,0 +1,28 @@
+{
+  "emulator": "Arculator",
+  "extensions": ["ssd", "uef"],
+  "year": "19xx",
+  "platformType": "Computer",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": null,
+    "Redump": null,
+    "SoftwareLists": null,
+    "TOSEC": null,
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "xxx",
+            "Platform": "ALF TV Game",
+            "console": "xxx",
+            "overview": "xxx",
+            "developer": "xxx",
+            "manufacturer": "ALF",
+            "cpu": "xxx",
+            "memory": "xxx",
+            "Rating": "xxx"
+        }
+    }
+}

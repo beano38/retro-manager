@@ -1,0 +1,28 @@
+{
+  "emulator": "WinArcadia",
+  "extensions": "bin",
+  "platformType": "Console",
+  "year": "1982",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": "Entex - Adventure Vision",
+    "Redump": null,
+    "SoftwareLists": "advision",
+    "TOSEC": "Adventure Vision",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "4974",
+            "Platform": "Entex Adventure Vision",
+            "console": "xxx",
+            "overview": "Entex Adventure Vision",
+            "developer": "xxx",
+            "manufacturer": "Entex",
+            "memory": "xxx",
+            "graphics": "xxx",
+            "maxcontrollers": "2"
+        }
+    }
+}

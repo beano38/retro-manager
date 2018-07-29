@@ -1,0 +1,29 @@
+{
+  "emulator": "RetroArch",
+  "extensions": "bin",
+  "platformType": "Console",
+  "year": "1981",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": "Epoch - Super Cassette Vision",
+    "Redump": null,
+    "SoftwareLists": "scv",
+    "TOSEC": "Super Cassette Vision",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "4966",
+            "Platform": "Epoch Super Cassette Vision",
+            "console": "http://www.youtube.com/watch?v=4966.png",
+            "overview": "The Cassette Vision (Japanese: \u30ab\u30bb\u30c3\u30c8\u30d3\u30b8\u30e7\u30f3 Hepburn: Kasetto Bijon?) is a home video game console made by Epoch Co. and released in Japan on July 30, 1981. There is also a remodel called the Cassette Vision Jr.\n\nThe terms cassette, and more commonly tape, are contemporary synonyms for ROM cartridge, not to be confused with the magnetic cassette tape format. In terms of power, it is comparable to the Atari 2600. The Cassette Vision has unusual controls: four knobs built into the console itself, two for each player (one for horizontal, one for vertical); plus two buttons per player.\n\nThe system originally retailed for 13,500 yen, with games priced at 4,000. Though the Cassette Vision was not a high seller,[citation needed] it received a successor called the Super Cassette Vision (\u30b9\u30fc\u30d1\u30fc\u30ab\u30bb\u30c3\u30c8\u30d3\u30b8\u30e7\u30f3 S\u016bp\u0101 Kasetto Bijon?) As a 1984 machine, it is more comparable to the likes of the Family Computer and the Atari 7800. The SCV was also sold in Europe, but with little known success.[citation needed] The Super Lady Cassette Vision, a version of the Super Cassette Vision that was aimed at a female market, was released exclusively in Japan. While the specs were exactly the same the plastic was a pink color and included a carrying case and the &quot;Milky Princess&quot; game.",
+            "developer": "Epoch Co.",
+            "manufacturer": "Epoch",
+            "Images": {
+                "consoleart": "platform/consoleart/4966.png",
+                "controllerart": "platform/controllerart/4966.png"
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["bin"],
+  "year": "19xx",
+  "platformType": "Console",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": "Casio - Loopy",
+    "Redump": null,
+    "SoftwareLists": "casloopy",
+    "TOSEC": "Loopy",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "xxx",
+            "Platform": "xxx",
+            "console": "xxx",
+            "overview": "xxx",
+            "developer": "Casio",
+            "manufacturer": "Casio",
+            "cpu": "xxx",
+            "memory": "xxx",
+            "sound": "xxx",
+            "display": "xxx",
+            "maxcontrollers": "1",
+            "Rating": "x"
+        }
+    }
+}

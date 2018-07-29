@@ -1,0 +1,31 @@
+{
+  "emulator": "WinVICE",
+  "extensions": ["d64", "prg", "tap"],
+  "year": "19xx",
+  "platformType": "Console",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": "Commodore - Plus-4",
+    "Redump": null,
+    "SoftwareLists": ["plus4_cart", "plus4_cass", "plus4_flop"],
+    "TOSEC": "C16, C116 & Plus-4",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "xxx",
+            "Platform": "xxx",
+            "console": "xxx",
+            "overview": "xxx",
+            "developer": "Casio",
+            "manufacturer": "Commodore",
+            "cpu": "xxx",
+            "memory": "xxx",
+            "sound": "xxx",
+            "display": "xxx",
+            "maxcontrollers": "1",
+            "Rating": "x"
+        }
+    }
+}

@@ -1,0 +1,32 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["bin"],
+  "year": "1983",
+  "platformType": "Console",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": "Casio - PV-1000",
+    "Redump": null,
+    "SoftwareLists": "pv1000",
+    "TOSEC": null,
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "4964",
+            "Platform": "Casio PV-1000",
+            "console": "http://www.youtube.com/watch?v=4964.png",
+            "overview": "The PV-1000 (\u3074\u30fc\u3076\u3044\u305b\u3093 Pi Bui-Sen?) is a home video game console manufactured by Casio and released in Japan in 1983. The PV-1000 was powered by a Z80A micro-processor, and had 2 KB RAM available, with 1 KB devoted to its character generator. It had a 256x192 pixel resolution and had 8 available colours. It was released alongside a computer known as the PV-2000, which is compatible with PV-1000 controllers but not games. In the same year Casio released two other consoles, the PV-7 and the PV-16 which were MSX computers. The PV-1000 initially sold for 14,800\u00a5.\n\nCasio failed to achieve a significant market share. It is said to have been pulled from the shelves within a matter of weeks, making the system extremely rare.",
+            "developer": "Casio",
+            "manufacturer": "Casio",
+            "cpu": "Z80A clocked at 3.579 MHz",
+            "memory": "2KB RAM",
+            "display": "256x192 resolution, 8 colours",
+            "Images": {
+                "consoleart": "platform/consoleart/4964.png",
+                "controllerart": "platform/controllerart/4964.png"
+            }
+        }
+    }
+}

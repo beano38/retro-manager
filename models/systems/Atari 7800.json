@@ -1,0 +1,73 @@
+{
+  "emulator": "Kat5200",
+  "extensions": ["a52", "bin"],
+  "year": "1986",
+  "platformType": "Console",
+  "romSets": {
+    "GoodSet": "Good Sets_Good7800 v2 04",
+    "NoIntro": "Atari - 7800",
+    "Redump": null,
+    "SoftwareLists": "a7800",
+    "TOSEC": "7800",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "27",
+            "Platform": "Atari 7800",
+            "console": "http://www.youtube.com/watch?v=27.png",
+            "overview": "The Atari 7800 ProSystem, or simply the Atari 7800, is a video game console re-released by Atari Corporation in January 1986. The original release had occurred two years earlier under Atari Inc. The 7800 had originally been designed to replace Atari Inc.&#039;s Atari 5200 in 1984, but was temporarily shelved due to the sale of the company after the video game crash. In January 1986, the 7800 was again released and would compete that year with the Nintendo Entertainment System and the Sega Master System. It had simple digital joysticks; it was almost fully backward-compatible with the Atari 2600(and was the first console to have backward compatibility without the use of additional modules); and it was considered affordable at a price of US$140.",
+            "developer": "Atari",
+            "manufacturer": "Atari",
+            "cpu": "Atari SALLY 6502 (&quot;6502C&quot;)",
+            "memory": "4KB RAM",
+            "graphics": "MARIA",
+            "sound": "Pot Keyboard Integrated Circuit",
+            "display": "320\u00d7240",
+            "media": "Cartridge",
+            "maxcontrollers": "2",
+            "Rating": "6",
+            "Images": {
+                "fanart": [
+                    {
+                        "original": {
+                            "@width": "1920",
+                            "@height": "1080",
+                            "#text": "platform/fanart/27-1.jpg"
+                        },
+                        "thumb": "platform/fanart/thumb/27-1.jpg"
+                    },
+                    {
+                        "original": {
+                            "@width": "1920",
+                            "@height": "1080",
+                            "#text": "platform/fanart/27-2.jpg"
+                        },
+                        "thumb": "platform/fanart/thumb/27-2.jpg"
+                    }
+                ],
+                "boxart": {
+                    "@side": "back",
+                    "@width": "180",
+                    "@height": "180",
+                    "#text": "platform/boxart/27-1.jpg"
+                },
+                "banner": [
+                    {
+                        "@width": "760",
+                        "@height": "140",
+                        "#text": "platform/banners/27-1.png"
+                    },
+                    {
+                        "@width": "760",
+                        "@height": "140",
+                        "#text": "platform/banners/27-2.jpg"
+                    }
+                ],
+                "consoleart": "platform/consoleart/27.png",
+                "controllerart": "platform/controllerart/27.png"
+            }
+        }
+    }
+}

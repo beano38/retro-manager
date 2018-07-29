@@ -1,0 +1,73 @@
+{
+  "emulator": "WinVICE",
+  "extensions": ["80", "a0", "arc", "crt", "d64", "d81", "g64", "lnx", "nbz", "nib", "p00", "prg", "t64", "tap", "z64"],
+  "year": "1982",
+  "platformType": "Computer",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": ["Commodore - 64", "Commodore - 64 (PP)", "Commodore - 64 (Tapes)"],
+    "Redump": null,
+    "SoftwareLists": ["c64_cart", "c64_cass", "c64_flop"],
+    "TOSEC": "C64",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "40",
+            "Platform": "Commodore 64",
+            "console": "http://www.youtube.com/watch?v=40.png",
+            "overview": "The Commodore 64 is an 8-bit home computer introduced by Commodore International in January 1982. Volume production started in the spring of 1982, with machines being released on to the market in August at a price of US$595.  Preceded by the Commodore VIC-20 and Commodore PET machines, the C64 features 64 kilobytes (65,536 bytes) of RAM, hence the name, and had favourable sound and graphical specifications when compared to well-known contemporary systems such as the Apple II, particularly as the price was well below that demanded by Apple. It is commonly known as the C64 or C=64 (after the graphic logo on the case) and occasionally as the CBM 64 (for Commodore Business Machines), or VIC-64.",
+            "developer": "Commodore International",
+            "manufacturer": "Commodore",
+            "cpu": "MOS Technology 6510",
+            "memory": "64 kB RAM + 20 kB ROM",
+            "graphics": "MOS Technology VIC-II",
+            "sound": "MOS Technology 6581/8580 SID (Sound Interface Device)",
+            "display": "320x200",
+            "media": "Cartridge",
+            "maxcontrollers": "2",
+            "Rating": "8.125",
+            "Images": {
+                "fanart": [
+                    {
+                        "original": {
+                            "@width": "1920",
+                            "@height": "1080",
+                            "#text": "platform/fanart/40-1.jpg"
+                        },
+                        "thumb": "platform/fanart/thumb/40-1.jpg"
+                    },
+                    {
+                        "original": {
+                            "@width": "1920",
+                            "@height": "1080",
+                            "#text": "platform/fanart/40-2.jpg"
+                        },
+                        "thumb": "platform/fanart/thumb/40-2.jpg"
+                    }
+                ],
+                "boxart": {
+                    "@side": "back",
+                    "@width": "640",
+                    "@height": "900",
+                    "#text": "platform/boxart/40-1.jpg"
+                },
+                "banner": [
+                    {
+                        "@width": "760",
+                        "@height": "140",
+                        "#text": "platform/banners/40-1.png"
+                    },
+                    {
+                        "@width": "760",
+                        "@height": "140",
+                        "#text": "platform/banners/40-2.jpg"
+                    }
+                ],
+                "consoleart": "platform/consoleart/40.png",
+                "controllerart": "platform/controllerart/40.png"
+            }
+        }
+    }
+}

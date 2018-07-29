@@ -1,0 +1,74 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["bin"],
+  "year": "1986",
+  "platformType": "Console",
+  "romSets": {
+    "NoIntro": "Sega - Master System - Mark III",
+    "SoftwareLists": "sms",
+    "TOSEC": "Mark III & Master System",
+    "GoodSet": "Good Sets_GoodSMS v3 20",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "35",
+            "Platform": "Sega Master System",
+            "console": "http://www.youtube.com/watch?v=35.png",
+            "controller": "http://www.youtube.com/watch?v=35.png",
+            "overview": "The Master System (abbreviated to SMS) is a third-generation video game console that was manufactured and released by Sega in 1985 in Japan (as the Sega Mark III), 1986 in North America and 1987 in Europe.\n\nThe original SMS could play both cartridges and the credit card-sized &quot;Sega Cards,&quot; which retailed for cheaper prices than cartridges but had less code. The SMS also featured accessories such as a light gun and 3D glasses which were designed to work with a range of specially coded games.\n\nThe Master System was released as a direct competitor to the Nintendo Entertainment System in the third videogame generation The SMS was technically superior to the NES, which predated its release significantly, but failed to overturn Nintendo&#039;s significant market share advantage in Japan and North America.",
+            "developer": "Sega",
+            "manufacturer": "Sega",
+            "cpu": "8-bit Zilog Z80",
+            "memory": "64 kbit (8 KB), can be supplemented by game cartridges",
+            "graphics": "VDP (Video Display Processor) derived from Texas Instruments TMS9918A",
+            "sound": "Yamaha YM2413",
+            "display": "256\u00d7240",
+            "media": "Cartridge",
+            "maxcontrollers": "2",
+            "Youtube": "http://www.youtube.com/watch?v=r6x3iNB0ddo",
+            "Rating": "6.7143",
+            "Images": {
+                "fanart": [
+                    {
+                        "original": {
+                            "@width": "1920",
+                            "@height": "1080",
+                            "#text": "platform/fanart/35-1.jpg"
+                        },
+                        "thumb": "platform/fanart/thumb/35-1.jpg"
+                    },
+                    {
+                        "original": {
+                            "@width": "1920",
+                            "@height": "1080",
+                            "#text": "platform/fanart/35-2.jpg"
+                        },
+                        "thumb": "platform/fanart/thumb/35-2.jpg"
+                    }
+                ],
+                "boxart": {
+                    "@side": "back",
+                    "@width": "640",
+                    "@height": "919",
+                    "#text": "platform/boxart/35-1.jpg"
+                },
+                "banner": [
+                    {
+                        "@width": "760",
+                        "@height": "140",
+                        "#text": "platform/banners/35-1.png"
+                    },
+                    {
+                        "@width": "760",
+                        "@height": "140",
+                        "#text": "platform/banners/35-2.jpg"
+                    }
+                ],
+                "consoleart": "platform/consoleart/35.png",
+                "controllerart": "platform/controllerart/35.png"
+            }
+        }
+    }
+}

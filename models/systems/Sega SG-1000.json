@@ -1,0 +1,32 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["bin"],
+  "year": "19xx",
+  "platformType": "Console",
+  "romSets": {
+    "NoIntro": "Sega - SG-1000",
+    "SoftwareLists": "sg1000",
+    "TOSEC": "Game 1000",
+    "GoodSet": null,
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "4957",
+            "Platform": "Nintendo Pok\u00e9mon Mini",
+            "console": "http://www.youtube.com/watch?v=4957.png",
+            "manufacturer": "Sega",
+            "Images": {
+                "boxart": {
+                    "@side": "back",
+                    "@width": "650",
+                    "@height": "924",
+                    "#text": "platform/boxart/4957-1.png"
+                },
+                "consoleart": "platform/consoleart/4957.png",
+                "controllerart": "platform/controllerart/4957.png"
+            }
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+  "emulator": "WinArcadia",
+  "extensions": "bin",
+  "platformType": "Console",
+  "year": "19xx",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": "RCA - Studio II",
+    "Redump": null,
+    "SoftwareLists": "studio2",
+    "TOSEC": "Studio II",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "4957",
+            "Platform": "Nintendo Pok\u00e9mon Mini",
+            "console": "http://www.youtube.com/watch?v=4957.png",
+            "manufacturer": "RCA",
+            "Images": {
+                "boxart": {
+                    "@side": "back",
+                    "@width": "650",
+                    "@height": "924",
+                    "#text": "platform/boxart/4957-1.png"
+                },
+                "consoleart": "platform/consoleart/4957.png",
+                "controllerart": "platform/controllerart/4957.png"
+            }
+        }
+    }
+}

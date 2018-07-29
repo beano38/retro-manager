@@ -1,0 +1,31 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["bin"],
+  "year": "1995",
+  "platformType": "Console",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": "Funtech - Super Acan",
+    "Redump": null,
+    "SoftwareLists": "supracan",
+    "TOSEC": "Super Acan",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "xxx",
+            "Platform": "xxx",
+            "console": "xxx",
+            "overview": "xxx",
+            "developer": "Casio",
+            "manufacturer": "Funtech",
+            "cpu": "xxx",
+            "memory": "xxx",
+            "sound": "xxx",
+            "display": "xxx",
+            "maxcontrollers": "1",
+            "Rating": "x"
+        }
+    }
+}

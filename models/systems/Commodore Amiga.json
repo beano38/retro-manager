@@ -1,0 +1,67 @@
+{
+  "emulator": "FS-UAE",
+  "extensions": ["adf", "exe", "ipf"],
+  "year": "1985",
+  "platformType": "Computer",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": ["Commodore - Amiga"],
+    "Redump": null,
+    "SoftwareLists": ["amiga_a1000", "amiga_a3000", "amiga_apps", "amiga_flop", "amiga_hardware", "amiga_workbench", "amigaaga_flop", "amigaecs_flop", "amigaocs_flop"],
+    "TOSEC": "Amiga",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "4911",
+            "Platform": "Amiga",
+            "console": "http://www.youtube.com/watch?v=4911.png",
+            "overview": "The Amiga is a family of personal computers marketed by Commodore in the 1980s and 1990s. The first model was launched in 1985 as a high-end home computer and became popular for its graphical, audio and multi-tasking abilities. The Amiga provided a significant upgrade from 8-bit computers, such as the Commodore 64, and the platform quickly grew in popularity among computer enthusiasts. The best selling model, the Amiga 500, was introduced in 1987 and became the leading home computer of the late 1980s and early 1990s in much of Western Europe. In North America success was more modest. The Amiga went on to sell approximately six million units.\n\nSecond generation Amiga systems (A1200 and A4000) were released in 1992. However, poor marketing and failure to repeat the technological advances of the first systems meant that the Amiga quickly lost its market share to competing platforms, such as the fourth generation game consoles, Apple Macintosh and IBM PC compatibles.",
+            "developer": "Commodore",
+            "manufacturer": "Commodore",
+            "cpu": "Motorola 68000",
+            "memory": "16MB",
+            "graphics": "AGA chipset",
+            "sound": "The sound chip, named Paula, supports four sound channels (two for the left speaker and two for the right) with 8-bit resolution for each channel and a 6-bit volume control per channel.",
+            "display": "1024\u00d7800 for NTSC and 1024\u00d71024 for PAL",
+            "media": "Disk",
+            "maxcontrollers": "1",
+            "Youtube": "http://www.youtube.com/watch?v=iUKKLzD4Pto",
+            "Rating": "8.3636",
+            "Images": {
+                "fanart": [
+                    {
+                        "original": {
+                            "@width": "1920",
+                            "@height": "1080",
+                            "#text": "platform/fanart/4911-1.jpg"
+                        },
+                        "thumb": "platform/fanart/thumb/4911-1.jpg"
+                    },
+                    {
+                        "original": {
+                            "@width": "1920",
+                            "@height": "1080",
+                            "#text": "platform/fanart/4911-2.jpg"
+                        },
+                        "thumb": "platform/fanart/thumb/4911-2.jpg"
+                    }
+                ],
+                "boxart": {
+                    "@side": "back",
+                    "@width": "820",
+                    "@height": "1080",
+                    "#text": "platform/boxart/4911-2.jpg"
+                },
+                "banner": {
+                    "@width": "760",
+                    "@height": "140",
+                    "#text": "platform/banners/4911-1.jpg"
+                },
+                "consoleart": "platform/consoleart/4911.png",
+                "controllerart": "platform/controllerart/4911.png"
+            }
+        }
+    }
+}

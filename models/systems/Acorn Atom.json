@@ -1,0 +1,28 @@
+{
+  "emulator": "Arculator",
+  "extensions": ["adf", "dsk", "rom", "uef"],
+  "year": "19xx",
+  "platformType": "Computer",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": null,
+    "Redump": null,
+    "SoftwareLists": ["atom_cart", "atom_cass", "atom_flop"],
+    "TOSEC": null,
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "xxx",
+            "Platform": "Acorn Atom",
+            "console": "xxx",
+            "overview": "xxx",
+            "developer": "Acorn Computers",
+            "manufacturer": "Acorn",
+            "cpu": "xxx",
+            "memory": "xxx",
+            "Rating": "xxx"
+        }
+    }
+}

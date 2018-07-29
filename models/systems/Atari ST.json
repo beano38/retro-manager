@@ -1,0 +1,39 @@
+{
+  "emulator": "Hatari",
+  "extensions": ["ipf", "jag", "j64"],
+  "year": "19xx",
+  "platformType": "Computer",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": "Atari - ST",
+    "Redump": null,
+    "SoftwareLists": ["st_cart", "st_flop"],
+    "TOSEC": "ST",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "4937",
+            "Platform": "Atari ST",
+            "console": "http://www.youtube.com/watch?v=4937.png",
+            "overview": "The Atari ST is a line of home computers from Atari Corporation and the successor to the Atari 8-bit family. The ST enjoyed success in gaming due to low cost, fast performance and colorful graphics.\n\nNotable individuals who developed games on the ST include Peter Molyneux, Doug Bell, Jeff Minter, \u00c9ric Chahi, Jez San, and David Braben. An early real-time 3D role-playing video game, Dungeon Master, was first developed and released on the ST, and was the best-selling software ever produced for the platform. Simulation games like Falcon and Flight Simulator II made use of the enhanced graphics found in the ST machines, as did many arcade ports. One game, MIDI Maze, uses the MIDI ports to connect up to 16 machines for interactive networked play. Games simultaneously released on the Amiga that had identical graphics and sound were often accused by video game magazines of simply being ST ports. The critically acclaimed game Another World was originally released for ST and Amiga in 1991 with the Polygonal engine developed on the ST and the rotoscoped animations created on the Amiga (the two games are very similar on both systems).",
+            "developer": "Atari Corporation",
+            "manufacturer": "Atari",
+            "cpu": "Motorola 680x0 @ 8 MHz &amp; higher",
+            "memory": "512 Kibibytes (512\u00d7210 bytes) to 4 Mebibyte (4\u00d7220 bytes)",
+            "media": "Floppy",
+            "Rating": "10",
+            "Images": {
+                "boxart": {
+                    "@side": "back",
+                    "@width": "500",
+                    "@height": "750",
+                    "#text": "platform/boxart/4937-1.jpg"
+                },
+                "consoleart": "platform/consoleart/4937.png",
+                "controllerart": "platform/controllerart/4937.png"
+            }
+        }
+    }
+}

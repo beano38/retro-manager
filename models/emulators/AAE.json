@@ -1,0 +1,29 @@
+{
+  "dir_name": "aae092808",
+  "config": "aae.ini",
+  "config_type": "ini",
+  "rom_path": "mame_rom_path",
+  "controls": {
+    "p1_d_up": "kp1up",
+    "p1_d_down": "kp1down",
+    "p1_d_left": "kp1left",
+    "p1_d_right": "kp1right",
+    "p1_start": "kstart1",
+    "p1_coin": "kcoin1",
+    "p1_b1": "kp1but1",
+    "p1_b2": "kp1but2",
+    "p1_b3": "kp1but3",
+    "p1_b4": "kp1but4",
+
+    "p2_d_up": "kp2up",
+    "p2_d_down": "kp2down",
+    "p2_d_left": "kp2left",
+    "p2_d_right": "kp2right",
+    "p2_start": "kstart2",
+    "p2_coin": "kcoin2",
+    "p2_b1": "kp2but1",
+    "p2_b2": "kp2but2",
+    "p2_b3": "kp2but3",
+    "p2_b4": "kp2but4"
+  }
+}

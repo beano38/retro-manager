@@ -1,0 +1,38 @@
+{
+  "emulator": "Arculator",
+  "extensions": ["adf"],
+  "year": "19xx",
+  "platformType": "Computer",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": null,
+    "Redump": null,
+    "SoftwareLists": ["archimedes"],
+    "TOSEC": "Archimedes",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "4944",
+            "Platform": "Acorn Archimedes",
+            "console": "http://www.youtube.com/watch?v=4944.png",
+            "overview": "The Acorn Archimedes is a family of personal computers designed by Acorn Computers Ltd in Cambridge, England and sold in the late-1980s to mid-1990s, their first general purpose home computer based on their own ARM architecture. The Archimedes was one of the most powerful home computers available during the late 1980s and early 1990s; its main CPU was faster than the Motorola 68000 microprocessors found in the more popular Commodore Amiga and Atari ST machines.",
+            "developer": "Acorn Computers",
+            "manufacturer": "Acorn",
+            "cpu": "Acorn RISC Machine",
+            "memory": "512 KB ~ 16 MB",
+            "Rating": "8",
+            "Images": {
+                "boxart": {
+                    "@side": "back",
+                    "@width": "140",
+                    "@height": "200",
+                    "#text": "platform/boxart/4944-1.jpg"
+                },
+                "consoleart": "platform/consoleart/4944.png",
+                "controllerart": "platform/controllerart/4944.png"
+            }
+        }
+    }
+}

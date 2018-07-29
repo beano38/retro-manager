@@ -1,0 +1,27 @@
+{
+  "emulator": "BlueMSX",
+  "extensions": ["cas", "dsk", "rom"],
+  "year": "1983",
+  "platformType": "computer",
+  "romSets": {
+    "GoodSet": "Good Sets_GoodMSX2 v0 999 3 BETA",
+    "NoIntro": "Microsoft - MSX2",
+    "Redump": null,
+    "SoftwareLists": ["msx2_cart", "msx2_cass", "msx2_flop", "msx2p_flop"],
+    "TOSEC": "MSX2",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "xxx",
+            "Platform": "MSX",
+            "console": "xxx",
+            "overview": "xxx",
+            "developer": "ASCII Corporation",
+            "manufacturer": "MSX",
+            "media": "Cartridge, Floppy",
+            "Rating": "8"
+        }
+    }
+}

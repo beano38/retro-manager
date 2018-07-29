@@ -1,0 +1,31 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["bin"],
+  "year": "19xx",
+  "platformType": "Console",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": "Tiger - Game.com",
+    "Redump": null,
+    "SoftwareLists": "gamecom",
+    "TOSEC": "Game.com",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "xxx",
+            "Platform": "xxx",
+            "console": "xxx",
+            "overview": "xxx",
+            "developer": "Casio",
+            "manufacturer": "Tiger",
+            "cpu": "xxx",
+            "memory": "xxx",
+            "sound": "xxx",
+            "display": "xxx",
+            "maxcontrollers": "1",
+            "Rating": "x"
+        }
+    }
+}

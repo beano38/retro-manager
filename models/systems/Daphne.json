@@ -1,0 +1,31 @@
+{
+  "emulator": "Daphne",
+  "extensions": ["txt"],
+  "year": "19xx",
+  "platformType": "Console",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": null,
+    "Redump": null,
+    "SoftwareLists": null,
+    "TOSEC": null,
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "xxx",
+            "Platform": "xxx",
+            "console": "xxx",
+            "overview": "xxx",
+            "developer": "xxx",
+            "manufacturer": "xxx",
+            "cpu": "xxx",
+            "memory": "xxx",
+            "sound": "xxx",
+            "display": "xxx",
+            "maxcontrollers": "1",
+            "Rating": "x"
+        }
+    }
+}

@@ -1,0 +1,73 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["bin"],
+  "year": "1990",
+  "platformType": "Handheld",
+  "romSets": {
+    "GoodSet": "Good Sets_GoodGG v3 20",
+    "NoIntro": "Sega - Game Gear",
+    "Redump": null,
+    "SoftwareLists": "gamegear",
+    "TOSEC": "Game Gear",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "20",
+            "Platform": "Sega Game Gear",
+            "console": "http://www.youtube.com/watch?v=20.png",
+            "overview": "The Sega Game Gear was Sega&#039;s first handheld game console. It was the third commercially available color handheld console, after the Atari Lynx and the TurboExpress.\n\nWork began on the console in 1989 under the codename &quot;Project Mercury&quot;, following Sega&#039;s policy at the time of codenaming their systems after planets. The system was released in Japan on October 6, 1990, North America, Europe and Argentina in 1991, and Australia in 1992. The launch price was $150 US and \u00a3145 UK. Sega dropped support for the Game Gear in early 1997.",
+            "developer": "Sega",
+            "manufacturer": "Sega",
+            "cpu": "Zilog Z80",
+            "memory": "8KB RAM",
+            "sound": "3 square wave generators, 1 noise generator, the system has a mono speaker, but stereo sound can be had via headphone output",
+            "display": "160 x 144",
+            "media": "Cartridge",
+            "maxcontrollers": "1",
+            "Youtube": "http://www.youtube.com/watch?v=eVL3uW9uV4E",
+            "Rating": "6.8",
+            "Images": {
+                "fanart": [
+                    {
+                        "original": {
+                            "@width": "1920",
+                            "@height": "1080",
+                            "#text": "platform/fanart/20-1.jpg"
+                        },
+                        "thumb": "platform/fanart/thumb/20-1.jpg"
+                    },
+                    {
+                        "original": {
+                            "@width": "1920",
+                            "@height": "1080",
+                            "#text": "platform/fanart/20-2.jpg"
+                        },
+                        "thumb": "platform/fanart/thumb/20-2.jpg"
+                    }
+                ],
+                "boxart": {
+                    "@side": "back",
+                    "@width": "1000",
+                    "@height": "1370",
+                    "#text": "platform/boxart/20-1.jpg"
+                },
+                "banner": [
+                    {
+                        "@width": "760",
+                        "@height": "140",
+                        "#text": "platform/banners/20-1.png"
+                    },
+                    {
+                        "@width": "760",
+                        "@height": "140",
+                        "#text": "platform/banners/20-2.jpg"
+                    }
+                ],
+                "consoleart": "platform/consoleart/20.png",
+                "controllerart": "platform/controllerart/20.png"
+            }
+        }
+    }
+}

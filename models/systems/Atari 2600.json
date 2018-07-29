@@ -1,0 +1,98 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["a26", "bin"],
+  "platformType": "Console",
+  "year": "1977",
+  "manufacturer": "Atari",
+  "emuMoviesName": "Atari_2600",
+  "romSets": {
+    "GoodSet": "Good2600 v3.14",
+    "NoIntro": "Atari - 2600",
+    "Redump": null,
+    "SoftwareLists": ["a2600", "a2600_cass"],
+    "TOSEC": "2600 & VCS",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+    "baseImgUrl": "http://thegamesdb.net/banners/",
+    "Platform": {
+      "id": "22",
+      "Platform": "Atari 2600",
+      "console": "http://www.youtube.com/watch?v=22.png",
+      "overview": "The Atari 2600 is a video game console released in October 1977 by Atari, Inc. It is credited with popularizing the use of microprocessor-based hardware and cartridges containing game code, instead of having non-microprocessor dedicated hardware with all games built in. The first game console to use this format was the Fairchild Channel F; however, the Atari 2600 receives credit for making the plug-in concept popular among the game-playing public.\nThe console was originally sold as the Atari VCS, for Video Computer System. Following the release of the Atari 5200, in 1982, the VCS was renamed &quot;Atari 2600&quot;, after the unit&#039;s Atari part number, CX2600. The 2600 was typically bundled with two joystick controllers, a conjoined pair of paddle controllers, and a cartridge game\u2014initially Combat and later Pac-Man.\n\nThe Atari 2600 was wildly successful, and during much of the 1980s, &quot;Atari&quot; was a synonym for this model in mainstream media and, by extension, for video games in general.",
+      "developer": "Atari",
+      "manufacturer": "Atari",
+      "cpu": "MOS Technology 6507",
+      "memory": "128 bytes RAM",
+      "graphics": "128-color palette",
+      "sound": "Television Interface Adaptor",
+      "media": "Cartridge",
+      "maxcontrollers": "2",
+      "Rating": "8.2857",
+      "Images": {
+        "fanart": [
+          {
+            "original": {
+              "@width": "1920",
+              "@height": "1080",
+              "#text": "platform/fanart/22-1.jpg"
+            },
+            "thumb": "platform/fanart/thumb/22-1.jpg"
+          },
+          {
+            "original": {
+              "@width": "1920",
+              "@height": "1080",
+              "#text": "platform/fanart/22-2.jpg"
+            },
+            "thumb": "platform/fanart/thumb/22-2.jpg"
+          },
+          {
+            "original": {
+              "@width": "1920",
+              "@height": "1080",
+              "#text": "platform/fanart/22-3.jpg"
+            },
+            "thumb": "platform/fanart/thumb/22-3.jpg"
+          },
+          {
+            "original": {
+              "@width": "1920",
+              "@height": "1080",
+              "#text": "platform/fanart/22-4.jpg"
+            },
+            "thumb": "platform/fanart/thumb/22-4.jpg"
+          },
+          {
+            "original": {
+              "@width": "1920",
+              "@height": "1080",
+              "#text": "platform/fanart/22-5.jpg"
+            },
+            "thumb": "platform/fanart/thumb/22-5.jpg"
+          }
+        ],
+        "boxart": {
+          "@side": "back",
+          "@width": "1500",
+          "@height": "2080",
+          "#text": "platform/boxart/22-1.jpg"
+        },
+        "banner": [
+          {
+            "@width": "760",
+            "@height": "140",
+            "#text": "platform/banners/22-1.png"
+          },
+          {
+            "@width": "760",
+            "@height": "140",
+            "#text": "platform/banners/22-2.jpg"
+          }
+        ],
+        "consoleart": "platform/consoleart/22.png",
+        "controllerart": "platform/controllerart/22.png"
+      }
+    }
+  }
+}

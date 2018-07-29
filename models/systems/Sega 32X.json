@@ -1,0 +1,55 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["32x"],
+  "year": "19xx",
+  "platformType": "Console",
+  "romSets": {
+    "NoIntro": "Sega - 32X",
+    "SoftwareLists": "32x",
+    "TOSEC": "32X",
+    "GoodSet": null,
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "33",
+            "Platform": "Sega 32X",
+            "console": "http://www.youtube.com/watch?v=33.png",
+            "overview": "The Sega 32X, codenamed Project Mars, is an add-on for the Mega Drive/Genesis video game console by Sega. Its aim was to increase the lifespan of the aging Mega Drive/Genesis system, which was facing stiff competition from the SNES. While connecting it to Mega Drive did increase its capabilities, reluctance to adapt due to the previous failure of the Mega-CD and the upcoming Sega Saturn system led to low sales and a short lifespan.\n\nIt was distributed under the name Sega Super 32X in Japan, Sega Genesis 32X in North America, Sega Mega Drive 32X in the PAL region, and Sega Mega 32X in Brazil.",
+            "developer": "Sega",
+            "manufacturer": "Sega",
+            "cpu": "2 \u00d7 SH-2 32-bit RISC",
+            "memory": "256 kB program RAM",
+            "sound": "Stereo 10-bit PWM (Pulse Width Modulation)",
+            "display": "320 \u00d7 240",
+            "media": "Cartridge",
+            "maxcontrollers": "2",
+            "Youtube": "http://www.youtube.com/watch?v=vbYkgDWAYAE",
+            "Rating": "4.5",
+            "Images": {
+                "fanart": {
+                    "original": {
+                        "@width": "1920",
+                        "@height": "1080",
+                        "#text": "platform/fanart/33-1.jpg"
+                    },
+                    "thumb": "platform/fanart/thumb/33-1.jpg"
+                },
+                "boxart": {
+                    "@side": "back",
+                    "@width": "500",
+                    "@height": "750",
+                    "#text": "platform/boxart/33-2.jpg"
+                },
+                "banner": {
+                    "@width": "760",
+                    "@height": "140",
+                    "#text": "platform/banners/33-1.jpg"
+                },
+                "consoleart": "platform/consoleart/33.png",
+                "controllerart": "platform/controllerart/33.png"
+            }
+        }
+    }
+}

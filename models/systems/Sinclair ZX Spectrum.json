@@ -1,0 +1,51 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["dsk", "scl", "tap", "tzx", "z80"],
+  "year": "1982",
+  "platformType": "Console",
+  "romSets": {
+    "NoIntro": "Sinclair - ZX Spectrum +3",
+    "SoftwareLists": ["spectrum_cart", "spectrum_cass"],
+    "TOSEC": "ZX Spectrum",
+    "GoodSet": null,
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "4913",
+            "Platform": "Sinclair ZX Spectrum",
+            "console": "http://www.youtube.com/watch?v=4913.png",
+            "overview": "The ZX Spectrum (pronounced &quot;Zed-Ex&quot;) is an 8-bit personal home computer released in the United Kingdom in 1982 by Sinclair Research Ltd.\n\nReferred to during development as the ZX81 Colour and ZX82, the machine was launched as the ZX Spectrum by Sinclair to highlight the machine&#039;s colour display, compared with the black-and-white of its predecessor, the ZX81. The Spectrum was ultimately released as eight different models, ranging from the entry level model with 16 kB RAM released in 1982 to the ZX Spectrum +3 with 128 kB RAM and built in floppy disk drive in 1987; together they sold in excess of 5 million units worldwide (not counting numerous clones).\n\nThe Spectrum was among the first mainstream audience home computers in the UK, similar in significance to the Commodore 64 in the USA. The introduction of the ZX Spectrum led to a boom in companies producing software and hardware for the machine, the effects of which are still seen; some credit it as the machine which launched the UK IT industry. Licensing deals and clones followed, and earned Clive Sinclair a knighthood for &quot;services to British industry&quot;.\n\nThe Commodore 64, BBC Microcomputer and later the Amstrad CPC range were major rivals to the Spectrum in the UK market during the early 1980s. Over 24,000 software titles have been released since the Spectrum&#039;s launch and new titles continue to be released, with over 90 new ones in 2010.",
+            "developer": "Sinclair Research Ltd.",
+            "manufacturer": "Sinclair",
+            "cpu": "Zilog Z80A @ 3.5 MHz and equivalent",
+            "memory": "16 kB / 48 kB / 128 kB",
+            "graphics": "Text: 32 columns \u00d7 24 rows - 15 Shades | Image: 256\u00d7192 15 Shades",
+            "sound": "1 Channel In-Built Beeper",
+            "display": "RF modulator",
+            "media": "Cassette tape",
+            "maxcontrollers": "Built In Rubber Keyboard / 1 Joystick Using Expansion Hardware",
+            "Youtube": "http://www.youtube.com/watch?v=KJBR1BFH8V4",
+            "Rating": "8.6667",
+            "Images": {
+                "fanart": {
+                    "original": {
+                        "@width": "1920",
+                        "@height": "1080",
+                        "#text": "platform/fanart/4913-1.jpg"
+                    },
+                    "thumb": "platform/fanart/thumb/4913-1.jpg"
+                },
+                "boxart": {
+                    "@side": "back",
+                    "@width": "500",
+                    "@height": "750",
+                    "#text": "platform/boxart/4913-1.jpg"
+                },
+                "consoleart": "platform/consoleart/4913.png",
+                "controllerart": "platform/controllerart/4913.png"
+            }
+        }
+    }
+}

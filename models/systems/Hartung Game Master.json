@@ -1,0 +1,31 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["bin"],
+  "year": "1995",
+  "platformType": "Handheld",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": "Hartung - Game Master",
+    "Redump": null,
+    "SoftwareLists": "gmaster",
+    "TOSEC": null,
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "xxx",
+            "Platform": "xxx",
+            "console": "xxx",
+            "overview": "xxx",
+            "developer": "xxx",
+            "manufacturer": "Hartung",
+            "cpu": "xxx",
+            "memory": "xxx",
+            "sound": "xxx",
+            "display": "xxx",
+            "maxcontrollers": "1",
+            "Rating": "x"
+        }
+    }
+}

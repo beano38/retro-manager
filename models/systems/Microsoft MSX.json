@@ -1,0 +1,37 @@
+{
+  "emulator": "BlueMSX",
+  "extensions": ["cas", "dsk", "rom"],
+  "year": "1983",
+  "platformType": "computer",
+  "romSets": {
+    "GoodSet": "Good Sets_GoodMSX1 v0 999 3 BETA",
+    "NoIntro": "Microsoft - MSX",
+    "Redump": null,
+    "SoftwareLists": ["msx1_cart", "msx1_cass", "msx1_flop"],
+    "TOSEC": "MSX",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "4929",
+            "Platform": "MSX",
+            "console": "http://www.youtube.com/watch?v=4929.png",
+            "overview": "MSX is a standardized home computer architecture Despite Microsoft&#039;s involvement, the MSX-based machines were seldom released in the United States, but were popular in Asian countries like Japan and South Korea, South American countries like Brazil and Chile, and in the European market in countries like the Netherlands, France, Spain and Finland. To a lesser extent, the MSX platform was also popular in the former Soviet Union and Kuwait.\n\nBefore the appearance and great success of Nintendo&#039;s Family Computer, MSX was the platform for which major Japanese game studios, such as Konami and Hudson Soft, produced video game titles. The Metal Gear series, for example, was originally written for MSX hardware.",
+            "developer": "ASCII Corporation",
+            "manufacturer": "MSX",
+            "media": "Cartridge, Floppy",
+            "Rating": "8",
+            "Images": {
+                "boxart": {
+                    "@side": "back",
+                    "@width": "500",
+                    "@height": "671",
+                    "#text": "platform/boxart/4929-1.jpg"
+                },
+                "consoleart": "platform/consoleart/4929.png",
+                "controllerart": "platform/controllerart/4929.png"
+            }
+        }
+    }
+}

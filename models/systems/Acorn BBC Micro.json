@@ -1,0 +1,28 @@
+{
+  "emulator": "Arculator",
+  "extensions": ["adl", "bin", "dsd", "ssd", "uef"],
+  "year": "19xx",
+  "platformType": "Computer",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": null,
+    "Redump": null,
+    "SoftwareLists": ["bbcbc", "bbcm_cart", "bbcm_cass", "bbcmc_flop", "bbcm_flop", "bbca_cass", "bbcb_cass_de", "bbcb_flop_us", "bbcb_cass", "bbcb_flop", "bbcb_flop_orig"],
+    "TOSEC": "BBC",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "xxx",
+            "Platform": "Acorn BBC",
+            "console": "xxx",
+            "overview": "xxx",
+            "developer": "Acorn Computers",
+            "manufacturer": "Acorn",
+            "cpu": "xxx",
+            "memory": "xxx",
+            "Rating": "xxx"
+        }
+    }
+}

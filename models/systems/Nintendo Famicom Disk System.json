@@ -1,0 +1,39 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["fds", "nes", "unf"],
+  "year": "1986",
+  "platformType": "Console",
+  "romSets": {
+    "NoIntro": "Nintendo - Family Computer Disk System",
+    "SoftwareLists": "famicom_flop",
+    "TOSEC": "Famicom Disk System",
+    "GoodSet": "GoodNES V3.23b",
+    "NoGoodSet": "NoGoodNES"
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "4936",
+            "Platform": "Famicom Disk System",
+            "console": "http://www.youtube.com/watch?v=4936.png",
+            "overview": "The Family Disk System was released on February 21, 1986 by Nintendo as a peripheral for the Nintendo Family Computer console in Japan. It uses proprietary floppy disks (called &quot;Disk Cards&quot;) for data storage. The Disk System&#039;s Disk Cards are somewhat proprietary 71 mm \u00d7 76 mm (2.8x3 in) 56K-per-side double-sided floppy. These &quot;Disk Cards,&quot; as they are officially called, were a slight modification of Mitsumi&#039;s &quot;Quick Disk&quot; 89 mm 2.8 in square disk format which is used in a handful of Japanese computers and various synthesizer keyboards, along with a few word processors. Some of the QuickDisk drives even made it into devices in Europe and North America, though they are somewhat rare. Mitsumi already had close relations with Nintendo, as it manufactured the Famicom and NES consoles, and possibly other Nintendo hardware.",
+            "developer": "Nintendo",
+            "manufacturer": "Nintendo",
+            "cpu": "Ricoh 2A03 8-bit processor",
+            "memory": "32 KB RAM",
+            "display": "256x240",
+            "media": "Floppy",
+            "maxcontrollers": "2",
+            "Images": {
+                "boxart": {
+                    "@side": "back",
+                    "@width": "500",
+                    "@height": "750",
+                    "#text": "platform/boxart/4936-1.jpg"
+                },
+                "consoleart": "platform/consoleart/4936.png",
+                "controllerart": "platform/controllerart/4936.png"
+            }
+        }
+    }
+}

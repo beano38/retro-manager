@@ -1,0 +1,66 @@
+{
+  "emulator": "MAME",
+  "extensions": ["a52", "bin"],
+  "year": "1982",
+  "platformType": "Console",
+  "romSets": {
+    "GoodSet": "Good Sets_GoodCol v3 14",
+    "NoIntro": "Coleco - ColecoVision",
+    "Redump": null,
+    "SoftwareLists": "coleco",
+    "TOSEC": "ColecoVision",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "31",
+            "Platform": "Colecovision",
+            "console": "http://www.youtube.com/watch?v=31.png",
+            "overview": "The ColecoVision is Coleco Industries&#039; second generation home video game console which was released in August 1982. The ColecoVision offered arcade-quality graphics and gaming style, and the means to expand the system&#039;s basic hardware. Released with a catalog of 12 launch titles, with an additional ten games announced for 1982, approximately 145 titles in total were published as ROM cartridges for the system between 1982 and 1984.",
+            "developer": "Coleco",
+            "manufacturer": "Coleco",
+            "cpu": "Zilog Z80",
+            "memory": "1 KB",
+            "graphics": "Texas Instruments TMS9928A",
+            "sound": "Texas Instruments SN76489A",
+            "display": "256\u00d7192",
+            "media": "Cartridge",
+            "maxcontrollers": "1",
+            "Rating": "8.5",
+            "Images": {
+                "fanart": [
+                    {
+                        "original": {
+                            "@width": "1920",
+                            "@height": "1080",
+                            "#text": "platform/fanart/31-1.jpg"
+                        },
+                        "thumb": "platform/fanart/thumb/31-1.jpg"
+                    },
+                    {
+                        "original": {
+                            "@width": "1920",
+                            "@height": "1080",
+                            "#text": "platform/fanart/31-2.jpg"
+                        },
+                        "thumb": "platform/fanart/thumb/31-2.jpg"
+                    }
+                ],
+                "boxart": {
+                    "@side": "back",
+                    "@width": "640",
+                    "@height": "900",
+                    "#text": "platform/boxart/31-1.jpg"
+                },
+                "banner": {
+                    "@width": "760",
+                    "@height": "140",
+                    "#text": "platform/banners/31-1.jpg"
+                },
+                "consoleart": "platform/consoleart/31.png",
+                "controllerart": "platform/controllerart/31.png"
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["ws", "bin"],
+  "year": "19xx",
+  "platformType": "Handheld",
+  "romSets": {
+    "GoodSet": "Good Sets_GoodWSx v3 14 (1 Miss)",
+    "NoIntro": "Bandai - WonderSwan",
+    "Redump": null,
+    "SoftwareLists": "wswan",
+    "TOSEC": "WonderSwan",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "4926",
+            "Platform": "WonderSwan",
+            "console": "http://www.youtube.com/watch?v=4925.png",
+            "overview": "The WonderSwan was a line of handheld game consoles produced in Japan by Bandai. It was developed by Gunpei Yokoi&#039;s company Koto and Bandai. The WonderSwan was made to compete with the Neo Geo Pocket Color and the market leader Nintendo&#039;s Game Boy Color (even though the developer for the WonderSwan, Gunpei Yokoi, developed the original Nintendo Game Boy).\n\nThe original WonderSwan was later replaced by the WonderSwan Color; although some WonderSwan Color games are compatible with the original WonderSwan, many are designed exclusively for the WonderSwan Color and show a message such as &quot;This cartridge is for WonderSwan Color only&quot; when run on the original WonderSwan.\n\nThe WonderSwan is playable both vertically and horizontally, and feature a fairly large library of games, including numerous first-party titles based on licensed anime properties, with significant third-party support from Square and Capcom. As it was a console designed essentially for the Japanese market, most of the games are in Japanese, with only a few featuring English text.",
+            "developer": "Bandai",
+            "manufacturer": "Bandai",
+            "cpu": "16-bit NEC V30 MZ processor at 3.072 MHz",
+            "memory": "Built-in EEPROM and 1Kbit RAM for backing up game data",
+            "sound": "Four digital audio channels, each of which can play sequences of up to 32 4-bit samples, at different volumes and frequencies.",
+            "display": "224 x 144",
+            "maxcontrollers": "1",
+            "Rating": "5",
+            "Images": {
+                "boxart": {
+                    "@side": "back",
+                    "@width": "512",
+                    "@height": "430",
+                    "#text": "platform/boxart/4925-1.png"
+                },
+                "consoleart": "platform/consoleart/4925.png",
+                "controllerart": "platform/controllerart/4925.png"
+            }
+        }
+    }
+}

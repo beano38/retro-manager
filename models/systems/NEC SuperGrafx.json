@@ -1,0 +1,28 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["bin", "pce"],
+  "year": "19xx",
+  "platformType": "Console",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": "NEC - PC Engine SuperGrafx",
+    "Redump": null,
+    "SoftwareLists": ["sgx"],
+    "TOSEC": "SuperGrafx",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "xxx",
+            "Platform": "xxx",
+            "console": "xxx",
+            "controller": "xxx",
+            "overview": "xxx",
+            "developer": "Hudson Soft",
+            "manufacturer": "NEC",
+            "media": "Cartridge",
+            "maxcontrollers": "1"
+        }
+    }
+}

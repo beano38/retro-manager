@@ -1,0 +1,31 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["bin", "smc"],
+  "year": "1995",
+  "platformType": "Handheld",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": "GamePark - GP32",
+    "Redump": null,
+    "SoftwareLists": "gp32",
+    "TOSEC": "GP32",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "xxx",
+            "Platform": "xxx",
+            "console": "xxx",
+            "overview": "xxx",
+            "developer": "xxx",
+            "manufacturer": "Game Park",
+            "cpu": "xxx",
+            "memory": "xxx",
+            "sound": "xxx",
+            "display": "xxx",
+            "maxcontrollers": "1",
+            "Rating": "x"
+        }
+    }
+}

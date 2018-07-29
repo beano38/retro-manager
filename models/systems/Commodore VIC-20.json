@@ -1,0 +1,39 @@
+{
+  "emulator": "WinVICE",
+  "extensions": ["crt", "d64", "prg", "t64", "tap"],
+  "year": "1980",
+  "platformType": "Computer",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": ["Commodore - VIC-20"],
+    "Redump": null,
+    "SoftwareLists": ["vic1001_cart", "vic1001_cass", "vic1001_flop"],
+    "TOSEC": "VIC20",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "4945",
+            "Platform": "Commodore VIC-20",
+            "console": "http://www.youtube.com/watch?v=4945.png",
+            "overview": "The VIC-20 is an 8-bit home computer which was sold by Commodore Business Machines. The VIC-20 was announced in 1980, roughly three years after Commodore&#039;s first personal computer, the PET. The VIC-20 was the first computer of any description to sell one million units. As for commercial software offerings, an estimated 300 titles were available on cartridge, and another 500+ titles were available on tape. By comparison, the Atari 2600\u2014the most popular of the video game consoles at the time\u2014had a library of about 900 titles near the end of its production life (although many titles were extremely similar). Most cartridge games were ready to play as soon as the VIC-20 was turned on, as opposed to games on tape which required a time-consuming loading process. Titles on cartridge included Gorf, Cosmic Cruncher, Sargon II Chess, and many others. A handful of disk applications were released for the VIC-20.",
+            "developer": "Commodore International",
+            "manufacturer": "Commodore",
+            "cpu": "MOS Technology 6502",
+            "memory": "20 KB ROM + 5 KB RAM",
+            "graphics": "VIC 176 x 184 3-bpp",
+            "sound": "3 \u00d7 square, 1 \u00d7 noise, mono.",
+            "Images": {
+                "boxart": {
+                    "@side": "back",
+                    "@width": "500",
+                    "@height": "750",
+                    "#text": "platform/boxart/4945-1.jpg"
+                },
+                "consoleart": "platform/consoleart/4945.png",
+                "controllerart": "platform/controllerart/4945.png"
+            }
+        }
+    }
+}

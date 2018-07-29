@@ -1,0 +1,47 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["bin", "gbc"],
+  "year": "1998",
+  "platformType": "Handheld",
+  "romSets": {
+    "GoodSet": "Good Sets_GoodGBx v3 14",
+    "NoIntro": "Nintendo - Game Boy Color",
+    "Redump": null,
+    "SoftwareLists": "gbcolor",
+    "TOSEC": "Game Boy Color",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "41",
+            "Platform": "Nintendo Game Boy Color",
+            "console": "http://www.youtube.com/watch?v=41.png",
+            "overview": "The Game Boy Color is Nintendo&#039;s successor to the 8-bit Game Boy handheld game console, and was released on October 21, 1998 in Japan, November 19, 1998 in North America, November 23, 1998 in Europe and November 27, 1998 in the United Kingdom. It features a color screen and is slightly thicker and taller than the Game Boy Pocket. As with the original Game Boy, it has an 8-bit processor.   The Game Boy and Game Boy Color combined have sold 118.69 million units worldwide.",
+            "developer": "Nintendo",
+            "manufacturer": "Nintendo",
+            "cpu": "Zilog Z80",
+            "memory": "32 KB",
+            "sound": "2 square wave channels, 1 wave channel, 1 noise channel, mono speaker, stereo headphone jack",
+            "display": "160 x 144",
+            "media": "Cartridge",
+            "maxcontrollers": "1",
+            "Rating": "6.75",
+            "Images": {
+                "boxart": {
+                    "@side": "back",
+                    "@width": "500",
+                    "@height": "750",
+                    "#text": "platform/boxart/41-2.jpg"
+                },
+                "banner": {
+                    "@width": "760",
+                    "@height": "140",
+                    "#text": "platform/banners/41-1.jpg"
+                },
+                "consoleart": "platform/consoleart/41.png",
+                "controllerart": "platform/controllerart/41.png"
+            }
+        }
+    }
+}

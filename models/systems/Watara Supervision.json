@@ -1,0 +1,32 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["bin", "sv"],
+  "year": "1992",
+  "platformType": "Handheld",
+  "romSets": {
+    "NoIntro": "Watara - Supervision",
+    "SoftwareLists": "svision",
+    "TOSEC": "Supervision",
+    "GoodSet": "Good Sets_GoodSV v3 21",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "4959",
+            "Platform": "Watara Supervision",
+            "console": "http://www.youtube.com/watch?v=4959.png",
+            "overview": "The Watara Supervision (also known as the QuickShot Supervision in the UK) is a monochrome handheld game console, originating from Asia, and introduced in 1992 as a cut-price competitor for Nintendo&#039;s Game Boy. It came packaged with a game called Crystball, which is similar to Breakout. One unique feature of the Supervision was that it could be linked up to a television via a link cable. Games played in this way would display in four colors, much like Nintendo&#039;s Super Game Boy add-on for the SNES.[1] A full color TV link was also in the works, but because of the Supervision&#039;s failure to make a major impression among gamers it was cancelled, along with the games which were in development for it.\n\nThough the machine garnered some attention at launch (mainly due to the low price point for the machine and its games, which many felt might enable it to make inroads into Nintendo&#039;s market share) it was ultimately unsuccessful in unseating the Game Boy from its position as the world&#039;s most popular handheld. Reasons commonly cited are the poor quality screen which was prone to blurring and made following the action difficult, a general lack of games and the simplistic nature of those that were released.\n\nYet another problem was that most of the games that were available were developed in Taiwan or Hong Kong, meaning that fans of big-name Western and Japanese developers were underwhelmed by the apparent lack of support from these companies. Only a tiny handful of games were developed by third parties, including Sachen and the British developer B.I.T.S.. Up against Nintendo&#039;s list of popular franchises (Zelda, Mario, Metroid) and those of its third parties (Castlevania, Mega Man) - all of which eventually surfaced on the Game Boy - the Supervision&#039;s games were of little interest to most.",
+            "manufacturer": "Watara",
+            "cpu": "8-bit 65C02 clocked at 4MHz",
+            "sound": "2 Tonal and 1 Noise Channel plus additional audio DMA stereo output channel. Built-in speaker and headphone jack with stereo earphones included.",
+            "display": "160\u00d7160 pixel resolution, 4 shades of grey",
+            "media": "Cartridges",
+            "maxcontrollers": "N/A",
+            "Images": {
+                "consoleart": "platform/consoleart/4959.png",
+                "controllerart": "platform/controllerart/4959.png"
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["wsc"],
+  "year": "2000",
+  "platformType": "Handheld",
+  "romSets": {
+    "GoodSet": "Good Sets_GoodWSx v3 14 (1 Miss)",
+    "NoIntro": "Bandai - WonderSwan Color",
+    "Redump": null,
+    "SoftwareLists": "wscolor",
+    "TOSEC": "WonderSwan Color",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "4926",
+            "Platform": "WonderSwan Color",
+            "console": "http://www.youtube.com/watch?v=4926.png",
+            "overview": "The WonderSwan Color was released on December 9, 2000 in Japan, and was a moderate success.\nThe original WonderSwan had only a black and white screen. Although the WonderSwan Color was slightly larger and heavier (7 mm and 2 g) compared to the original WonderSwan, the color version featured 512KB of RAM and a larger color LCD screen. In addition, the WonderSwan Color is compatible with the original WonderSwan library of games.\nPrior to WonderSwan&#039;s release, Nintendo had a virtual monopoly in the Japanese video game handheld market. After the release of the WonderSwan Color, Bandai took approximately 8% of the market share in Japan partly due to its low price of \u00a56800 Japanese yen (approximately $59 USD).\nAnother reason for the WonderSwan&#039;s success in Japan was the fact that Bandai managed to get a deal with Square to port over the original Famicom Final Fantasy games with improved graphics and controls. However, with the popularity of the Game Boy Advance and the reconciliation between Square and Nintendo, the WonderSwan Color and its successor, the SwanCrystal, quickly lost its competitive advantage.",
+            "developer": "Bandai",
+            "manufacturer": "Bandai",
+            "cpu": "SPGY-1002, a 3.072 MHz 16-bit NEC V30MZ Clone",
+            "memory": "512 kB VRAM/WRAM (shared)",
+            "sound": "Four digital audio channels, each of which can play sequences of up to 32 4-bit samples, at different volumes and frequencies.",
+            "display": "224 x 144",
+            "maxcontrollers": "1",
+            "Rating": "5",
+            "Images": {
+                "boxart": {
+                    "@side": "back",
+                    "@width": "650",
+                    "@height": "924",
+                    "#text": "platform/boxart/4926-2.png"
+                },
+                "consoleart": "platform/consoleart/4926.png",
+                "controllerart": "platform/controllerart/4926.png"
+            }
+        }
+    }
+}

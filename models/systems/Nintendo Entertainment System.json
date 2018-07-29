@@ -1,0 +1,105 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["nes"],
+  "year": "1985",
+  "platformType": "Console",
+  "romSets": {
+    "NoIntro": "Nintendo - Nintendo Entertainment System",
+    "SoftwareLists": "nes",
+    "TOSEC": "Famicom & Entertainment System",
+    "GoodSet": "GoodNES V3.23b",
+    "NoGoodSet": "NoGoodNES"
+  },
+  "GamesDbData": {
+    "baseImgUrl": "http://thegamesdb.net/banners/",
+    "Platform": {
+      "id": "7",
+      "Platform": "Nintendo Entertainment System (NES)",
+      "console": "http://www.youtube.com/watch?v=7.png",
+      "controller": "http://www.youtube.com/watch?v=7.png",
+      "overview": "The Nintendo Entertainment System (also abbreviated as NES or simply called Nintendo) is an 8-bit video game console that was released by Nintendo in North America during 1985, in Europe during 1986 and Australia in 1987. In most of Asia, including Japan (where it was first launched in 1983), China, Vietnam, Singapore, the Middle East and Hong Kong, it was released as the Family Computer, commonly shortened as either the romanized contraction Famicom, or abbreviated to FC. In South Korea, it was known as the Hyundai Comboy, and was distributed by Hynix which then was known as Hyundai Electronics.\n\nAs the best-selling gaming console of its time, the NES helped revitalize the US video game industry following the video game crash of 1983, and set the standard for subsequent consoles of its generation. With the NES, Nintendo introduced a now-standard business model of licensing third-party developers, authorizing them to produce and distribute software for Nintendo&#039;s platform.",
+      "developer": "Nintendo",
+      "manufacturer": "Nintendo",
+      "cpu": "Ricoh 2A03",
+      "memory": "2KB RAM",
+      "graphics": "RP2C02",
+      "sound": "Pulse Code Modulation",
+      "display": "RGB",
+      "media": "Cartridge",
+      "maxcontrollers": "2",
+      "Rating": "7.4762",
+      "Images": {
+        "fanart": [
+          {
+            "original": {
+              "@width": "1920",
+              "@height": "1080",
+              "#text": "platform/fanart/7-1.jpg"
+            },
+            "thumb": "platform/fanart/thumb/7-1.jpg"
+          },
+          {
+            "original": {
+              "@width": "1920",
+              "@height": "1080",
+              "#text": "platform/fanart/7-2.jpg"
+            },
+            "thumb": "platform/fanart/thumb/7-2.jpg"
+          },
+          {
+            "original": {
+              "@width": "1920",
+              "@height": "1080",
+              "#text": "platform/fanart/7-3.jpg"
+            },
+            "thumb": "platform/fanart/thumb/7-3.jpg"
+          },
+          {
+            "original": {
+              "@width": "1920",
+              "@height": "1080",
+              "#text": "platform/fanart/7-4.jpg"
+            },
+            "thumb": "platform/fanart/thumb/7-4.jpg"
+          },
+          {
+            "original": {
+              "@width": "1920",
+              "@height": "1080",
+              "#text": "platform/fanart/7-5.jpg"
+            },
+            "thumb": "platform/fanart/thumb/7-5.jpg"
+          },
+          {
+            "original": {
+              "@width": "1920",
+              "@height": "1080",
+              "#text": "platform/fanart/7-6.jpg"
+            },
+            "thumb": "platform/fanart/thumb/7-6.jpg"
+          }
+        ],
+        "boxart": {
+          "@side": "back",
+          "@width": "500",
+          "@height": "750",
+          "#text": "platform/boxart/7-2.jpg"
+        },
+        "banner": [
+          {
+            "@width": "760",
+            "@height": "140",
+            "#text": "platform/banners/7-1.png"
+          },
+          {
+            "@width": "760",
+            "@height": "140",
+            "#text": "platform/banners/7-2.jpg"
+          }
+        ],
+        "consoleart": "platform/consoleart/7.png",
+        "controllerart": "platform/controllerart/7.png"
+      }
+    }
+  }
+}

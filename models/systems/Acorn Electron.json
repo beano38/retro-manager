@@ -1,0 +1,28 @@
+{
+  "emulator": "Arculator",
+  "extensions": ["ssd", "uef"],
+  "year": "19xx",
+  "platformType": "Computer",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": null,
+    "Redump": null,
+    "SoftwareLists": ["electron_cart", "electron_cass", "electron_flop"],
+    "TOSEC": "Electron",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "xxx",
+            "Platform": "Acorn Electron",
+            "console": "xxx",
+            "overview": "xxx",
+            "developer": "Acorn Computers",
+            "manufacturer": "Acorn",
+            "cpu": "xxx",
+            "memory": "xxx",
+            "Rating": "xxx"
+        }
+    }
+}

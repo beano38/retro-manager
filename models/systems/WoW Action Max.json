@@ -1,0 +1,27 @@
+{
+  "emulator": "Daphne-Singe",
+  "extensions": ["txt", "bat", "singe"],
+  "year": "1987",
+  "platformType": "Console",
+  "romSets": {
+    "GoodSet": null,
+    "NoIntro": null,
+    "Redump": null,
+    "SoftwareLists": null,
+    "TOSEC": null,
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "4976",
+            "Platform": "Action Max",
+            "console": "http://www.youtube.com/watch?v=4976.png",
+            "overview": "Action Max is a home video game console using VHS tapes for games. It was created in 1987 by Worlds of Wonder. The Action Max had a very limited release outside of the U.S.\n\nInside the system.\n\nThe Action Max motherboard.\nThe Action Max system requires the player to also have a VCR, as the console has no way to play the requisite VHS tapes itself. Using light guns, players shoot at the screen. The gaming is strictly point-based and dependent on shot accuracy and as a result, players can&#039;t truly win or lose a game. The system&#039;s post-launch appeal was limited by this and by the fact that the only real genre on the system are light gun games that play exactly the same way every time, leading to its quick market decline.[1]\n\nBefore playing, a red sensor must be attached to the lower right corner of the television screen. This corner contains a circle that was usually black, but flashes rapidly whenever something on the screen is targetable. At the same time, targets are highlighted by rapidly flashing panels for the player to shoot at. The console uses the corner circle and light from the targets (picked up by the guns) to determine when something has been hit. Flashes in sync with the corner circle count as enemy hits, and earn points for the player. Flashes out of sync with the corner circle count as friendly hits, losing points.\n\nWith this implementation, the unit can function with copies of the original VHS tapes, including those on more modern formats such as DVD-R or personal computers. The console can work with any filmed footage properly formatted to function with the console&#039;s light gun.\n\nGames\nIn all, five VHS cassettes were released for the system: .38 Ambush Alley, a police target range; Blue Thunder, based on the eponymous 1983 motion picture; Hydrosub: 2021, a futuristic underwater voyage; The Rescue of Pops Ghostly, a comic haunted-house adventure; and Sonic Fury, aerial combat, bundled with the system.\n\nA planned sixth cassette, Fright Night, was unreleased at the time Action Max was discontinued.\n\nEach game follows an identical gameplay format, differing only in theme, playing the same way each time.\n\nTechnical specifications\nCPU: HD401010\nInternal Speaker\n2 Character, 7 segment LED score display",
+            "Images": {
+                "consoleart": "platform/consoleart/4976.png",
+                "controllerart": "platform/controllerart/4976.png"
+            }
+        }
+    }
+}

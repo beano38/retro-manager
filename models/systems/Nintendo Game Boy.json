@@ -1,0 +1,63 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["bin", "gb"],
+  "year": "1989",
+  "platformType": "Handheld",
+  "romSets": {
+    "GoodSet": "Good Sets_GoodGBx v3 14",
+    "NoIntro": "Nintendo - Game Boy",
+    "Redump": null,
+    "SoftwareLists": "gameboy",
+    "TOSEC": "Game Boy",
+    "NoGoodSet": null
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "4",
+            "Platform": "Nintendo Game Boy",
+            "console": "http://www.youtube.com/watch?v=4.png",
+            "overview": "The Game Boy, is an 8-bit handheld video game device developed and manufactured by Nintendo. It was released in Japan on April 21, 1989, in North America in August 1989, and in Europe on September 28, 1990. It is the first handheld console in the Game Boy line, and was created by Gunpei Yokoi and Nintendo Research &amp; Development 1\u2014the same staff who had designed the Game &amp; Watch series as well as several popular games for the Nintendo Entertainment System.",
+            "developer": "Nintendo",
+            "manufacturer": "Nintendo",
+            "cpu": "Sharp LR35902",
+            "memory": "8KB",
+            "graphics": "8 kB internal",
+            "sound": "2 square wave generators, 1 PCM 4-bit wave sample channel",
+            "display": "160 \u00d7 144",
+            "media": "Cartridge",
+            "maxcontrollers": "1",
+            "Rating": "7.4",
+            "Images": {
+                "fanart": {
+                    "original": {
+                        "@width": "1920",
+                        "@height": "1080",
+                        "#text": "platform/fanart/4-1.jpg"
+                    },
+                    "thumb": "platform/fanart/thumb/4-1.jpg"
+                },
+                "boxart": {
+                    "@side": "back",
+                    "@width": "1024",
+                    "@height": "1441",
+                    "#text": "platform/boxart/4-2.png"
+                },
+                "banner": [
+                    {
+                        "@width": "760",
+                        "@height": "140",
+                        "#text": "platform/banners/4-1.png"
+                    },
+                    {
+                        "@width": "760",
+                        "@height": "140",
+                        "#text": "platform/banners/4-2.jpg"
+                    }
+                ],
+                "consoleart": "platform/consoleart/4.png",
+                "controllerart": "platform/controllerart/4.png"
+            }
+        }
+    }
+}
