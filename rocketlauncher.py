@@ -382,7 +382,10 @@ class RocketLauncher(Databases, HyperList, System):
         logger.info(msg)
         self.download_db()  # Method from hyperspin.py, HyperList Class
         self.write_emulator_ini()
-        systems = self.read_menu()
+        try:
+            systems = self.read_menu()
+        except:
+            systems =[]
         syss = [sys["name"] for sys in systems]
         if self.system in syss:
             msg = "{} is already in RocketLauncher Menu and will not be added".format(self.system)
@@ -429,7 +432,10 @@ if __name__ == "__main__":
     atari = "Atari 2600"
     sega = "Sega Genesis"
     rl = RocketLauncher(snes)
-    # rl.install()
-    rl.new_system()
+    rl.install()
+    systems = [nes, snes, atari, sega]
+    for system in systems:
+        rl = RocketLauncher(system)
+        rl.new_system()
     # rl.remove_system(remove_media=False)
 
