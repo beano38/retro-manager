@@ -1,5 +1,5 @@
 {
-  "emulator": "RetroArch",
+  "emulator": "Mednafen",
   "extensions": ["nes"],
   "year": "1985",
   "platformType": "Console",

@@ -1,12 +1,13 @@
 import time
 import logging
 import os
+import shutil
 import xml.etree.cElementTree as ET
 
 import requests
 from bs4 import BeautifulSoup
 
-from general import FrontEnd
+from general import Arcade
 
 TIME_STAMP = time.strftime(" %Y%m%d")
 
@@ -29,10 +30,10 @@ logger.addHandler(file_handler)
 logger.addHandler(stream_handler)
 
 
-class Databases(FrontEnd):
+class Databases(Arcade):
 
     def __init__(self, system):
-        FrontEnd.__init__(self)
+        Arcade.__init__(self)
 
         self.system = system
 
@@ -90,10 +91,10 @@ class Databases(FrontEnd):
         return system, roms
 
 
-class HyperList(FrontEnd):
+class HyperList(Arcade):
 
     def __init__(self, system):
-        FrontEnd.__init__(self)
+        Arcade.__init__(self)
 
         self.system = system
 
@@ -176,6 +177,30 @@ class HyperList(FrontEnd):
         except Exception as e:
             logger.debug(e)
             return False
+
+    def update_database(self):
+        src = os.path.join(self.db_path, self.system + ".xml")
+        dst = os.path.join(self.db_path, self.system + "_backup_" + TIME_STAMP + ".xml")
+
+        try:
+            hs = Databases(self.system)
+            system, roms = hs.read_system_xml()
+
+            if system["lastlistupdate"] == self._get_hyperlist()["last_update"]:
+                msg = "{} is up to date with HyperList".format(self.system)
+                logger.info(msg)
+            else:
+                msg = "Downloading updated HyperList database for {}".format(self.system)
+                logger.info(msg)
+                shutil.move(src, dst)
+                self.download_db()
+
+        except:
+            if os.path.isfile(self.system + ".xml"):
+                print("found {} XML Database".format(self.system))
+            else:
+                msg = "HyperList does not have the {} database".format(self.system)
+                logger.info(msg)
 
 
 class HyperSpin(Databases, HyperList):

@@ -6,6 +6,8 @@ import zipfile
 import logging
 import subprocess
 import binascii
+import xml.etree.cElementTree as ET
+from xml.dom import minidom
 
 import rarfile
 
@@ -31,27 +33,27 @@ logger.addHandler(stream_handler)
 class Paths:
 
     def __init__(self):
-        self.root_drive = None
-        self.root_path = None
-        self.emulator_path = None
-        self.rom_path = None
-        self.log_path = None
-        self.temp_path = None
-        self.utilities_path = None
-        self.frontends_path = None
-
-        self.mstr_no_intro = None
-        self.mstr_mame = None
-        self.mstr_sl = None
-        self.mstr_good_set = None
-        self.mstr_non_good_set = None
-        self.mstr_redump = None
-        self.mstr_tosec = None
-
-        self.emu_movies = None
-
-        self.seven_zip_exe = None
-        self.rar_exe = None
+        # self.root_drive = None
+        # self.root_path = None
+        # self.emulator_path = None
+        # self.rom_path = None
+        # self.log_path = None
+        # self.temp_path = None
+        # self.utilities_path = None
+        # self.frontends_path = None
+        #
+        # self.mstr_no_intro = None
+        # self.mstr_mame = None
+        # self.mstr_sl = None
+        # self.mstr_good_set = None
+        # self.mstr_non_good_set = None
+        # self.mstr_redump = None
+        # self.mstr_tosec = None
+        #
+        # self.emu_movies = None
+        #
+        # self.seven_zip_exe = None
+        # self.rar_exe = None
 
         self._load_paths()
 
@@ -98,8 +100,13 @@ class Paths:
         self.rar_exe = config.get("Compressor", "Rar")
 
         self.rl_path = config.get("RocketLauncher", "path")
-
+        # Front Ends
         self.hs_path = config.get("FrontEnds", "HyperSpin")
+        # Utilities
+        self.notepad = config.get("Utilities", "Notepad++")
+        # Archives
+        self.rocket_launcher_archive = config.get("Installs", "RocketLauncher")
+        self.rocket_launcher_media_archive = config.get("Installs", "RocketLauncher_Media")
 
 
 class Compressor(Paths):
@@ -452,11 +459,59 @@ class Compressor(Paths):
                 msg = "{} is not a valid archive".format(self.src_file)
                 logger.info(msg)
 
+    def extract_all(self, dst_dir, password=None):
+        """
+        "extract_all" extracts all contents of archive
 
-class FrontEnd(Paths):
+        Args:
+            compressed_name(required): Name of file in archive
+            dst_dir(required): destination directory to extract the file to
+            password(optional, default = None): password for archive if needed
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
+
+        # x = extract, -p = password, -o = output dir, -y = answer yes
+        if password:
+            msg = "Extracting {}".format(self.src_file)
+            logger.info(msg)
+            command = [self.seven_zip_exe, "x",
+                       self.src_file, "-p{}".format(password),
+                       "-o{}".format(dst_dir), "-y"]
+        else:
+            msg = "Extracting {}".format(self.src_file)
+            logger.info(msg)
+            command = [self.seven_zip_exe, "x",
+                       self.src_file, "-o{}".format(dst_dir), "-y"]
+        execute = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
+        for line in execute.stdout:
+            msg = line.decode().strip("\n\r")
+            logger.debug(msg)
+
+
+class Arcade(Paths):
 
     def __init__(self):
         Paths.__init__(self)
+
+    def create_arcade(self):
+        dirs = [self.root_path, self.emulator_path, self.rom_path, self.temp_path, self.frontends_path,
+                self.log_path, self.utilities_path]
+        for directory in dirs:
+            if not os.path.exists(directory):
+                os.makedirs(directory)
+
+    @staticmethod
+    def prettify(elem):
+        """Return a pretty-printed XML string for the Element.
+        """
+        rough_string = ET.tostring(elem, 'utf-8')
+        reparsed = minidom.parseString(rough_string)
+        return reparsed.toprettyxml(indent="\t")
 
 
 if __name__ == "__main__":
