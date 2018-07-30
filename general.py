@@ -97,6 +97,8 @@ class Paths:
         self.seven_zip_exe = config.get("Compressor", "SevenZip")
         self.rar_exe = config.get("Compressor", "Rar")
 
+        self.rl_path = config.get("RocketLauncher", "path")
+
         self.hs_path = config.get("FrontEnds", "HyperSpin")
 
 
