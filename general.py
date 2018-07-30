@@ -451,6 +451,12 @@ class Compressor(Paths):
                 logger.info(msg)
 
 
+class FrontEnd(Paths):
+
+    def __init__(self):
+        Paths.__init__(self)
+
+
 if __name__ == "__main__":
 
     system = "Nintendo Entertainment System"

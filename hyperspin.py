@@ -6,7 +6,7 @@ import xml.etree.cElementTree as ET
 import requests
 from bs4 import BeautifulSoup
 
-from general import Paths
+from general import FrontEnd
 
 TIME_STAMP = time.strftime(" %Y%m%d")
 
@@ -29,12 +29,11 @@ logger.addHandler(file_handler)
 logger.addHandler(stream_handler)
 
 
-class Databases(Paths):
+class Databases(FrontEnd):
 
-    def __init__(self, system=None):
-        Paths.__init__(self)
+    def __init__(self, system):
+        FrontEnd.__init__(self)
 
-        self.db_path = os.path.join(self.hs_path, "Databases")
         self.system = system
 
     def read_system_xml(self):
@@ -51,7 +50,7 @@ class Databases(Paths):
         Raises:
             None
         """
-        xml = os.path.join(self.db_path, self.system, self.system + ".xml")
+        xml = os.path.join(self.db_path, self.system + ".xml")
 
         msg = "Extracting ROM info from {} . . .".format(self.system)
         logger.info(msg)
@@ -91,14 +90,14 @@ class Databases(Paths):
         return system, roms
 
 
-class HyperList(Paths):
+class HyperList(FrontEnd):
 
-    def __init__(self, system=None):
-        Paths.__init__(self)
+    def __init__(self, system):
+        FrontEnd.__init__(self)
 
         self.system = system
 
-    def get_hyperlist(self):
+    def _get_hyperlist(self):
         """
         "get_hyperlist" Method downloads the HTML file from the URL for later use and
         returns a dictionary with info for the specified system
@@ -161,12 +160,59 @@ class HyperList(Paths):
 
         return hyper_list_info
 
+    def download_db(self):
+        if not os.path.exists(self.db_path):
+            os.makedirs(self.db_path)
+        db_path = os.path.join(self.db_path, self.system + ".xml")
+        try:
+            url = self._get_hyperlist()["link"]
+            response = requests.get(url)
+            if response.status_code == 200:
+                with open(db_path, mode="wb") as xml:
+                    xml.write(response.content)
+                return True
+            else:
+                return False
+        except Exception as e:
+            logger.debug(e)
+            return False
+
+
+class HyperSpin(Databases, HyperList):
+
+    def __init__(self, system=None):
+        Databases.__init__(self, system)
+        HyperList.__init__(self, system)
+
+        self.system = system
+
+        # HyperSpin Paths
+        self.db_path = os.path.join(self.hs_path, "Databases", self.system)
+        self.media_path = os.path.join(self.hs_path, "Media", self.system)
+        self.settings_path = os.path.join(self.hs_path, "Settings")
+        # Images
+        self.images_path = os.path.join(self.media_path, "Images")
+        self.artwork1_path = os.path.join(self.images_path, "Artwork1")
+        self.artwork2_path = os.path.join(self.images_path, "Artwork2")
+        self.artwork3_path = os.path.join(self.images_path, "Artwork3")
+        self.artwork4_path = os.path.join(self.images_path, "Artwork4")
+        self.backgrounds_path = os.path.join(self.images_path, "Backgrounds")
+        self.genre_backgrounds_path = os.path.join(self.images_path, "Genre", "Backgrounds")
+        self.genre_wheel_path = os.path.join(self.images_path, "Genre", "Wheel")
+        self.letters_path = os.path.join(self.images_path, "Letters")
+        self.other_path = os.path.join(self.images_path, "Other")
+        self.particle_path = os.path.join(self.images_path, "Particle")
+        self.special_path = os.path.join(self.images_path, "Special")
+        self.wheel_path = os.path.join(self.images_path, "Wheel")
+        # Other Media
+        self.themes_path = os.path.join(self.media_path, "Themes")
+        self.video_path = os.path.join(self.media_path, "Video")
+
 
 if __name__ == "__main__":
-    system = "Nintendo Entertainment System"
-    # hs = Databases(system)
-    # system, roms = hs.read_system_xml()
+    platform = "Nintendo Entertainment System"
+    hs = HyperSpin(platform)
+    # header, roms = hs.read_system_xml()
+    hs.download_db()
 
-    hb = HyperList(system=system)
-    hl = hb.get_hyperlist()
-    print(hl)
+
