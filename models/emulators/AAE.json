@@ -1,8 +1,11 @@
 {
-  "dir_name": "aae092808",
+  "dir_name": "Alpha87u2 (121308)",
   "config": "aae.ini",
   "config_type": "ini",
   "rom_path": "mame_rom_path",
+  "version": "Alpha87u2 (121308)",
+  "installs": ["aae092808.zip", "aaeu1.zip", "aaeu2.zip"],
+  "exe": "aae.exe",
   "controls": {
     "p1_d_up": "kp1up",
     "p1_d_down": "kp1down",

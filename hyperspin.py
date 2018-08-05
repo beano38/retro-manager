@@ -36,6 +36,7 @@ class Databases(Arcade):
         Arcade.__init__(self)
 
         self.system = system
+        # self.db_path = os.path.join(self.hs_path, "Databases", self.system)
 
     def read_system_xml(self):
         """
@@ -161,7 +162,7 @@ class HyperList(Arcade):
 
         return hyper_list_info
 
-    def download_db(self):
+    def _download_db(self):
         if not os.path.exists(self.db_path):
             os.makedirs(self.db_path)
         db_path = os.path.join(self.db_path, self.system + ".xml")
@@ -178,10 +179,9 @@ class HyperList(Arcade):
             logger.debug(e)
             return False
 
-    def update_database(self):
+    def update_db(self):
         src = os.path.join(self.db_path, self.system + ".xml")
         dst = os.path.join(self.db_path, self.system + "_backup_" + TIME_STAMP + ".xml")
-
         try:
             hs = Databases(self.system)
             system, roms = hs.read_system_xml()
@@ -193,7 +193,7 @@ class HyperList(Arcade):
                 msg = "Downloading updated HyperList database for {}".format(self.system)
                 logger.info(msg)
                 shutil.move(src, dst)
-                self.download_db()
+                self._download_db()
 
         except:
             if os.path.isfile(self.system + ".xml"):
@@ -237,7 +237,7 @@ class HyperSpin(Databases, HyperList):
 if __name__ == "__main__":
     platform = "Nintendo Entertainment System"
     hs = HyperSpin(platform)
-    # header, roms = hs.read_system_xml()
-    hs.download_db()
+    header, roms = hs.read_system_xml()
+    # hs.update_db()
 
 

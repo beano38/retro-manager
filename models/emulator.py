@@ -1,31 +1,41 @@
 from models.control_panel import ControlPanel
-from arcade import Arcade
+from general import Paths
 
+import time
+import logging
 import os
 import re
 import json
-from collections import OrderedDict
-import configparser
-import shutil
+
+
+LOG_FILE = "../../arcade.log"
+LOG_STAMP = time.strftime("%Y-%m-%d %H:%M:%S")
+LOG_FORMAT = logging.Formatter("[{}] [%(levelname)s] [%(name)s] : %(message)s".format(LOG_STAMP))
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+file_handler = logging.FileHandler(LOG_FILE)
+file_handler.setLevel(logging.DEBUG)
+file_handler.setFormatter(LOG_FORMAT)
+
+stream_handler = logging.StreamHandler()
+stream_handler.setLevel(logging.INFO)
+stream_handler.setFormatter(LOG_FORMAT)
+
+logger.addHandler(file_handler)
+logger.addHandler(stream_handler)
 
 
 class Emulator(ControlPanel):
 
     def __init__(self, model=None):
         ControlPanel.__init__(self)
-        self.arcade = Arcade()
+        self.paths = Paths()
         self.model = model
 
-    def create_dirs(self):
-        modules = os.listdir(os.path.join(self.arcade.rl_path, "Modules"))
-        for module in modules:
-            try:
-                os.makedirs(os.path.join(self.arcade.emulator_path, module, "Install Files"))
-            except FileExistsError:
-                print("{} exists".format(module))
-
     def read_module(self, module):
-        modules = os.path.join(self.arcade.rl_path, "Modules")
+        modules = os.path.join(self.paths.rl_path, "Modules")
         module_file = os.path.join(modules, module, module + ".ahk")
         if os.path.isfile(module_file):
             with open(module_file, "r", encoding="UTF-8") as f:
@@ -50,44 +60,21 @@ class Emulator(ControlPanel):
             return results
 
         else:
-            msg = "EMU:  {} was not found".format(module)
-            self.arcade.log(4, msg)
+            msg = "{} was not found".format(module)
+            logger.info(msg)
 
     def read_model(self):
         model = os.path.join(os.path.dirname(__file__), "emulators", self.model + ".json")
-        shutil.copy(model, os.path.join(model + ".backup"))
         with open(model, mode="r") as f:
             data = json.load(f)
-
-        if data["config_type"] == "ini":
-            ini = os.path.join(self.arcade.emulator_path, self.model, data["dir_name"], data["config"])
-            config = configparser.ConfigParser(dict_type=OrderedDict)
-            config.optionxform = str
-            config.read(ini)
-
-            section = "main"
-
-            config.set(section, data["controls"]["p1_d_up"], self.p1_d_up)
-            config.set(section, data["controls"]["p1_d_down"], self.p1_d_down)
-            config.set(section, data["controls"]["p1_d_left"], self.p1_d_left)
-            config.set(section, data["controls"]["p1_d_right"], self.p1_d_right)
-            config.set(section, data["controls"]["p1_coin"], self.p1_coin)
-            config.set(section, data["controls"]["p1_start"], self.p1_start)
-            config.set(section, data["controls"]["p1_b1"], self.p1_b1)
-            config.set(section, data["controls"]["p1_b2"], self.p1_b2)
-            config.set(section, data["controls"]["p1_b3"], self.p1_b3)
-            config.set(section, data["controls"]["p1_b4"], self.p1_b4)
-
-            with open(ini, mode="w") as f:
-                config.write(f, space_around_delimiters=False)
+        return data
 
 
 def main():
-    emu = Emulator()
-    # emu.read_model()
-    modules = os.listdir(os.path.join(emu.arcade.rl_path, "Modules"))
-    for module in modules:
-        results = emu.read_module(module)
+    emu = Emulator(model="AAE")
+    data = emu.read_model()
+    print(json.dumps(data, indent=2))
+    emu.read_module("AAE")
 
 
 if __name__ == "__main__":
