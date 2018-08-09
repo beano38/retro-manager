@@ -148,6 +148,37 @@ class RocketLauncher(Databases, HyperList, System):
         with open(ini, mode="w") as f:
             config.write(f, space_around_delimiters=False)
 
+    def global_emulators_add_ext(self):
+        """
+        "global_emulators_add_ext" is a method that will add extension parameters in the
+        Global Emulators.ini file
+
+        Args:
+            self
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
+
+        # Read/Create the config file
+        ini = os.path.join(self.rl_path, "Settings", "Global Emulators.ini")
+        config = configparser.ConfigParser()
+        config.optionxform = str
+        config.read(ini)
+
+        compressed_exts = ["7z", "zip", "rar"]
+        if config.get(self.emulator, "Rom_Extension") != "":
+            extensions = "|".join(sorted(set(config.get(self.emulator, "Rom_Extension").split("|") + compressed_exts + self.extensions)))
+        else:
+            extensions = "|".join(sorted(set(compressed_exts + self.extensions)))
+        config.set(self.emulator, "Rom_Extension", extensions)
+
+        with open(ini, mode="w") as f:
+            config.write(f, space_around_delimiters=False)
+
     # RocketLauncher UI Methods
     def _set_rocket_launcher_ui_ini(self):
         """
@@ -433,6 +464,7 @@ if __name__ == "__main__":
     atari = "Atari 2600"
     sega = "Sega Genesis"
     rl = RocketLauncher(nes)
+    rl.global_emulators_add_ext()
     # rl.install()
     # systems = [nes, snes, atari, sega]
     # for system in systems:

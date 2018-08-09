@@ -119,7 +119,10 @@ class System(Paths):
         if "emulator" in data:
             self.emulator = data["emulator"]
         if "extensions" in data:
-            self.extensions = data["extensions"]
+            if type(data["extensions"]) is str:
+                self.extensions = [data["extensions"]]
+            else:
+                self.extensions = data["extensions"]
         if "year" in data:
             self.year = data["year"]
         if "platformType" in data:
