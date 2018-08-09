@@ -439,5 +439,6 @@ if __name__ == "__main__":
     #     rl = RocketLauncher(system)
     #     rl.new_system()
     # rl.remove_system(remove_media=False)
-    rl.new_system()
+    # rl.new_system()
+
 

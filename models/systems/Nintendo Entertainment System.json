@@ -1,8 +1,11 @@
 {
   "emulator": "Mednafen",
-  "extensions": ["nes"],
+  "extensions": [
+    "nes"
+  ],
   "year": "1985",
   "platformType": "Console",
+  "emu_movies": "Nintendo_NES",
   "romSets": {
     "NoIntro": "Nintendo - Nintendo Entertainment System",
     "SoftwareLists": "nes",

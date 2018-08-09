@@ -54,6 +54,7 @@ class System(Paths):
         self.extensions = None
         self.year = None
         self.platform_type = None
+        self.emu_movies = None
 
         self.tosec = None
         self.goodset = None
@@ -123,6 +124,8 @@ class System(Paths):
             self.year = data["year"]
         if "platformType" in data:
             self.platform_type = data["platformType"]
+        if "emu_movies" in data:
+            self.emu_movies = data["emu_movies"]
 
         if data["romSets"]["TOSEC"] is not None:
             self.tosec = data["romSets"]["TOSEC"]

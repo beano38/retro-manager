@@ -94,7 +94,7 @@ class Paths:
         self.mstr_redump = config.get("Master ROMs", "Redump")
         self.mstr_tosec = config.get("Master ROMs", "TOSEC")
 
-        self.emu_movies = config.get("EmuMovies", "DownloadPath")
+        self.emu_movies_path = config.get("EmuMovies", "DownloadPath")
 
         self.seven_zip_exe = config.get("Compressor", "SevenZip")
         self.rar_exe = config.get("Compressor", "Rar")
