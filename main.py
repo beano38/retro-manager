@@ -1,24 +1,18 @@
 import os
 
-from general import Paths, Compressor
+from rocketlauncher import RocketLauncher
 
 
 def main():
-    system = "Nintendo Entertainment System"
-    rom = "3-D WorldRunner (USA).nes"
-    zip = "3-D WorldRunner (USA).zip"
-    seven_zip = "3-D WorldRunner (USA).7z"
-    rar = "3-D WorldRunner (USA).rar"
-    test = "test.7z"
+    nes = "Nintendo Entertainment System"
+    snes = "Super Nintendo Entertainment System"
+    atari = "Atari 2600"
+    sega = "Sega Genesis"
+    n64 = "Nintendo 64"
 
-    p = Paths()
-    source_file = os.path.join(p.rom_path, system, test)
+    rl = RocketLauncher(system=n64)
 
-    cf = Compressor(src_file=source_file)
-    # cf.compress(ext="7z", remove_source=False)
-
-    info = cf.get_crc()
-    cf.extract("1942 (Japan, USA).nes", dst_dir=p.rom_path)
+    rl.new_system()
 
 
 if __name__ == "__main__":
