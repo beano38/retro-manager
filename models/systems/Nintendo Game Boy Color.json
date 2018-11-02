@@ -1,6 +1,6 @@
 {
   "emulator": "RetroArch",
-  "extensions": ["bin", "gbc"],
+  "extensions": ["gbc", "bin"],
   "year": "1998",
   "platformType": "Handheld",
   "romSets": {

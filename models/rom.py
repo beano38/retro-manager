@@ -50,15 +50,47 @@ class Rom(Compressor):
             print(msg)
 
 
+def rename_extensions(system):
+    p = Paths()
+    roms = os.listdir(os.path.join(p.rom_path, system))
+    for rom in roms:
+        r = Rom(system=system, name=rom)
+        r.rename_extension()
+
+
+def compress_roms(system):
+    p = Paths()
+    roms = os.listdir(os.path.join(p.rom_path, system))
+    for rom in roms:
+        c = Compressor(src_file=os.path.join(p.rom_path, system, rom))
+        c.compress(ext="zip")
+
+
 def main():
     nes = "Nintendo Entertainment System"
     snes = "Super Nintendo Entertainment System"
-    atari = "Atari 2600"
-    sega = "Sega Genesis"
+    gb = "Nintendo Game Boy"
+    gba = "Nintendo Game Boy Advance"
+    gbc = "Nintendo Game Boy Color"
+    vb = "Nintendo Virtual Boy"
+    a26 = "Atari 2600"
+    a52 = "Atari 5200"
+    a78 = "Atari 7800"
+    jaguar = "Atari Jaguar"
+    lynx = "Atari Lynx"
+    sms = "Sega Master System"
+    gen = "Sega Genesis"
+    tg16 = "NEC TurboGrafx-16"
+    pce = "NEC PC Engine"
+    ngp = "SNK Neo Geo Pocket"
+    ngc = "SNK Neo Geo Pocket Color"
     rom_name = "8 Eyes (USA).u1"
-    rom = Rom(system=nes, name=rom_name)
-    print(rom.sys_info.extensions)
-    print(rom.rename_extension())
+    # rom = Rom(system=nes, name=rom_name)
+    # print(rom.sys_info.extensions)
+    # print(rom.rename_extension())
+
+    rename_extensions(a52)
+    compress_roms(a52)
 
 
 if __name__ == "__main__":

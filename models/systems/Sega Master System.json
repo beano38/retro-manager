@@ -1,6 +1,6 @@
 {
   "emulator": "RetroArch",
-  "extensions": ["bin"],
+  "extensions": ["sms", "bin"],
   "year": "1986",
   "platformType": "Console",
   "romSets": {

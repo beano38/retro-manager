@@ -1,6 +1,6 @@
 {
-  "emulator": "Hatari",
-  "extensions": ["st", "stx"],
+  "emulator": "RetroArch",
+  "extensions": ["lnx"],
   "year": "1982",
   "platformType": "Handheld",
   "romSets": {

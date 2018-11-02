@@ -1,6 +1,6 @@
 {
   "emulator": "RetroArch",
-  "extensions": ["bin", "ngp"],
+  "extensions": ["ngp"],
   "year": "1999",
   "platformType": "Handheld",
   "romSets": {

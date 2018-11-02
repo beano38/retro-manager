@@ -1,6 +1,6 @@
 {
-  "emulator": "Kat5200",
-  "extensions": ["bin", "jag", "j64"],
+  "emulator": "RetroArch",
+  "extensions": ["jag", "j64"],
   "year": "1993",
   "platformType": "Console",
   "romSets": {

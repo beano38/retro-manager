@@ -1,6 +1,6 @@
 {
   "emulator": "Fusion",
-  "extensions": ["bin"],
+  "extensions": ["gen", "smd", "md", "bin"],
   "year": "1988",
   "platformType": "Console",
   "romSets": {

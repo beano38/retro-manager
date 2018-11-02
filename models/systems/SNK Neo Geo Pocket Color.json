@@ -1,6 +1,6 @@
 {
   "emulator": "RetroArch",
-  "extensions": ["lnx"],
+  "extensions": ["ngc"],
   "year": "1999",
   "platformType": "Handheld",
   "romSets": {

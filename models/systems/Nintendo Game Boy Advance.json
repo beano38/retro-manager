@@ -1,6 +1,6 @@
 {
   "emulator": "RetroArch",
-  "extensions": ["lnx"],
+  "extensions": ["gba", "bin"],
   "year": "2001",
   "platformType": "Handheld",
   "romSets": {

@@ -1,6 +1,6 @@
 {
   "emulator": "RetroArch",
-  "extensions": ["bin", "vb"],
+  "extensions": ["vb"],
   "year": "19xx",
   "platformType": "Handheld",
   "romSets": {

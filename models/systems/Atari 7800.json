@@ -1,6 +1,6 @@
 {
-  "emulator": "Kat5200",
-  "extensions": ["a52", "bin"],
+  "emulator": "RetroArch",
+  "extensions": ["a78", "bin"],
   "year": "1986",
   "platformType": "Console",
   "romSets": {
