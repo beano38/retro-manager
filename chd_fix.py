@@ -26,7 +26,7 @@ def move_chd_to_root(chd_path):
     """
     "move_chd_to_root" Method moves a .CHD file up one level in the directory structure.
     This is needed when one downloads a merged CHD set and MAME is setup for
-    split CHD set.  Afterwards, run clrmamepro scanner to fix
+    split CHD set.  Afterwards, run clrmamepro scanner to fix the ROM set
 
     Args:
         chd_path(required, default=None): Path of MAME machine to fix
@@ -59,6 +59,6 @@ def move_chd_to_root(chd_path):
 
 
 if __name__ == "__main__":
-    print(move_chd_to_root.__doc__)
     chd_path = "X:\\Software Lists\\psx"
     move_chd_to_root(chd_path)
+    print(move_chd_to_root.__doc__)
