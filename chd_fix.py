@@ -3,7 +3,7 @@ import time
 import os
 import shutil
 
-LOG_FILE = "../arcade.log"
+LOG_FILE = "arcade.log"
 LOG_STAMP = time.strftime("%Y-%m-%d %H:%M:%S")
 LOG_FORMAT = logging.Formatter("[{}] [%(levelname)s] [%(name)s] : %(message)s".format(LOG_STAMP))
 
@@ -58,6 +58,7 @@ def move_chd_to_root(chd_path):
             logger.info(msg)
 
 
-print(move_chd_to_root.__doc__)
-chd_path = "X:\\Software Lists\\psx"
-move_chd_to_root(chd_path)
+if __name__ == "__main__":
+    print(move_chd_to_root.__doc__)
+    chd_path = "X:\\Software Lists\\psx"
+    move_chd_to_root(chd_path)
