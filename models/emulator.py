@@ -8,7 +8,7 @@ import re
 import json
 
 
-LOG_FILE = "../../arcade.log"
+LOG_FILE = "../arcade.log"
 LOG_STAMP = time.strftime("%Y-%m-%d %H:%M:%S")
 LOG_FORMAT = logging.Formatter("[{}] [%(levelname)s] [%(name)s] : %(message)s".format(LOG_STAMP))
 
@@ -34,9 +34,22 @@ class Emulator(ControlPanel):
         self.paths = Paths()
         self.model = model
 
-    def read_module(self, module):
+    def read_module(self):
+        """
+        "read_module" Method reads the RocketLauncher AHK module and returns the
+        header information
+
+        Args:
+            self
+
+        Returns:
+            dictionary of the header info
+
+        Raises:
+            None
+        """
         modules = os.path.join(self.paths.rl_path, "Modules")
-        module_file = os.path.join(modules, module, module + ".ahk")
+        module_file = os.path.join(modules, self.model, self.model + ".ahk")
         if os.path.isfile(module_file):
             with open(module_file, "r", encoding="UTF-8") as f:
                 results = {}
@@ -54,27 +67,40 @@ class Emulator(ControlPanel):
 
             sys = results["MSystem"].split(',')
             results["MSystem"] = sys
-            for k, v in results.items():
-                print(k, v)
 
             return results
 
         else:
-            msg = "{} was not found".format(module)
+            msg = "{} Module was not found in the RocketLauncher Modules Directory".format(self.model)
             logger.info(msg)
 
     def read_model(self):
+        """
+        "read_model" Method reads the JSON model of the emulator
+
+        Args:
+            self
+
+        Returns:
+            dictionary of model
+
+        Raises:
+            None
+        """
         model = os.path.join(os.path.dirname(__file__), "emulators", self.model + ".json")
-        with open(model, mode="r") as f:
-            data = json.load(f)
-        return data
+        if os.path.isfile(model):
+            with open(model, mode="r") as f:
+                data = json.load(f)
+            return data
+        else:
+            msg = "{} model was not found".format(self.model)
+            logger.info(msg)
 
 
 def main():
-    emu = Emulator(model="AAE")
-    data = emu.read_model()
-    print(json.dumps(data, indent=2))
-    emu.read_module("AAE")
+    emu = Emulator(model="MAME")
+    print(json.dumps(emu.read_model(), indent=2))
+    print(json.dumps(emu.read_module(), indent=2))
 
 
 if __name__ == "__main__":

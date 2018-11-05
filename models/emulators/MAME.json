@@ -1,0 +1,9 @@
+{
+  "dir_name": "MAME 0.202",
+  "config": "mame.ini",
+  "config_type": "ini",
+  "rom_path": "mame_rom_path",
+  "version": "0.202",
+  "installs": ["mame0202b_64bit.exe"],
+  "exe": "mame64.exe"
+}
