@@ -105,19 +105,21 @@ class Mame(Emulator):
         """
         import subprocess
         executable = os.path.join(self.mame_path, self.model["exe"])
-        print(executable)
         command = [executable] + list_of_options
+        msg = "Executing {}".format(command)
+        logger.debug(msg)
         execute = subprocess.Popen(command, cwd=self.mame_path)
 
     def set_defaults(self):
         self.execute_cli(list_of_options=["-createconfig"])
-        time.sleep(.2)  # Wait for the config files to be generated
+        time.sleep(.4)  # Wait for the config files to be generated
 
         self.write_config_file("rompath", "roms;X:\\MAME\\ROMs;X\\MAME\\BIOS;X:\\Software Lists")
         self.write_config_file("artpath", "artwork;X:\\MAME\\Extras\\Artwork")
         self.write_config_file("samplepath", "samples;X:\\MAME\\Samples")
         self.write_config_file("snapshot_directory", "snap;X:\\MAME\\Extras")
         self.write_config_file("cheatpath", "cheat;X:\\MAME\\Extras")
+        self.write_config_file("skip_gameinfo", "1")
 
         self.write_config_file("historypath", "history;dats;.;X:\\MAME\\Extras\\dats", cfg_file="ui.ini")
         self.write_config_file("categorypath", "folders;X:\\MAME\\Extras\\folders", cfg_file="ui.ini")
