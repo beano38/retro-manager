@@ -2,7 +2,12 @@
   "dir_name": "MAME 0.202",
   "config": "mame.ini",
   "config_type": "ini",
-  "rom_path": "mame_rom_path",
+  "rom_path": [
+    "X:\\MAME\\ROMs",
+    "X:\\MAME\\BIOS",
+    "X:\\Software Lists"
+  ],
+  "extras_path": "X:\\MAME\\Extras",
   "version": "0.202",
   "installs": ["mame0202b_64bit.exe"],
   "exe": "mame64.exe"

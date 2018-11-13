@@ -7,7 +7,6 @@ import os
 import re
 import json
 
-
 LOG_FILE = "../arcade.log"
 LOG_STAMP = time.strftime("%Y-%m-%d %H:%M:%S")
 LOG_FORMAT = logging.Formatter("[{}] [%(levelname)s] [%(name)s] : %(message)s".format(LOG_STAMP))

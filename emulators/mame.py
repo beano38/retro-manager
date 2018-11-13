@@ -8,7 +8,7 @@ import re
 import configparser
 import json
 
-LOG_FILE = "arcade.log"
+LOG_FILE = "../arcade.log"
 LOG_STAMP = time.strftime("%Y-%m-%d %H:%M:%S")
 LOG_FORMAT = logging.Formatter("[{}] [%(levelname)s] [%(name)s] : %(message)s".format(LOG_STAMP))
 
@@ -37,7 +37,7 @@ class Mame(Emulator):
 
     def read_config_file(self):
         """
-        "read_config_file" Method reads mame config file
+        "read_config_file" Method reads the MAME config file
 
         Args:
             self
@@ -50,7 +50,7 @@ class Mame(Emulator):
         """
 
         cfg_options = {}
-        with open(self.ini, mode="r", encoding="UTF-8-sig") as f:
+        with open(os.path.join(self.mame_path, self.model["config"]), mode="r", encoding="UTF-8-sig") as f:
             for i in f.readlines():
                 stuff = re.compile(r'(^[\w]*)(\s*)(.*)')
                 if stuff.match(i):
@@ -84,7 +84,8 @@ class Mame(Emulator):
                 if stuff.match(line):
                     if key in stuff.match(line)[1]:
                         f = stuff.match(line)[0]
-                        r = "{}{}{}".format(stuff.match(line)[1], stuff.match(line)[2], replace)
+                        new = set(stuff.match(line)[3].replace('"', '').split(";") + replace.split(";"))
+                        r = "{}{}{}".format(stuff.match(line)[1], stuff.match(line)[2], ";".join(new))
         with open(dst, mode="r", encoding="UTF-8-sig") as f1:
             with open(src, mode="w", encoding="UTF-8-sig") as f2:
                 for line in f1.readlines():
@@ -106,40 +107,42 @@ class Mame(Emulator):
         import subprocess
         executable = os.path.join(self.mame_path, self.model["exe"])
         command = [executable] + list_of_options
-        msg = "Executing {}".format(command)
+        msg = 'Executing "{}""'.format(" ".join(command))
         logger.debug(msg)
         execute = subprocess.Popen(command, cwd=self.mame_path)
 
     def set_defaults(self):
+        msg = 'Creating "mame.ini", "ui.ini" and setting defaults'
+        logger.info(msg)
         self.execute_cli(list_of_options=["-createconfig"])
         time.sleep(.4)  # Wait for the config files to be generated
 
-        self.write_config_file("rompath", "roms;X:\\MAME\\ROMs;X\\MAME\\BIOS;X:\\Software Lists")
-        self.write_config_file("artpath", "artwork;X:\\MAME\\Extras\\Artwork")
-        self.write_config_file("samplepath", "samples;X:\\MAME\\Samples")
-        self.write_config_file("snapshot_directory", "snap;X:\\MAME\\Extras")
-        self.write_config_file("cheatpath", "cheat;X:\\MAME\\Extras")
+        self.write_config_file("rompath", ";".join(self.model["rom_path"]))
+        self.write_config_file("artpath", os.path.join(self.model["extras_path"], "Artwork"))
+        self.write_config_file("samplepath", "X:\\MAME\\Samples")
+        self.write_config_file("snapshot_directory", self.model["extras_path"])
+        self.write_config_file("cheatpath", self.model["extras_path"])
         self.write_config_file("skip_gameinfo", "1")
 
-        self.write_config_file("historypath", "history;dats;.;X:\\MAME\\Extras\\dats", cfg_file="ui.ini")
-        self.write_config_file("categorypath", "folders;X:\\MAME\\Extras\\folders", cfg_file="ui.ini")
-        self.write_config_file("cabinets_directory", "cabinets;cabdevs;X:\\MAME\\Extras", cfg_file="ui.ini")
-        self.write_config_file("cpanels_directory", "cpanel;X:\\MAME\\Extras", cfg_file="ui.ini")
-        self.write_config_file("pcbs_directory", "pcb;X:\\MAME\\Extras", cfg_file="ui.ini")
-        self.write_config_file("flyers_directory", "flyers;X:\\MAME\\Extras", cfg_file="ui.ini")
-        self.write_config_file("titles_directory", "titles;X:\\MAME\\Extras", cfg_file="ui.ini")
-        self.write_config_file("ends_directory", "ends;X:\\MAME\\Extras", cfg_file="ui.ini")
-        self.write_config_file("marquees_directory", "marquees;X:\\MAME\\Extras", cfg_file="ui.ini")
-        self.write_config_file("artwork_preview_directory", "artwork preview;artpreview;X:\\MAME\\Extras", cfg_file="ui.ini")
-        self.write_config_file("bosses_directory", "bosses;X:\\MAME\\Extras", cfg_file="ui.ini")
-        self.write_config_file("logos_directory", "logo;X:\\MAME\\Extras", cfg_file="ui.ini")
-        self.write_config_file("scores_directory", "scores;X:\\MAME\\Extras", cfg_file="ui.ini")
-        self.write_config_file("versus_directory", "versus;X:\\MAME\\Extras", cfg_file="ui.ini")
-        self.write_config_file("gameover_directory", "gameover;X:\\MAME\\Extras", cfg_file="ui.ini")
-        self.write_config_file("howto_directory", "howto;X:\\MAME\\Extras", cfg_file="ui.ini")
-        self.write_config_file("select_directory", "select;X:\\MAME\\Extras", cfg_file="ui.ini")
-        self.write_config_file("icons_directory", "icons;X:\\MAME\\Extras", cfg_file="ui.ini")
-        self.write_config_file("covers_directory", "covers;X:\\MAME\\Extras", cfg_file="ui.ini")
+        self.write_config_file("historypath", os.path.join(self.model["extras_path"], "dats"), cfg_file="ui.ini")
+        self.write_config_file("categorypath", os.path.join(self.model["extras_path"], "folders"), cfg_file="ui.ini")
+        self.write_config_file("cabinets_directory", self.model["extras_path"], cfg_file="ui.ini")
+        self.write_config_file("cpanels_directory", self.model["extras_path"], cfg_file="ui.ini")
+        self.write_config_file("pcbs_directory", self.model["extras_path"], cfg_file="ui.ini")
+        self.write_config_file("flyers_directory", self.model["extras_path"], cfg_file="ui.ini")
+        self.write_config_file("titles_directory", self.model["extras_path"], cfg_file="ui.ini")
+        self.write_config_file("ends_directory", self.model["extras_path"], cfg_file="ui.ini")
+        self.write_config_file("marquees_directory", self.model["extras_path"], cfg_file="ui.ini")
+        self.write_config_file("artwork_preview_directory", self.model["extras_path"], cfg_file="ui.ini")
+        self.write_config_file("bosses_directory", self.model["extras_path"], cfg_file="ui.ini")
+        self.write_config_file("logos_directory", self.model["extras_path"], cfg_file="ui.ini")
+        self.write_config_file("scores_directory", self.model["extras_path"], cfg_file="ui.ini")
+        self.write_config_file("versus_directory", self.model["extras_path"], cfg_file="ui.ini")
+        self.write_config_file("gameover_directory", self.model["extras_path"], cfg_file="ui.ini")
+        self.write_config_file("howto_directory", self.model["extras_path"], cfg_file="ui.ini")
+        self.write_config_file("select_directory", self.model["extras_path"], cfg_file="ui.ini")
+        self.write_config_file("icons_directory", self.model["extras_path"], cfg_file="ui.ini")
+        self.write_config_file("covers_directory", self.model["extras_path"], cfg_file="ui.ini")
 
     @staticmethod
     def move_chd_to_root(chd_path):
@@ -180,7 +183,10 @@ class Mame(Emulator):
 
 def main():
     m = Mame()
+    print(json.dumps(m.model, indent=2))
     m.set_defaults()
+
+    # m.execute_cli(["galaga"])
 
 
 if __name__ == "__main__":
