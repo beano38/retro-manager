@@ -3,7 +3,8 @@ import time
 import json
 import os
 
-from general import Paths
+from general import Paths, Compressor
+from hyperspin import HyperSpin
 
 LOG_FILE = "../../arcade.log"
 LOG_STAMP = time.strftime("%Y-%m-%d %H:%M:%S")
@@ -158,17 +159,122 @@ class System(Paths):
         games_db = data["GamesDbData"]["Platform"]
         self.manufacturer = games_db["manufacturer"]
 
+    # ----- Build ROM Set and helper functions -----
+
+    def _filter_sets_by_crcs(self, source_set):
+        """
+        "_filter_sets_by_crcs" is a method that will build a dictionary of ROMs with unique crcs
+
+        Args:
+            source_set, type list, the source list of directories
+
+        Returns:
+            filtered list of dictionaries of ROM names with CRC and source file name
+
+        Raises:
+            None
+        """
+        crc_names = []
+        index_id = 0
+
+        for source_group in source_set:
+            rom_names = os.listdir(source_group)
+            num_of_roms = len(rom_names)
+            msg = "Found {} files in {}".format(num_of_roms, source_group)
+            print(msg)
+
+            for rom_file in rom_names:
+                source_file = os.path.join(source_group, rom_file)
+                if os.path.isfile(source_file):
+                    c = Compressor(src_file=source_file)
+                    rom_crc_list = c.get_crc()
+                    for rom_name in rom_crc_list:
+                        rom_name["name"] = source_file
+                        crc_names.append(rom_name)
+
+        print("Found {} ROMs in the folders".format(len(crc_names)))
+
+        # Filter out duplicate CRCs
+        crcs_all = []
+        final_crcs = []
+        for i in range(len(crc_names)):
+            crc = crc_names[i]['crc']
+            if crc not in crcs_all:
+                crcs_all.append(crc)
+                final_crcs.append(crc_names[i])
+
+        return final_crcs
+
+    def _match_crcs(self, source_set):
+        """
+        "_match_crcs" is a method that will compare the RocketLauncher database ROM list with the available
+        ROM list from the "_filter_sets_by_crcs" method
+
+        Args:
+            None
+
+        Returns:
+            final list of dictionaries of ROMs to copy
+
+        Raises:
+            None
+        """
+
+        # Get the ROM list from RocketLauncher's Database
+        p = Paths()
+        xml = os.path.join(p.rl_path, "RocketLauncherUI", "Databases", self.system, self.system + ".xml")
+        hs = HyperSpin(self.system)
+        header, db = hs.read_system_xml(db=xml)
+        db = hs.audit(files_to_audit=os.path.join(p.rom_path, self.system), db=xml, audit_type="rom")
+        print("There are {} ROMs in the RocketLauncher database".format(len(db)))
+
+        # Get the ROM list of available ROMs
+        available_roms = self._filter_sets_by_crcs(source_set=source_set)
+        print("Found {} unique ROMs in the folders".format(len(available_roms)))
+
+        # Final list
+        final_rom_set = []
+        for rom in db:
+            for available_rom in available_roms:
+                if rom["crc"] == available_rom["crc"]:
+                    f, ext = os.path.splitext(available_rom["compress_name"])
+                    available_rom["dst"] = os.path.join(p.rom_path, self.system, "{}{}".format(rom["name"], ext))
+                    final_rom_set.append(available_rom)
+
+        print("Matched {} ROMs from the available ROMs to the RocketLauncher database".format(len(final_rom_set)))
+
+        return final_rom_set
+
+    def build_rom_set(self, source_set, compress=False):
+        roms = self._match_crcs(source_set)
+
+        for rom in roms:
+            # Get compressed file
+            if rom["compress_name"]:
+                c = Compressor(rom["name"])
+                try:
+                    c.extract(rom["compress_name"], dst_dir=os.path.join(self.rom_path, self.system))
+                    src = os.path.join(self.rom_path, self.system, rom["compress_name"])
+                    dst = rom["dst"]
+                    # Rename the ROM to the RocketLauncher Database Name
+                    os.rename(src, dst)
+                except FileExistsError:
+                    print("File Exists - {}".format(rom["name"]))
+                # Compress
+                if compress:
+                    c = Compressor(dst)
+                    c.compress(ext="zip")
+
 
 def main():
-    atari = "Atari 8-Bit"
     nes = "Nintendo Entertainment System"
-    other = "Sony PSP"
-    platform = System(system=nes)
+    jag = "Atari Jaguar"
+    platform = System(system=jag)
 
-    print(platform.emulator)
-    print(platform.system)
-    print(platform.extensions)
-    print(platform.platform_type)
+    curated_sets = platform.tosec_dirs() + platform.software_lists + platform.nointro + platform.goodset
+    special_set = [r"L:\\Arcade\\ROMs\\Nintendo Entertainment System"]
+
+    platform.build_rom_set(source_set=platform.nointro, compress=True)
 
 
 if __name__ == "__main__":

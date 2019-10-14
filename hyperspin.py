@@ -38,7 +38,7 @@ class Databases(Arcade):
         self.system = system
         # self.db_path = os.path.join(self.hs_path, "Databases", self.system)
 
-    def read_system_xml(self):
+    def read_system_xml(self, db="hyperspin"):
         """
         "read_system_xml" Method returns info in a dictionary from the
         selected system's database
@@ -52,7 +52,10 @@ class Databases(Arcade):
         Raises:
             None
         """
-        xml = os.path.join(self.db_path, self.system + ".xml")
+        if db == "hyperspin":
+            xml = os.path.join(self.db_path, self.system + ".xml")
+        else:
+            xml = db
 
         msg = "Extracting ROM info from {} . . .".format(self.system)
         logger.info(msg)
@@ -72,7 +75,7 @@ class Databases(Arcade):
             rom['name'] = game.get('name')
             rom['image'] = game.get('image')
             rom['index'] = game.get('index')
-            rom['have'] = False
+            rom['rom'] = False
             rom['artwork1'] = False
             rom['artwork2'] = False
             rom['artwork3'] = False
@@ -90,6 +93,16 @@ class Databases(Arcade):
                 rom["crc"] = rom["crc"].zfill(8).upper()
 
         return system, roms
+
+    def audit(self, files_to_audit, db, audit_type="rom"):
+        system, roms = self.read_system_xml(db)
+        have = os.listdir(files_to_audit)
+        for fname in have:
+            for rom in roms:
+                if rom["name"] == os.path.splitext(fname)[0]:
+                    rom[audit_type] = True
+
+        return roms
 
 
 class HyperList(Arcade):
@@ -237,7 +250,8 @@ class HyperSpin(Databases, HyperList):
 if __name__ == "__main__":
     platform = "Nintendo Entertainment System"
     hs = HyperSpin(platform)
-    header, roms = hs.read_system_xml()
-    # hs.update_db()
+    # header, roms = hs.read_system_xml()
+
+
 
 

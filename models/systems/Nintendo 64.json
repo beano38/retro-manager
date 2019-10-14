@@ -1,7 +1,7 @@
 {
   "emulator": "RetroArch",
   "extensions": [
-    "z64, n64"
+    "z64, n64, v64"
   ],
   "year": "1996",
   "platformType": "console",

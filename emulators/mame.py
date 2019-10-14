@@ -184,9 +184,9 @@ class Mame(Emulator):
 def main():
     m = Mame()
     print(json.dumps(m.model, indent=2))
-    m.set_defaults()
+    # m.set_defaults()
 
-    # m.execute_cli(["galaga"])
+    m.execute_cli(["galaga"])
 
 
 if __name__ == "__main__":

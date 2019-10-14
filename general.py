@@ -412,16 +412,19 @@ class Compressor(Paths):
             None
         """
         if os.path.isfile(self.src_file):
-            msg = "Gathering CRCs from {}".format(os.path.basename(self.src_file))
-            logger.info(msg)
+            try:
+                msg = "Gathering CRCs from {}".format(os.path.basename(self.src_file))
+            except UnicodeEncodeError:
+                msg = "Weird Unicode format"
+            logger.debug(msg)
 
         ext = os.path.splitext(self.src_file)[1]
 
-        if ext == ".zip":
+        if ext.lower() == ".zip":
             crcs = self._crc_from_zip()
-        elif ext == ".7z":
+        elif ext.lower() == ".7z":
             crcs = self._crc_from_seven_zip()
-        elif ext == ".rar":
+        elif ext.lower() == ".rar":
             crcs = self._crc_from_rar()
         else:
             crcs = self._crc_from_file()

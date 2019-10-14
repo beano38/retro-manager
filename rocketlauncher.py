@@ -56,11 +56,16 @@ class RocketLauncher(Databases, HyperList, System):
         self.backgrounds_path = os.path.join(self.media_path, "Backgrounds", self.system)
         self.bezels_path = os.path.join(self.media_path, "Bezels", self.system)
         self.fade_path = os.path.join(self.media_path, "Fade", self.system)
+        self.guides_path = os.path.join(self.media_path, "Guides", self.system)
         self.logos_path = os.path.join(self.media_path, "Logos", self.system)
+        self.manuals_path = os.path.join(self.media_path, "Manuals", self.system)
+        self.multi_path = os.path.join(self.media_path, "MultiGame", self.system)
         self.music_path = os.path.join(self.media_path, "Music", self.system)
         self.video_path = os.path.join(self.media_path, "Videos", self.system)
+
         self.media_paths = [self.artwork_path, self.backgrounds_path, self.bezels_path, self.fade_path,
-                            self.logos_path, self.music_path, self.video_path]
+                            self.guides_path, self.logos_path, self.manuals_path, self.multi_path,
+                            self.music_path, self.video_path]
 
         # UI
         self.db_path = os.path.join(self.rl_ui_path, "Databases", self.system)
@@ -392,7 +397,7 @@ class RocketLauncher(Databases, HyperList, System):
         self._copy_default_settings()
         self._set_defaults()
         self._set_rocket_launcher_ui_ini()
-        msg = "Launch RocketLauncherUI and perfrom an update!!!!!!!!!!!!!"
+        msg = "Launch RocketLauncherUI and perform an update!!!!!!!!!!!!!"
         logger.info(msg)
 
     def new_system(self):
@@ -417,7 +422,7 @@ class RocketLauncher(Databases, HyperList, System):
         try:
             systems = self.read_menu()
         except:
-            systems =[]
+            systems = []
         syss = [sys["name"] for sys in systems]
         if self.system in syss:
             msg = "{} is already in RocketLauncher Menu and will not be added".format(self.system)
@@ -445,7 +450,7 @@ class RocketLauncher(Databases, HyperList, System):
         if remove_media:
             msg = "Removing Media files from {}".format(self.system)
             logger.info(msg)
-            remove = [self.db_path, self.settings_path] + self.media_paths
+            remove = [self.db_path, self.settings_path] + self.media_paths + [os.path.join(self.rom_path, self.system)]
         else:
             remove = [self.db_path, self.settings_path]
         for i in remove:
