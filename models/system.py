@@ -5,6 +5,7 @@ import os
 
 from general import Paths, Compressor
 from hyperspin import HyperSpin
+from models.rom import Rom
 
 LOG_FILE = "../../arcade.log"
 LOG_STAMP = time.strftime("%Y-%m-%d %H:%M:%S")
@@ -55,7 +56,7 @@ class System(Paths):
         self.extensions = None
         self.year = None
         self.platform_type = None
-        self.emu_movies = None
+        self.emu_movies_name = None
 
         self.tosec = None
         self.goodset = None
@@ -128,8 +129,8 @@ class System(Paths):
             self.year = data["year"]
         if "platformType" in data:
             self.platform_type = data["platformType"]
-        if "emu_movies" in data:
-            self.emu_movies = data["emu_movies"]
+        if "emuMoviesName" in data:
+            self.emu_movies_name = data["emuMoviesName"]
 
         if data["romSets"]["TOSEC"] is not None:
             self.tosec = data["romSets"]["TOSEC"]
@@ -181,18 +182,23 @@ class System(Paths):
             rom_names = os.listdir(source_group)
             num_of_roms = len(rom_names)
             msg = "Found {} files in {}".format(num_of_roms, source_group)
-            print(msg)
+            logger.info(msg)
 
             for rom_file in rom_names:
                 source_file = os.path.join(source_group, rom_file)
                 if os.path.isfile(source_file):
                     c = Compressor(src_file=source_file)
-                    rom_crc_list = c.get_crc()
+                    try:
+                        rom_crc_list = c.get_crc()
+                    except:
+                        msg = "Error with file: {}".format(rom_file)
+                        logger.debug(msg)
                     for rom_name in rom_crc_list:
                         rom_name["name"] = source_file
                         crc_names.append(rom_name)
 
-        print("Found {} ROMs in the folders".format(len(crc_names)))
+        msg = "Found {} ROMs in the folders".format(len(crc_names))
+        logger.info(msg)
 
         # Filter out duplicate CRCs
         crcs_all = []
@@ -224,28 +230,34 @@ class System(Paths):
         p = Paths()
         xml = os.path.join(p.rl_path, "RocketLauncherUI", "Databases", self.system, self.system + ".xml")
         hs = HyperSpin(self.system)
-        header, db = hs.read_system_xml(db=xml)
         db = hs.audit(files_to_audit=os.path.join(p.rom_path, self.system), db=xml, audit_type="rom")
-        print("There are {} ROMs in the RocketLauncher database".format(len(db)))
+
+        miss = [rom for rom in db if not rom["rom"]]
+        # have = [rom for rom in db if rom["rom"]]
+
+        msg ="There are {} ROMs missing from the ROM audit".format(len(miss))
+        logger.info(msg)
 
         # Get the ROM list of available ROMs
         available_roms = self._filter_sets_by_crcs(source_set=source_set)
-        print("Found {} unique ROMs in the folders".format(len(available_roms)))
+        msg = "Found {} unique ROMs in the folders".format(len(available_roms))
+        logger.info(msg)
 
         # Final list
         final_rom_set = []
-        for rom in db:
+        for rom in miss:
             for available_rom in available_roms:
                 if rom["crc"] == available_rom["crc"]:
                     f, ext = os.path.splitext(available_rom["compress_name"])
                     available_rom["dst"] = os.path.join(p.rom_path, self.system, "{}{}".format(rom["name"], ext))
                     final_rom_set.append(available_rom)
 
-        print("Matched {} ROMs from the available ROMs to the RocketLauncher database".format(len(final_rom_set)))
+        msg = "Matched {} ROMs from the available ROMs to the missing ROMs".format(len(final_rom_set))
+        logger.info(msg)
 
         return final_rom_set
 
-    def build_rom_set(self, source_set, compress=False):
+    def build_rom_set(self, source_set, rename=True, compress=True):
         roms = self._match_crcs(source_set)
 
         for rom in roms:
@@ -259,22 +271,26 @@ class System(Paths):
                     # Rename the ROM to the RocketLauncher Database Name
                     os.rename(src, dst)
                 except FileExistsError:
-                    print("File Exists - {}".format(rom["name"]))
+                    msg = "File Exists - {}".format(rom["compress_name"])
+                    logger.debug(msg)
                 # Compress
+                if rename:
+                    r = Rom(name=dst, system=self.system)
+                    new_dst = r.rename_extension(self.extensions)
                 if compress:
-                    c = Compressor(dst)
+                    c = Compressor(new_dst)
                     c.compress(ext="zip")
 
 
 def main():
     nes = "Nintendo Entertainment System"
     jag = "Atari Jaguar"
-    platform = System(system=jag)
+    itv = "Mattel Intellivision"
+    gg = "Sega Game Gear"
 
-    curated_sets = platform.tosec_dirs() + platform.software_lists + platform.nointro + platform.goodset
-    special_set = [r"L:\\Arcade\\ROMs\\Nintendo Entertainment System"]
-
-    platform.build_rom_set(source_set=platform.nointro, compress=True)
+    platform = System(system=gg)
+    ss = platform.nointro
+    platform.build_rom_set(source_set=ss)
 
 
 if __name__ == "__main__":

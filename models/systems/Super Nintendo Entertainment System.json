@@ -5,7 +5,7 @@
   ],
   "year": "1990",
   "platformType": "Console",
-  "emu_movies": "Nintendo_SNES",
+  "emuMoviesName": "Nintendo_SNES",
   "romSets": {
     "NoIntro": "Nintendo - Super Nintendo Entertainment System",
     "SoftwareLists": "snes",

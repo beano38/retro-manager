@@ -1,6 +1,6 @@
 {
   "emulator": "RetroArch",
-  "extensions": ["bin"],
+  "extensions": ["gg"],
   "year": "1990",
   "platformType": "Handheld",
   "romSets": {

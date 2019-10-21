@@ -3,6 +3,7 @@
   "extensions": ["gba", "bin"],
   "year": "2001",
   "platformType": "Handheld",
+  "emuMoviesName": "Nintendo_Game_Boy_Advance",
   "romSets": {
     "GoodSet": "Good Sets_GoodGBA v3 23",
     "NoIntro": "Nintendo - Game Boy Advance",

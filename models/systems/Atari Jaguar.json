@@ -3,6 +3,7 @@
   "extensions": ["jag", "j64"],
   "year": "1993",
   "platformType": "Console",
+  "emuMoviesName": "Atari_Jaguar",
   "romSets": {
     "GoodSet": "Good Sets_GoodJag v2 01",
     "NoIntro": "Atari - Jaguar (J64)",

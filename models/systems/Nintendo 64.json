@@ -1,13 +1,13 @@
 {
   "emulator": "RetroArch",
   "extensions": [
-    "z64, n64, v64"
+    "z64", "n64", "v64"
   ],
   "year": "1996",
   "platformType": "console",
-  "emu_movies": "Nintendo_N64",
+  "emuMoviesName": "Nintendo_N64",
   "romSets": {
-    "GoodSet": null,
+    "GoodSet": ".",
     "NoIntro": "Nintendo - Nintendo 64",
     "Redump": null,
     "SoftwareLists": "n64",

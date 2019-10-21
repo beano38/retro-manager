@@ -1,13 +1,13 @@
 {
   "emulator": "RetroArch",
-  "extensions": ["fds", "nes", "unf"],
+  "extensions": ["nes", "unf"],
   "year": "1986",
   "platformType": "Console",
   "emuMoviesName": "Nintendo_Famicom",
   "romSets": {
-    "NoIntro": "Nintendo - Family Computer Disk System",
+    "NoIntro": "Nintendo - Nintendo Entertainment System",
     "SoftwareLists": "famicom_flop",
-    "TOSEC": "Famicom Disk System",
+    "TOSEC": "Famicom & Entertainment System",
     "GoodSet": "GoodNES V3.23b",
     "NoGoodSet": "NoGoodNES"
   },

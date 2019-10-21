@@ -379,7 +379,7 @@ class Compressor(Paths):
         # Compress the file after ensuring it is a file and not a directory
         if os.path.isfile(self.src_file):
             msg = "Compressing {}".format(os.path.basename(self.src_file))
-            logger.info(msg)
+            logger.debug(msg)
 
             if ext == "zip":
                 self._compress_zip()
@@ -448,7 +448,7 @@ class Compressor(Paths):
         """
         if os.path.isfile(self.src_file):
             msg = "Extracting {} from {}".format(compressed_name, os.path.basename(self.src_file))
-            logger.info(msg)
+            logger.debug(msg)
 
             ext = os.path.splitext(self.src_file)[1]
 

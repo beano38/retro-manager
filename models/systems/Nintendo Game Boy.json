@@ -3,6 +3,7 @@
   "extensions": ["gb", "bin"],
   "year": "1989",
   "platformType": "Handheld",
+  "emuMoviesName": "Nintendo_Game_Boy",
   "romSets": {
     "GoodSet": "Good Sets_GoodGBx v3 14",
     "NoIntro": "Nintendo - Game Boy",

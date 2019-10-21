@@ -3,6 +3,7 @@
   "extensions": ["gbc", "bin"],
   "year": "1998",
   "platformType": "Handheld",
+  "emuMoviesName": "Nintendo_Game_Boy_Color",
   "romSets": {
     "GoodSet": "Good Sets_GoodGBx v3 14",
     "NoIntro": "Nintendo - Game Boy Color",

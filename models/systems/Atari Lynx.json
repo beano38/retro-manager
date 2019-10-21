@@ -3,6 +3,7 @@
   "extensions": ["lnx"],
   "year": "1982",
   "platformType": "Handheld",
+  "emuMoviesName": "Atari_Lynx",
   "romSets": {
     "GoodSet": "Good Sets_GoodLynx v2 01",
     "NoIntro": "Atari - Lynx",

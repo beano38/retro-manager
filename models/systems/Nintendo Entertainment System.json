@@ -1,9 +1,9 @@
 {
-  "emulator": "Mednafen",
+  "emulator": "RetroArch",
   "extensions": "nes",
   "year": "1985",
   "platformType": "Console",
-  "emu_movies": "Nintendo_NES",
+  "emuMoviesName": "Nintendo_NES",
   "romSets": {
     "NoIntro": "Nintendo - Nintendo Entertainment System",
     "SoftwareLists": "nes",

@@ -1,15 +1,20 @@
 {
   "emulator": "RetroArch",
+  "retroarch_core": "freeintv_libretro.dll",
   "extensions": ["itv"],
   "year": "1978",
   "platformType": "console",
   "romSets": {
-    "GoodSet": "GoodINTV v2 03",
+    "GoodSet": "Good Sets_GoodINTV v2 03",
     "NoIntro": "Mattel - Intellivision",
     "Redump": null,
     "SoftwareLists": "intv",
     "TOSEC": "Intellivision",
     "NoGoodSet": null
+    },
+  "bios": {
+    "exec.bin": "CBCE86F7",
+    "grom.bin": "683A4158"
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

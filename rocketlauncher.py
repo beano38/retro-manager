@@ -55,6 +55,7 @@ class RocketLauncher(Databases, HyperList, System):
         self.artwork_path = os.path.join(self.media_path, "Artwork", self.system)
         self.backgrounds_path = os.path.join(self.media_path, "Backgrounds", self.system)
         self.bezels_path = os.path.join(self.media_path, "Bezels", self.system)
+        self.controller_path = os.path.join(self.media_path, "Controller", self.system)
         self.fade_path = os.path.join(self.media_path, "Fade", self.system)
         self.guides_path = os.path.join(self.media_path, "Guides", self.system)
         self.logos_path = os.path.join(self.media_path, "Logos", self.system)
@@ -63,8 +64,8 @@ class RocketLauncher(Databases, HyperList, System):
         self.music_path = os.path.join(self.media_path, "Music", self.system)
         self.video_path = os.path.join(self.media_path, "Videos", self.system)
 
-        self.media_paths = [self.artwork_path, self.backgrounds_path, self.bezels_path, self.fade_path,
-                            self.guides_path, self.logos_path, self.manuals_path, self.multi_path,
+        self.media_paths = [self.artwork_path, self.backgrounds_path, self.bezels_path, self.controller_path,
+                            self.fade_path, self.guides_path, self.logos_path, self.manuals_path, self.multi_path,
                             self.music_path, self.video_path]
 
         # UI
@@ -176,7 +177,8 @@ class RocketLauncher(Databases, HyperList, System):
 
         compressed_exts = ["7z", "zip", "rar"]
         if config.get(self.emulator, "Rom_Extension") != "":
-            extensions = "|".join(sorted(set(config.get(self.emulator, "Rom_Extension").split("|") + compressed_exts + self.extensions)))
+            extensions = "|".join(
+                sorted(set(config.get(self.emulator, "Rom_Extension").split("|") + compressed_exts + self.extensions)))
         else:
             extensions = "|".join(sorted(set(compressed_exts + self.extensions)))
         config.set(self.emulator, "Rom_Extension", extensions)
@@ -462,20 +464,176 @@ class RocketLauncher(Databases, HyperList, System):
         systems = [d for d in systems if d.get('name') != self.system]
         self.write_menu(systems)
 
+    # RocketLauncher Media
+    def set_up_media(self, action="copy"):
+        """
+        "set_up_media" copies any EmuMovies content into the appropriate folders
+        in RocketLauncher, for Pause, Fade and etc.
+
+        Args:
+            "action" (optional, default=copy): Sets the action to take, [copy, move, link]
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
+        xml = os.path.join(self.rl_path, "RocketLauncherUI", "Databases", self.system, self.system + ".xml")
+        src_path = os.path.join(self.emu_movies_path, self.emu_movies_name)
+        hs = Databases(system=self.system)
+        header, db = hs.read_system_xml(db=xml)
+
+        media_paths = os.listdir(src_path)
+
+        # If Linking files, remove the old file before appending the new symlinks
+        batch_file = os.path.join(self.root_path, "{} Media Links run as Admin.bat".format(self.system))
+        if os.path.isfile(batch_file):
+            os.remove(batch_file)
+
+        for path in media_paths:
+            src_dir = os.path.join(src_path, path)
+            if action == "copy":
+                msg = "RL: Copying files from {}".format(src_dir)
+            elif action == "move":
+                msg = "RL: Moving files from {}".format(src_dir)
+            elif action == "link":
+                msg = "RL: Creating symbolic link from {}".format(src_dir)
+            else:
+                msg = "RL: Action {} not permitted".format(action)
+            logger.info(msg)
+            files = os.listdir(src_dir)
+
+            final_files = []
+
+            for rom in db:
+                for file in files:
+                    if rom["name"] == os.path.basename(os.path.splitext(file)[0]):
+                        final_files.append(file)
+
+            for file in final_files:
+                file = os.path.splitext(file)
+
+                if path == "Advert":
+                    dst = os.path.join(self.artwork_path, file[0], "Advertisement" + file[1])
+                elif path == "Artwork Preview":
+                    dst = os.path.join(self.artwork_path, file[0], "Preview" + file[1])
+                elif path == "Background":
+                    dst = os.path.join(self.backgrounds_path, file[0], "Background" + file[1])
+                elif path == "Banner":
+                    dst = os.path.join(self.artwork_path, file[0], "Banner" + file[1])
+                elif path == "Box":
+                    dst = os.path.join(self.artwork_path, file[0], "Box", "Box Art Front" + file[1])
+                elif path == "Box_3D":
+                    dst = os.path.join(self.artwork_path, file[0], "Box", "Box Art 3D" + file[1])
+                elif path == "Box_Full":
+                    dst = os.path.join(self.artwork_path, file[0], "Box", "Box Art Full" + file[1])
+                elif path == "Box_Spine":
+                    dst = os.path.join(self.artwork_path, file[0], "Box", "Box Art Spine" + file[1])
+                elif path == "BoxBack":
+                    dst = os.path.join(self.artwork_path, file[0], "Box", "Box Art Back" + file[1])
+                elif path == "Cart":
+                    dst = os.path.join(self.artwork_path, file[0], "Cartridge", "Cartridge" + file[1])
+                elif path == "Cart_3D":
+                    dst = os.path.join(self.artwork_path, file[0], "Cartridge", "Cartridge 3D" + file[1])
+                elif path == "CartTop":
+                    dst = os.path.join(self.artwork_path, file[0], "Cartridge", "Cartridge Top" + file[1])
+                elif path == "Cabinet":
+                    dst = os.path.join(self.artwork_path, file[0], "Cabinet" + file[1])
+                elif path == "CD":
+                    dst = os.path.join(self.artwork_path, file[0], "Media" + file[1])
+                elif path == "Controls":
+                    dst = os.path.join(self.controller_path, file[0], "Controls" + file[1])
+                elif path == "CP":
+                    dst = os.path.join(self.controller_path, file[0], "Control Panel" + file[1])
+                elif path == "Disc":
+                    dst = os.path.join(self.artwork_path, file[0], "Disc" + file[1])
+                elif path == "GameOver":
+                    dst = os.path.join(self.artwork_path, file[0], "Game Over" + file[1])
+                elif path == "Icon":
+                    dst = os.path.join(self.artwork_path, file[0], "Icon" + file[1])
+                elif path == "Logos":
+                    dst = os.path.join(self.logos_path, file[0], "Logo" + file[1])
+                elif path == "Map":
+                    dst = os.path.join(self.guides_path, file[0], "Map" + file[1])
+                elif path == "Marquee":
+                    dst = os.path.join(self.artwork_path, file[0], "Marquee" + file[1])
+                elif path == "Overlay":
+                    dst = os.path.join(self.artwork_path, file[0], "Overlay" + file[1])
+                elif path == "PCB":
+                    dst = os.path.join(self.artwork_path, file[0], "PCB" + file[1])
+                elif path == "Score":
+                    dst = os.path.join(self.artwork_path, file[0], "Score" + file[1])
+                elif path == "Select":
+                    dst = os.path.join(self.artwork_path, file[0], "Select" + file[1])
+                elif path == "Snap":
+                    dst = os.path.join(self.artwork_path, file[0], "Snapshot" + file[1])
+                elif path == "Title":
+                    dst = os.path.join(self.artwork_path, file[0], "Title Screen" + file[1])
+                elif path == "Manual":
+                    dst = os.path.join(self.manuals_path, file[0], "Game Manual" + file[1])
+                elif path == "Music":
+                    dst = os.path.join(self.music_path, file[0], file[0] + file[1])
+                elif path == "Video_Advert_MP4":
+                    dst = os.path.join(self.video_path, file[0], "Commercial" + file[1])
+                elif path == "Video_Review_MP4":
+                    dst = os.path.join(self.video_path, file[0], "Review" + file[1])
+
+                else:
+                    dst = ""
+
+                src = os.path.join(src_dir, file[0] + file[1])
+
+                # Check if the file is the same by validating the CRC
+                src_c = Compressor(src)
+                src_crc = src_c.get_crc()
+                try:
+                    dst_c = Compressor(dst)
+                    dst_crc = dst_c.get_crc()
+                except FileNotFoundError:
+                    dst_crc = None
+
+                try:
+                    if action == "copy":
+                        if dst_crc and src_crc[0]["crc"] != dst_crc[0]["crc"]:  # Check if CRCs Match
+                            if not os.path.exists(os.path.dirname(dst)):
+                                os.makedirs(os.path.dirname(dst))  # Create directory path if it doesn't exist
+                            shutil.copy(src, dst)
+                        elif not dst_crc:
+                            if not os.path.exists(os.path.dirname(dst)):
+                                os.makedirs(os.path.dirname(dst))  # Create directory path if it doesn't exist
+                            shutil.copy(src, dst)
+                        else:
+                            msg = "RL: {} CRCs match".format(os.path.basename(src))
+                            logger.debug(msg)
+                    elif action == "move":
+                        if dst_crc and src_crc[0]["crc"] != dst_crc[0]["crc"]:  # Check if CRCs Match
+                            if not os.path.exists(os.path.dirname(dst)):
+                                os.makedirs(os.path.dirname(dst))  # Create directory path if it doesn't exist
+                            shutil.copy(src, dst)
+                        elif dst_crc is None:
+                            if not os.path.exists(os.path.dirname(dst)):
+                                os.makedirs(os.path.dirname(dst))  # Create directory path if it doesn't exist
+                            shutil.move(src, dst)
+                        else:
+                            msg = "RL: {} CRCs match".format(os.path.basename(src))
+                            logger.debug(msg)
+                    elif action == "link":
+                        if not os.path.exists(os.path.dirname(dst)):
+                            os.makedirs(os.path.dirname(dst))  # Create directory path if it doesn't exist
+                        with open(batch_file, mode="a") as f:
+                            f.write('mklink "{}" "{}"\n'.format(dst, src))
+                    else:
+                        print("Action: {} not permitted".format(action))
+                except FileNotFoundError as e:
+                    msg = "RL: {} will not be moved: {}".format(file[0] + file[1], e)
+                    logger.info(msg)
+
 
 if __name__ == "__main__":
     nes = "Nintendo Entertainment System"
     snes = "Super Nintendo Entertainment System"
-    atari = "Atari 2600"
+    atari = "Atari Jaguar"
     sega = "Sega Genesis"
-    rl = RocketLauncher(nes)
-    rl.global_emulators_add_ext()
-    # rl.install()
-    # systems = [nes, snes, atari, sega]
-    # for system in systems:
-    #     rl = RocketLauncher(system)
-    #     rl.new_system()
-    # rl.remove_system(remove_media=False)
-    # rl.new_system()
-
-
+    rl = RocketLauncher(atari)
+    rl.move_emu_movies(action="link")

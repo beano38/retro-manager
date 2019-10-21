@@ -3,6 +3,7 @@
   "extensions": ["bs", "sfc", "smc"],
   "year": "1990",
   "platformType": "Console",
+    "emuMoviesName": "Nintendo_Satellaview",
   "romSets": {
     "NoIntro": "Nintendo - Satellaview",
     "SoftwareLists": ["snes", "snes_bspack"],

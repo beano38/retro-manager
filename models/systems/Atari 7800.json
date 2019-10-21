@@ -3,6 +3,7 @@
   "extensions": ["a78", "bin"],
   "year": "1986",
   "platformType": "Console",
+  "emuMoviesName": "Atari_7800",
   "romSets": {
     "GoodSet": "Good Sets_Good7800 v2 04",
     "NoIntro": "Atari - 7800",

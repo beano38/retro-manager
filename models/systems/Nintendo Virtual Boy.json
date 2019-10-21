@@ -3,6 +3,7 @@
   "extensions": ["vb"],
   "year": "19xx",
   "platformType": "Handheld",
+  "emuMoviesName": "Nintendo_Virtual_Boy",
   "romSets": {
     "GoodSet": "Good Sets_GoodVBoy v3 1415",
     "NoIntro": "Nintendo - Virtual Boy",

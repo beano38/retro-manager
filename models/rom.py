@@ -1,8 +1,6 @@
 import os
 
 from general import Paths, Compressor
-from models.system import System
-from rocketlauncher import RocketLauncher
 
 exclude_ext = [".zip", ".ZIP", ".7z", ".7Z", ".rar", ".RAR"]
 
@@ -15,9 +13,8 @@ class Rom(Compressor):
 
         self.name = name
         self.system = system
-        self.sys_info = System(self.system)
 
-    def rename_extension(self):
+    def rename_extension(self, extension):
         """
         "rename_extension" is a method that will rename the extension of the ROM to the
         first extension name in the system model
@@ -26,15 +23,15 @@ class Rom(Compressor):
             self
 
         Returns:
-            None
+            Newly named ROM name
 
         Raises:
             None
         """
-        if type(self.sys_info.extensions) == list:
-            extension = ".{}".format(self.sys_info.extensions[0])
-        elif type(self.sys_info.extensions) == str:
-            extension = ".{}".format(self.sys_info.extensions)
+        if type(extension) == list:
+            extension = ".{}".format(extension[0])
+        elif type(extension) == str:
+            extension = ".{}".format(extension)
         else:
             extension = ".zip"
         rom_path = os.path.join(self.rom_path, self.system, self.name)
@@ -45,8 +42,9 @@ class Rom(Compressor):
             print(msg)
             os.rename(rom_path, dst)
         else:
-            msg = "{} is good".format(self.name)
-            print(msg)
+            msg = "{}'s extension is named correctly".format(self.name)
+
+        return os.path.join(self.rom_path, self.system, f + extension)
 
 
 # def rename_extensions(system):

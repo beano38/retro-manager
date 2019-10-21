@@ -3,6 +3,7 @@
   "extensions": ["a52", "bin"],
   "year": "1982",
   "platformType": "Console",
+  "emuMoviesName": "Atari_5200",
   "romSets": {
     "GoodSet": "Good5200 V2.01",
     "NoIntro": "Atari - 5200",
