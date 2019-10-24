@@ -97,12 +97,10 @@ def main():
     # create_system(system=jag)
     # delete_system(system=jag, remove_assets=True)
 
-    dirs = [x[0] for x in os.walk(r"T:\Downloads\NESroms")]
-    update_system(system=nes, source_set=dirs)
+    update_system(system=nes, source_set=[r"N:\Arcade\ROMs\{}".format(nes), r"R:\Unmatched\Cart\{}".format(nes)])
 
     platform = System(system=nes)
-
-    # matches = platform.fuzzy_match_set(source_set=["N:\Arcade\ROMs\{}".format(nes)], assurance=.75)
+    matches = platform.fuzzy_match_set(source_set=[r"N:\Arcade\ROMs\{}".format(nes), r"R:\Unmatched\Cart\{}".format(nes)])
     # for i in matches:
     #     print(i)
 

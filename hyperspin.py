@@ -1,15 +1,11 @@
-import time
-import logging
 import os
 import shutil
-import xml.etree.cElementTree as ET
+import logging
+import configparser
+import time
 
-import requests
-from bs4 import BeautifulSoup
-
-from general import Arcade
-
-TIME_STAMP = time.strftime(" %Y%m%d")
+from general import Arcade, Compressor
+from rocketlauncher import RocketLauncher
 
 LOG_FILE = "arcade.log"
 LOG_STAMP = time.strftime("%Y-%m-%d %H:%M:%S")
@@ -30,197 +26,12 @@ logger.addHandler(file_handler)
 logger.addHandler(stream_handler)
 
 
-class Databases(Arcade):
+class HyperSpin(Arcade):
 
-    def __init__(self, system):
-        Arcade.__init__(self)
-
-        self.system = system
-        # self.db_path = os.path.join(self.hs_path, "Databases", self.system)
-
-    def read_system_xml(self, db="hyperspin"):
-        """
-        "read_system_xml" Method returns info in a dictionary from the
-        selected system's database
-
-        Args:
-            self
-
-        Returns:
-            List of Dictionaries for system header and system roms
-
-        Raises:
-            None
-        """
-        if db == "hyperspin":
-            xml = os.path.join(self.db_path, self.system + ".xml")
-        else:
-            xml = db
-
-        msg = "Extracting ROM info from {} . . .".format(self.system)
-        logger.info(msg)
-
-        tree = ET.parse(xml)
-        doc = tree.getroot()
-
-        # Read Header
-        system = {}
-        for header in doc.iter("header"):
-            for dat in header.iter():
-                system[dat.tag] = dat.text
-        # Iterate thru the ROMs
-        rom = {}
-        roms = []
-        for game in doc.iter('game'):
-            rom['name'] = game.get('name')
-            rom['image'] = game.get('image')
-            rom['index'] = game.get('index')
-            rom['rom'] = False
-            rom['artwork1'] = False
-            rom['artwork2'] = False
-            rom['artwork3'] = False
-            rom['artwork4'] = False
-            rom['wheel'] = False
-            rom['video'] = False
-            rom['theme'] = False
-
-            for dat in game.iter():
-                rom[dat.tag] = dat.text
-            roms.append(dict(rom))
-
-        for rom in roms:
-            if rom["crc"]:
-                rom["crc"] = rom["crc"].zfill(8).upper()
-
-        return system, roms
-
-    def audit(self, files_to_audit, db, audit_type="rom"):
-        system, roms = self.read_system_xml(db)
-        have = os.listdir(files_to_audit)
-        for fname in have:
-            for rom in roms:
-                if rom["name"] == os.path.splitext(fname)[0]:
-                    rom[audit_type] = True
-
-        return roms
-
-
-class HyperList(Arcade):
-
-    def __init__(self, system):
-        Arcade.__init__(self)
-
-        self.system = system
-
-    def _get_hyperlist(self):
-        """
-        "get_hyperlist" Method downloads the HTML file from the URL for later use and
-        returns a dictionary with info for the specified system
-
-        Args:
-            self
-
-        Returns:
-            parsed dictionary from the URL for the specified system
-
-        Raises:
-            None
-        """
-        url = "http://hyperlist.hyperspin-fe.com/"
-
-        hyper_list_html = os.path.join(self.temp_path, "hyperlist" + TIME_STAMP + ".html")
-
-        if os.path.exists(hyper_list_html):
-            msg = "Using cached version of {}. The cache is good for one day".format(url)
-            logger.info(msg)
-            with open(hyper_list_html, "r") as data:
-                soup = BeautifulSoup(data, "html.parser")
-        else:
-            msg = "Saving {} version for later use".format(url)
-            logger.info(msg)
-            r = requests.get(url)
-            with open(hyper_list_html, "w") as data:
-                data.write(r.text)
-            soup = BeautifulSoup(r.text, "html.parser")
-
-        table = soup.find_all("table", attrs={"class": "tborder"})
-        table = table[1]
-        tbody = table.find('tbody')
-
-        rows = tbody.find_all('tr')
-        hyper_list = []
-        hl = {}
-        for row in rows:
-            cols = row.find_all('td')
-            hl["name"] = cols[0].text.strip()
-            hl["count"] = cols[1].text.strip()
-            hl["version"] = cols[2].text.strip()
-            hl["last_update"] = cols[3].text.strip()
-            hl["who"] = cols[4].text.strip()
-
-            downloads = cols[5]
-            links = downloads.find_all("a", href=True)
-            if len(links) > 0:
-                hl["link"] = url + links[0]["href"]
-            else:
-                hl["link"] = ""
-
-            hyper_list.append(dict(hl))
-
-        hyper_list_info = None
-
-        for i in hyper_list:
-            if self.system == i["name"]:
-                hyper_list_info = i
-
-        return hyper_list_info
-
-    def _download_db(self):
-        if not os.path.exists(self.db_path):
-            os.makedirs(self.db_path)
-        db_path = os.path.join(self.db_path, self.system + ".xml")
-        try:
-            url = self._get_hyperlist()["link"]
-            response = requests.get(url)
-            if response.status_code == 200:
-                with open(db_path, mode="wb") as xml:
-                    xml.write(response.content)
-                return True
-            else:
-                return False
-        except Exception as e:
-            logger.debug(e)
-            return False
-
-    def update_db(self):
-        src = os.path.join(self.db_path, self.system + ".xml")
-        dst = os.path.join(self.db_path, self.system + "_backup_" + TIME_STAMP + ".xml")
-        try:
-            hs = Databases(self.system)
-            system, roms = hs.read_system_xml()
-
-            if system["lastlistupdate"] == self._get_hyperlist()["last_update"]:
-                msg = "{} is up to date with HyperList".format(self.system)
-                logger.info(msg)
-            else:
-                msg = "Downloading updated HyperList database for {}".format(self.system)
-                logger.info(msg)
-                shutil.move(src, dst)
-                self._download_db()
-
-        except:
-            if os.path.isfile(self.system + ".xml"):
-                print("found {} XML Database".format(self.system))
-            else:
-                msg = "HyperList does not have the {} database".format(self.system)
-                logger.info(msg)
-
-
-class HyperSpin(Databases, HyperList):
+    # install helper methods
 
     def __init__(self, system=None):
-        Databases.__init__(self, system)
-        HyperList.__init__(self, system)
+        Arcade.__init__(self)
 
         self.system = system
 
@@ -246,12 +57,131 @@ class HyperSpin(Databases, HyperList):
         self.themes_path = os.path.join(self.media_path, "Themes")
         self.video_path = os.path.join(self.media_path, "Video")
 
+    def _settings_ini(self):
+        msg = "HS: Setting Settings.ini Defaults"
+        logger.info(msg)
+        ini = os.path.join(self.hs_path, "Settings", "Settings.ini")
+        config = configparser.ConfigParser()
+        config.optionxform = str
+        config.read(ini)
+
+        config.set("Main", "Hyperlaunch_Path", os.path.join(self.rl_path, "RocketLauncher.exe"))
+
+        with open(ini, mode="w") as f:
+            config.write(f, space_around_delimiters=False)
+
+    def _main_menu_ini(self):
+        msg = "HS: Setting Main Menu Defaults"
+        logger.info(msg)
+        ini = os.path.join(self.hs_path, "Settings", "Main Menu.ini")
+        config = configparser.ConfigParser()
+        config.optionxform = str
+        config.read(ini)
+
+        config.set("wheel", "alpha", "0")
+        config.set("wheel", "style", "vertical")
+        config.set("sounds", "game_sounds", "false")
+        config.set("sounds", "wheel_click", "false")
+
+        with open(ini, mode="w") as f:
+            config.write(f, space_around_delimiters=False)
+
+    def _rename_genre_art(self):
+        missing_wheel = "Favorites", "Educational"
+        missing_background = "Flying"
+
+        wheel_dir = os.path.join(self.hs_path, "Media", "MAME", "Images", "Genre", "Wheel")
+        background_dir = os.path.join(self.hs_path, "Media", "MAME", "Images", "Genre", "Backgrounds")
+
+        # ------ Backgrounds -----
+
+        src = os.path.join(background_dir, "Board Games Games.png")
+        dst = os.path.join(background_dir, "Board Games.png")
+        shutil.move(src, dst)
+
+        src = os.path.join(self.hs_path, "Media", "MAME", "Images", "Genre", "Genre Image Educational.png")
+        dst = os.path.join(background_dir, "Educational Games.png")
+        shutil.move(src, dst)
+
+        src = os.path.join(background_dir, "Favorites.png")
+        dst = os.path.join(background_dir, "Favorites Games.png")
+        shutil.move(src, dst)
+
+        src = os.path.join(background_dir, "Spinner Gamesjpg.png")
+        dst = os.path.join(background_dir, "Spinner Games.png")
+        shutil.move(src, dst)
+
+        src = os.path.join(self.hs_path, "Media", "MAME", "Images", "Genre", "Utility1.png")
+        dst = os.path.join(background_dir, "Utility Games.png")
+        shutil.move(src, dst)
+
+        # ------ Wheels -----
+
+        src = os.path.join(wheel_dir, "Board Games Games.png")
+        dst = os.path.join(wheel_dir, "Board Games.png")
+        shutil.move(src, dst)
+
+        src = os.path.join(wheel_dir, "Climbing.png")
+        dst = os.path.join(wheel_dir, "Climbing Games.png")
+        shutil.move(src, dst)
+
+        src = os.path.join(wheel_dir, "Educational.png")
+        dst = os.path.join(wheel_dir, "Educational Games.png")
+        shutil.move(src, dst)
+
+        src = os.path.join(wheel_dir, "Mini-Games Games.png")
+        dst = os.path.join(wheel_dir, "Mini-Games.png")
+        shutil.move(src, dst)
+
+        src = os.path.join(wheel_dir, "Role-Playing.png")
+        dst = os.path.join(wheel_dir, "Role-Playing Games.png")
+        shutil.move(src, dst)
+
+        src = os.path.join(wheel_dir, "Utility.png")
+        dst = os.path.join(wheel_dir, "Utility Games.png")
+        shutil.move(src, dst)
+
+        src = os.path.join(wheel_dir, "Handball.png")
+        dst = os.path.join(wheel_dir, "Handball Games.png")
+        shutil.move(src, dst)
+
+    def _extract_archive(self):
+        """
+        "extract_archive" is a method that unzips the archives
+
+        Args:
+            self
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
+        cf = Compressor(self.hyperspin_archive)
+        cf.extract_all(self.hs_path)
+
+        cf = Compressor(self.hyperspin_upgrade_archive)
+        cf.extract_all(self.hs_path)
+
+    def install(self):
+        msg = "Installing HyperSpin"
+        logger.info(msg)
+        if not os.path.exists(self.hs_path):
+            os.makedirs(self.hs_path)
+        self._extract_archive()
+        self._settings_ini()
+        self._main_menu_ini()
+        self._rename_genre_art()
+        rl = RocketLauncher(system=None)
+        exe = os.path.join(self.hs_path, "HyperSpin.exe")
+        rl.write_frontends_ini(fe_name="HyperSpin", executable=exe)
+
 
 if __name__ == "__main__":
     platform = "Nintendo Entertainment System"
     hs = HyperSpin(platform)
-    # header, roms = hs.read_system_xml()
-
-
-
-
+    # hs.install()
+    rl = RocketLauncher(system=platform)
+    exe = os.path.join(hs.hs_path, "HyperSpin.exe")
+    rl.write_frontends_ini(fe_name="HyperSpin", executable=exe)

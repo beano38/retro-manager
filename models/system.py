@@ -4,7 +4,7 @@ import json
 import os
 
 from general import Paths, Compressor
-from hyperspin import HyperSpin
+from utilities import Databases
 from models.rom import Rom
 
 LOG_FILE = "../../arcade.log"
@@ -228,7 +228,7 @@ class System(Paths):
 
         # Get the ROM list from RocketLauncher's Database
         xml = os.path.join(self.rl_path, "RocketLauncherUI", "Databases", self.system, self.system + ".xml")
-        hs = HyperSpin(self.system)
+        hs = Databases(self.system)
         db = hs.audit(files_to_audit=os.path.join(self.rom_path, self.system), db=xml, audit_type="rom")
 
         miss = [rom for rom in db if not rom["rom"]]
@@ -339,7 +339,7 @@ class System(Paths):
         """
         available_roms = self._filter_sets_by_crcs(source_set)
         xml = os.path.join(self.rl_path, "RocketLauncherUI", "Databases", self.system, self.system + ".xml")
-        hs = HyperSpin(self.system)
+        hs = Databases(self.system)
         db = hs.audit(files_to_audit=os.path.join(self.rom_path, self.system), db=xml, audit_type="rom")
 
         miss = [rom for rom in db if not rom["rom"]]
@@ -385,7 +385,7 @@ def main():
     gg = "Sega Game Gear"
 
     platform = System(system=atari)
-    platform.fuzzy_match_set(source_set=platform.nointro, assurance=.60, rename=True, compress=True)
+    matches = platform.fuzzy_match_set(source_set=platform.nointro, assurance=.60, rename=True, compress=True)
 
 
 if __name__ == "__main__":

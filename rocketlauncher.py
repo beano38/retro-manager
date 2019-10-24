@@ -6,7 +6,7 @@ import configparser
 import xml.etree.cElementTree as ET
 import concurrent.futures
 
-from hyperspin import Databases, HyperList
+from utilities import Databases, HyperList
 from general import Arcade, Compressor
 from models.system import System
 
@@ -420,7 +420,7 @@ class RocketLauncher(Databases, HyperList, System):
         msg = "Adding {} to the RocketLauncher Menu".format(self.system)
         logger.info(msg)
         self._download_db()
-        # self.update_db()  # Method from hyperspin.py, HyperList Class
+        # self.update_db()  # Method from utilities.py, HyperList Class
         self.write_emulator_ini()
         try:
             systems = self.read_menu()

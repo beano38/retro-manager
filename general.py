@@ -107,6 +107,8 @@ class Paths:
         # Archives
         self.rocket_launcher_archive = config.get("Installs", "RocketLauncher")
         self.rocket_launcher_media_archive = config.get("Installs", "RocketLauncher_Media")
+        self.hyperspin_archive = config.get("Installs", "HyperSpin")
+        self.hyperspin_upgrade_archive = config.get("Installs", "HyperSpin_Upgrade")
 
 
 class Compressor(Paths):
