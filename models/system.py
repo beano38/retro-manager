@@ -227,10 +227,9 @@ class System(Paths):
         """
 
         # Get the ROM list from RocketLauncher's Database
-        p = Paths()
-        xml = os.path.join(p.rl_path, "RocketLauncherUI", "Databases", self.system, self.system + ".xml")
+        xml = os.path.join(self.rl_path, "RocketLauncherUI", "Databases", self.system, self.system + ".xml")
         hs = HyperSpin(self.system)
-        db = hs.audit(files_to_audit=os.path.join(p.rom_path, self.system), db=xml, audit_type="rom")
+        db = hs.audit(files_to_audit=os.path.join(self.rom_path, self.system), db=xml, audit_type="rom")
 
         miss = [rom for rom in db if not rom["rom"]]
         # have = [rom for rom in db if rom["rom"]]
@@ -249,7 +248,7 @@ class System(Paths):
             for available_rom in available_roms:
                 if rom["crc"] == available_rom["crc"]:
                     f, ext = os.path.splitext(available_rom["compress_name"])
-                    available_rom["dst"] = os.path.join(p.rom_path, self.system, "{}{}".format(rom["name"], ext))
+                    available_rom["dst"] = os.path.join(self.rom_path, self.system, "{}{}".format(rom["name"], ext))
                     final_rom_set.append(available_rom)
 
         msg = "Matched {} ROMs from the available ROMs to the missing ROMs".format(len(final_rom_set))
@@ -257,40 +256,136 @@ class System(Paths):
 
         return final_rom_set
 
-    def build_rom_set(self, source_set, rename=True, compress=True):
-        roms = self._match_crcs(source_set)
+    def _copy_rom(self, src_file, rename=True, compress=True):
+        """
+        "_copy_rom" is a method that will copy or extract the ROM file from its source to it's
+        destination and rename the extension and re-compress
 
-        for rom in roms:
-            # Get compressed file
-            if rom["compress_name"]:
-                c = Compressor(rom["name"])
-                try:
-                    c.extract(rom["compress_name"], dst_dir=os.path.join(self.rom_path, self.system))
-                    src = os.path.join(self.rom_path, self.system, rom["compress_name"])
-                    dst = rom["dst"]
-                    # Rename the ROM to the RocketLauncher Database Name
-                    os.rename(src, dst)
-                except FileExistsError:
-                    msg = "File Exists - {}".format(rom["compress_name"])
-                    logger.debug(msg)
-                # Compress
-                if rename:
-                    r = Rom(name=dst, system=self.system)
-                    new_dst = r.rename_extension(self.extensions)
+        Args:
+            src_file:  Dictionary of values that have the source, destination
+            rename: Boolean, if true, renames the extension
+            compress: Boolean, if true, compresses the file
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
+
+        c = Compressor(src_file["src"])
+        try:
+            c.extract(src_file["extract"], dst_dir=os.path.join(self.rom_path, self.system))
+            src = os.path.join(self.rom_path, self.system, src_file["extract"])
+            dst = os.path.join(self.rom_path, self.system, src_file["db_name"])
+            # Rename the ROM to the RocketLauncher Database Name
+            os.rename(src, dst)
+            # Compress
+            if rename:
+                r = Rom(name=dst, system=self.system)
+                new_dst = r.rename_extension(self.extensions)
                 if compress:
                     c = Compressor(new_dst)
                     c.compress(ext="zip")
+            elif compress:
+                c = Compressor(dst)
+                c.compress(ext="zip")
+        except FileExistsError:
+            msg = "File Exists - {}".format(src_file["extract"])
+            logger.debug(msg)
+
+    def build_rom_set(self, source_set, rename=True, compress=True):
+        """
+        "build_rom_set" is a method that will use all of the helper methods to build a
+        set of ROMs for the system from availble ROMS in the source set by matching the
+        CRC values
+
+        Args:
+            source_set: Path of ROMs to build from
+            rename: Boolean, if true, renames the extension
+            compress: Boolean, if true, compresses the file
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
+        roms = self._match_crcs(source_set)
+        src_file = {}
+        for rom in roms:
+            src_file["db_name"] = rom["dst"]
+            src_file["src"] = rom["name"]
+            src_file["extract"] = rom["compress_name"]
+            self._copy_rom(src_file, rename, compress)
+
+    def fuzzy_match_set(self, source_set, assurance=.75, rename=True, compress=True):
+        """
+        "fuzzy_match_set" is a method that will use all of the helper methods to build a
+        set of ROMs for the system from available ROMS in the source set by matching the
+        text string.  100% matches will be copied
+
+        Args:
+            source_set: Path of ROMs to build from
+            assurance: Percent certainty of match
+            rename: Boolean, if true, renames the extension
+            compress: Boolean, if true, compresses the file
+
+        Returns:
+            matches:  Dictionary of matches that are less than 100%
+
+        Raises:
+            None
+        """
+        available_roms = self._filter_sets_by_crcs(source_set)
+        xml = os.path.join(self.rl_path, "RocketLauncherUI", "Databases", self.system, self.system + ".xml")
+        hs = HyperSpin(self.system)
+        db = hs.audit(files_to_audit=os.path.join(self.rom_path, self.system), db=xml, audit_type="rom")
+
+        miss = [rom for rom in db if not rom["rom"]]
+        msg = "There are {} ROMs missing from {} database".format(len(miss), self.system)
+        logger.info(msg)
+
+        matches = []
+        for missing_rom in miss:
+            for rom in available_roms:
+                fname, ext = os.path.splitext(rom["compress_name"])
+                match = Rom(system=self.system, name=missing_rom["name"])
+                match = match.fuzzy_match(fname, assurance)
+
+                src_file = {}
+                if match:
+                    if match["assurance"] == 1.0:  # If 100% match, copy
+                        msg = "Found a 100% name match for {}, copying to ROM folder".format(match["name"])
+                        logger.info(msg)
+                        src_file["db_name"] = match["name"]
+                        src_file["src"] = rom["name"]
+                        src_file["extract"] = rom["compress_name"]
+                        self._copy_rom(src_file, rename, compress)
+                    else:  # If less than 100%, build a dictionary for later use
+                        src_file["db_name"] = match["name"]
+                        src_file["assurance"] = match["assurance"]
+                        src_file["extract"] = rom["compress_name"]
+                        src_file["src"] = rom["name"]
+                        matches.append(src_file)
+        if len(matches) == 0:
+            msg = "No fuzzy matches found for {}, consider changing assurance".format(self.system)
+            logger.info(msg)
+        else:
+            msg = "Found {} fuzzy matches".format(len(matches))
+            logger.info(msg)
+
+        return matches
 
 
 def main():
     nes = "Nintendo Entertainment System"
-    jag = "Atari Jaguar"
+    atari = "Atari Jaguar"
     itv = "Mattel Intellivision"
     gg = "Sega Game Gear"
 
-    platform = System(system=gg)
-    ss = platform.nointro
-    platform.build_rom_set(source_set=ss)
+    platform = System(system=atari)
+    platform.fuzzy_match_set(source_set=platform.nointro, assurance=.60, rename=True, compress=True)
 
 
 if __name__ == "__main__":

@@ -3,6 +3,7 @@
   "extensions": ["sms", "bin"],
   "year": "1986",
   "platformType": "Console",
+  "emuMoviesName": "Sega_Master_System",
   "romSets": {
     "NoIntro": "Sega - Master System - Mark III",
     "SoftwareLists": "sms",

@@ -1,4 +1,5 @@
 import os
+import time
 
 from rocketlauncher import RocketLauncher
 from models.system import System
@@ -21,9 +22,32 @@ def create_system(system):
     rl.set_up_media(action="link")
 
 
-def update_roms(system, source_set):
+def update_system(system, source_set=[]):
+    # Build ROMs of missing ROMs
     platform = System(system=system)
-    platform.build_rom_set(source_set=source_set)
+    if len(source_set) == 0:
+        curated_sets = platform.tosec_dirs() + platform.software_lists + platform.nointro + platform.goodset
+        platform.build_rom_set(source_set=curated_sets)
+    else:
+        platform.build_rom_set(source_set=source_set)
+    # Update the Media
+    rl = RocketLauncher(system=system)
+    # rl.set_up_media(action="link")
+
+
+def update_system1(system, source_set=[]):
+    import concurrent.futures
+    # Build ROMs of missing ROMs
+    platform = System(system=system)
+    rl = RocketLauncher(system=system)
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        if len(source_set) == 0:
+            curated_sets = platform.tosec_dirs() + platform.software_lists + platform.nointro + platform.goodset
+            executor.submit(platform.build_rom_set, curated_sets)
+        else:
+            executor.submit(platform.build_rom_set, source_set)
+        # Update the Media
+        executor.submit(rl.set_up_media, action="link")
 
 
 def delete_system(system, remove_assets=False):
@@ -47,8 +71,11 @@ def main():
     a78 = "Atari 7800"
     jag = "Atari Jaguar"
     lynx = "Atari Lynx"
+    sg1k = "Sega SG-1000"
     sms = "Sega Master System"
     gen = "Sega Genesis"
+    pico = "Sega Pico"
+    s32 = "Sega 32x"
     gg = "Sega Game Gear"
     tg16 = "NEC TurboGrafx-16"
     pce = "NEC PC Engine"
@@ -60,20 +87,34 @@ def main():
     ps2 = "Sony Playstation 2"
     psp = "Sony PSP"
 
+    t1 = time.perf_counter()
+
     nintendo = [nes, nf, fds, snes, nsv, n64, gb, gba, gbc, vb]
     atari = [a26, a52, a78, jag, lynx]
-    sega = [sms, gen, gg]
+    sega = [sg1k, sms, gen, pico, s32, gg]
 
     # install_arcade()
-    create_system(system=nsv)
-    # delete_system(system=a52, remove_assets=True)
+    # create_system(system=jag)
+    # delete_system(system=jag, remove_assets=True)
 
-    other_set = [r"N:\Arcade\ROMs\{}".format(nes)]
-    other_set = [r"R:\Unmatched\Cart\{}".format(nes)]
-    # update_roms(system=nes, source_set=other_set)
+    dirs = [x[0] for x in os.walk(r"T:\Downloads\NESroms")]
+    update_system(system=nes, source_set=dirs)
 
-    # build = [create_system(build) for build in nintendo]
+    platform = System(system=nes)
+
+    # matches = platform.fuzzy_match_set(source_set=["N:\Arcade\ROMs\{}".format(nes)], assurance=.75)
+    # for i in matches:
+    #     print(i)
+
+    # build = [create_system(build) for build in sega]
     # delete = [delete_system(system=delete, remove_assets=True) for delete in nintendo]
+
+    # for plat in atari:
+    #     other_sets = [r"N:\Arcade\ROMs\{}".format(plat), r"R:\Unmatched\Cart\{}".format(plat)]
+    #     update_system(system=plat, source_set=other_sets)
+
+    t2 = time.perf_counter()
+    print("This took {} seconds".format(t2-t1))
 
 
 if __name__ == "__main__":

@@ -4,6 +4,7 @@ import os
 import shutil
 import configparser
 import xml.etree.cElementTree as ET
+import concurrent.futures
 
 from hyperspin import Databases, HyperList
 from general import Arcade, Compressor
@@ -487,6 +488,7 @@ class RocketLauncher(Databases, HyperList, System):
         media_paths = os.listdir(src_path)
 
         # If Linking files, remove the old file before appending the new symlinks
+        links = []
         batch_file = os.path.join(self.root_path, "{} Media Links run as Admin.bat".format(self.system))
         if os.path.isfile(batch_file):
             os.remove(batch_file)
@@ -621,13 +623,17 @@ class RocketLauncher(Databases, HyperList, System):
                     elif action == "link":
                         if not os.path.exists(os.path.dirname(dst)):
                             os.makedirs(os.path.dirname(dst))  # Create directory path if it doesn't exist
-                        with open(batch_file, mode="a") as f:
-                            f.write('mklink "{}" "{}"\n'.format(dst, src))
+                        links.append('mklink "{}" "{}"\n'.format(dst, src))
                     else:
                         print("Action: {} not permitted".format(action))
                 except FileNotFoundError as e:
                     msg = "RL: {} will not be moved: {}".format(file[0] + file[1], e)
                     logger.info(msg)
+
+        if len(links) > 0:
+            with open(batch_file, mode="a") as f:
+                for link in links:
+                    f.write(link)
 
 
 if __name__ == "__main__":

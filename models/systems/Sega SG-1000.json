@@ -1,14 +1,15 @@
 {
   "emulator": "RetroArch",
-  "extensions": ["bin"],
+  "extensions": ["sg", "bin"],
   "year": "19xx",
   "platformType": "Console",
+  "emuMoviesName": "Sega_SG_1000",
   "romSets": {
     "NoIntro": "Sega - SG-1000",
     "SoftwareLists": "sg1000",
     "TOSEC": "Game 1000",
-    "GoodSet": null,
-    "NoGoodSet": null
+    "GoodSet": "",
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

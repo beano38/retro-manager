@@ -1,4 +1,5 @@
 import os
+import difflib
 
 from general import Paths, Compressor
 
@@ -21,6 +22,7 @@ class Rom(Compressor):
 
         Args:
             self
+            extension: the name of the extension to rename to.
 
         Returns:
             Newly named ROM name
@@ -45,6 +47,29 @@ class Rom(Compressor):
             msg = "{}'s extension is named correctly".format(self.name)
 
         return os.path.join(self.rom_path, self.system, f + extension)
+
+    def fuzzy_match(self, file_to_match, assurance=.75):
+        """
+        "fuzzy_match" uses the difflib Sequence Matcher algorithm to match the text
+        from one string to another string
+
+        Args:
+            self
+            file_to_match: String of filename to match against the database
+            assurance: The percent of certainty that the strings match
+
+        Returns:
+            Newly named ROM name
+
+        Raises:
+            None
+        """
+        match = difflib.SequenceMatcher(None, self.name, file_to_match).ratio()
+        if match >= assurance:
+            output = {"name": self.name, "match": file_to_match, "assurance": match}
+        else:
+            output = False
+        return output
 
 
 # def rename_extensions(system):

@@ -3,6 +3,7 @@
   "extensions": ["gg"],
   "year": "1990",
   "platformType": "Handheld",
+  "emuMoviesName": "Sega_Game_Gear",
   "romSets": {
     "GoodSet": "Good Sets_GoodGG v3 20",
     "NoIntro": "Sega - Game Gear",

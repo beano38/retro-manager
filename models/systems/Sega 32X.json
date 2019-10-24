@@ -3,11 +3,12 @@
   "extensions": ["32x"],
   "year": "19xx",
   "platformType": "Console",
+  "emuMoviesName": "Sega_32x",
   "romSets": {
     "NoIntro": "Sega - 32X",
     "SoftwareLists": "32x",
     "TOSEC": "32X",
-    "GoodSet": null,
+    "GoodSet": "",
     "NoGoodSet": null
   },
   "GamesDbData": {

@@ -3,6 +3,7 @@
   "extensions": ["md"],
   "year": "19xx",
   "platformType": "Console",
+  "emuMoviesName": "Sega_Pico",
   "romSets": {
     "NoIntro": "Sega - PICO",
     "SoftwareLists": "pico",
