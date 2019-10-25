@@ -1,7 +1,7 @@
 {
   "emulator": "Arculator",
   "extensions": ["adf"],
-  "year": "19xx",
+  "year": "1987",
   "platformType": "Computer",
   "romSets": {
     "GoodSet": null,

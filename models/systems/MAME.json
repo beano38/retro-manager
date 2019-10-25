@@ -2,7 +2,7 @@
   "emulator": "MAME",
   "extensions": ["zip"],
   "year": "1978",
-  "platformType": "console",
+  "platformType": "Arcade",
   "romSets": {
     "GoodSet": null,
     "NoIntro": null,

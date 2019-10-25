@@ -1,7 +1,7 @@
 {
   "emulator": "WinVICE",
   "extensions": ["d64", "prg", "tap"],
-  "year": "19xx",
+  "year": "1984",
   "platformType": "Console",
   "romSets": {
     "GoodSet": null,

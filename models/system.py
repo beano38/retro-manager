@@ -22,7 +22,7 @@ stream_handler = logging.StreamHandler()
 stream_handler.setLevel(logging.INFO)
 stream_handler.setFormatter(LOG_FORMAT)
 
-logger.addHandler(file_handler)
+# logger.addHandler(file_handler)
 logger.addHandler(stream_handler)
 
 

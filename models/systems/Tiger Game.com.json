@@ -1,7 +1,7 @@
 {
   "emulator": "RetroArch",
   "extensions": ["bin"],
-  "year": "19xx",
+  "year": "1997",
   "platformType": "Console",
   "romSets": {
     "GoodSet": null,

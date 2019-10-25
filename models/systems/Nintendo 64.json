@@ -4,7 +4,7 @@
     "z64", "n64", "v64"
   ],
   "year": "1996",
-  "platformType": "console",
+  "platformType": "Console",
   "emuMoviesName": "Nintendo_N64",
   "romSets": {
     "GoodSet": ".",

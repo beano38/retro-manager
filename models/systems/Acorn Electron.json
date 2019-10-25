@@ -1,7 +1,7 @@
 {
   "emulator": "Arculator",
   "extensions": ["ssd", "uef"],
-  "year": "19xx",
+  "year": "1983",
   "platformType": "Computer",
   "romSets": {
     "GoodSet": null,

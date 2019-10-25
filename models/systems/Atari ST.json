@@ -1,7 +1,7 @@
 {
   "emulator": "Hatari",
   "extensions": ["ipf", "jag", "j64"],
-  "year": "19xx",
+  "year": "1985",
   "platformType": "Computer",
   "romSets": {
     "GoodSet": null,

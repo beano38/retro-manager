@@ -1,0 +1,82 @@
+{
+  "emulator": "retroarch",
+  "extensions": ["iso", "cso"],
+  "year": "1994",
+  "platformType": "Console",
+  "romSets": {
+    "NoIntro": "",
+    "SoftwareLists": "",
+    "TOSEC": "",
+    "GoodSet": "",
+    "NoGoodSet": ""
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "13",
+            "Platform": "Sony Playstation Portable",
+            "console": "http://www.youtube.com/watch?v=13.png",
+            "controller": "http://www.youtube.com/watch?v=13.png",
+            "overview": "The PlayStation Portable, officially abbreviated PSP, is a handheld game console manufactured and marketed by Sony Corporation.  The PlayStation Portable is the first and only handheld video game console to use an optical disc format, Universal Media Disc (UMD), as its primary storage medium.",
+            "developer": "Sony",
+            "manufacturer": "Sony",
+            "cpu": "MIPS R4000-based",
+            "memory": "32MB",
+            "graphics": "Sony CXD187",
+            "sound": "Embedded Virtual Mobile Engine (VME) Sound Core",
+            "display": "480 \u00d7 272",
+            "media": "UMD Disc",
+            "maxcontrollers": "1",
+            "Youtube": "http://www.youtube.com/watch?v=UqgEify4DOU",
+            "Rating": "6",
+            "Images": {
+                "fanart": [
+                    {
+                        "original": {
+                            "@width": "1920",
+                            "@height": "1080",
+                            "#text": "platform/fanart/13-1.jpg"
+                        },
+                        "thumb": "platform/fanart/thumb/13-1.jpg"
+                    },
+                    {
+                        "original": {
+                            "@width": "1920",
+                            "@height": "1080",
+                            "#text": "platform/fanart/13-2.jpg"
+                        },
+                        "thumb": "platform/fanart/thumb/13-2.jpg"
+                    },
+                    {
+                        "original": {
+                            "@width": "1920",
+                            "@height": "1080",
+                            "#text": "platform/fanart/13-3.jpg"
+                        },
+                        "thumb": "platform/fanart/thumb/13-3.jpg"
+                    }
+                ],
+                "boxart": {
+                    "@side": "back",
+                    "@width": "1152",
+                    "@height": "1987",
+                    "#text": "platform/boxart/13-1.jpg"
+                },
+                "banner": [
+                    {
+                        "@width": "760",
+                        "@height": "140",
+                        "#text": "platform/banners/13-1.png"
+                    },
+                    {
+                        "@width": "760",
+                        "@height": "140",
+                        "#text": "platform/banners/13-2.jpg"
+                    }
+                ],
+                "consoleart": "platform/consoleart/13.png",
+                "controllerart": "platform/controllerart/13.png"
+            }
+        }
+    }
+}

@@ -1,7 +1,7 @@
 {
   "emulator": "RetroArch",
   "extensions": ["sg", "bin"],
-  "year": "19xx",
+  "year": "1983",
   "platformType": "Console",
   "emuMoviesName": "Sega_SG_1000",
   "romSets": {

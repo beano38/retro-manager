@@ -1,7 +1,7 @@
 {
   "emulator": "RetroArch",
   "extensions": ["ws", "bin"],
-  "year": "19xx",
+  "year": "1999",
   "platformType": "Handheld",
   "romSets": {
     "GoodSet": "Good Sets_GoodWSx v3 14 (1 Miss)",

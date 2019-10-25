@@ -1,0 +1,83 @@
+{
+  "emulator": "Fusion",
+  "extensions": ["gen", "smd", "md", "bin"],
+  "year": "1999",
+  "platformType": "Console",
+  "emuMoviesName": "Sega_Dreamcast",
+  "romSets": {
+    "NoIntro": "",
+    "SoftwareLists": "",
+    "TOSEC": "",
+    "GoodSet": "",
+    "NoGoodSet": ""
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "18",
+            "Platform": "Sega Genesis",
+            "console": "http://www.youtube.com/watch?v=18.png",
+            "controller": "http://www.youtube.com/watch?v=18.png",
+            "overview": "The Sega Genesis is a fourth-generation video game console developed and produced by Sega. It was originally released in Japan in 1988 as Mega Drive, then in North America in 1989 as Sega Genesis, and in Europe, Australia and other PAL regions in 1990 as Mega Drive.\n\nThe reason for the two names is that Sega was unable to secure legal rights to the Mega Drive name in North America. The Sega Genesis is Sega&#039;s third console and the successor to the Sega Master System with which it has backward compatibility.\n\nThe controversy over games like Mortal Kombat in the United States forced Sega to create the first content rating system for video games, the Videogame Rating Council, rather than have the games heavily censored. The rating system allowed Sega to ship games with little to no censorship and gave it a competive edge when the same game was released by Nintendo. The success of those games eventually forced Nintendo to join its rating system.",
+            "developer": "Sega",
+            "manufacturer": "Sega",
+            "cpu": "Motorola 68000",
+            "memory": "64K work RAM (68000), 64K video RAM, 8K work RAM (Z80)",
+            "graphics": "Yamaha YM7101",
+            "sound": "Yamaha YM2612 5 channel FM and 1 channel FM/PCM, Texas Instruments SN76489 4 channel PSG (Programmable Sound Generator)",
+            "display": "320\u00d7448",
+            "media": "Cartridge",
+            "maxcontrollers": "2",
+            "Youtube": "http://www.youtube.com/watch?v=bun8tA_ksZw",
+            "Rating": "6.7",
+            "Images": {
+                "fanart": [
+                    {
+                        "original": {
+                            "@width": "1920",
+                            "@height": "1080",
+                            "#text": "platform/fanart/18-1.jpg"
+                        },
+                        "thumb": "platform/fanart/thumb/18-1.jpg"
+                    },
+                    {
+                        "original": {
+                            "@width": "1920",
+                            "@height": "1080",
+                            "#text": "platform/fanart/18-2.jpg"
+                        },
+                        "thumb": "platform/fanart/thumb/18-2.jpg"
+                    },
+                    {
+                        "original": {
+                            "@width": "1920",
+                            "@height": "1080",
+                            "#text": "platform/fanart/18-3.jpg"
+                        },
+                        "thumb": "platform/fanart/thumb/18-3.jpg"
+                    }
+                ],
+                "boxart": {
+                    "@side": "back",
+                    "@width": "1183",
+                    "@height": "1561",
+                    "#text": "platform/boxart/18-2.jpg"
+                },
+                "banner": [
+                    {
+                        "@width": "760",
+                        "@height": "140",
+                        "#text": "platform/banners/18-1.png"
+                    },
+                    {
+                        "@width": "760",
+                        "@height": "140",
+                        "#text": "platform/banners/18-2.jpg"
+                    }
+                ],
+                "consoleart": "platform/consoleart/18.png",
+                "controllerart": "platform/controllerart/18.png"
+            }
+        }
+    }
+}

@@ -2,7 +2,7 @@
   "emulator": "WinArcadia",
   "extensions": "bin",
   "platformType": "Console",
-  "year": "19xx",
+  "year": "1978",
   "romSets": {
     "GoodSet": null,
     "NoIntro": "RCA - Studio II",

@@ -1,7 +1,7 @@
 {
   "emulator": "RetroArch",
   "extensions": ["32x"],
-  "year": "19xx",
+  "year": "1994",
   "platformType": "Console",
   "emuMoviesName": "Sega_32x",
   "romSets": {

@@ -27,7 +27,7 @@ stream_handler = logging.StreamHandler()
 stream_handler.setLevel(logging.INFO)
 stream_handler.setFormatter(LOG_FORMAT)
 
-logger.addHandler(file_handler)
+# logger.addHandler(file_handler)
 logger.addHandler(stream_handler)
 
 
@@ -327,8 +327,7 @@ class RocketLauncher(Databases, HyperList, System):
                           manufacturer=self.full_sys["manufacturer"],
                           enabled=self.full_sys["enabled"])
 
-        fe = Arcade()
-        pretty = fe.prettify(root)
+        pretty = self.prettify(root)
         with open(xml, mode="w") as xml:
             xml.write(pretty)
 
@@ -489,7 +488,7 @@ class RocketLauncher(Databases, HyperList, System):
 
         # If Linking files, remove the old file before appending the new symlinks
         links = []
-        batch_file = os.path.join(self.root_path, "{} Media Links run as Admin.bat".format(self.system))
+        batch_file = os.path.join(self.root_path, "{} RL Media Links run as Admin.bat".format(self.system))
         if os.path.isfile(batch_file):
             os.remove(batch_file)
 

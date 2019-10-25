@@ -1,7 +1,7 @@
 {
   "emulator": "RetroArch",
   "extensions": ["bin", "min"],
-  "year": "19xx",
+  "year": "2001",
   "platformType": "Handheld",
   "romSets": {
     "GoodSet": null,

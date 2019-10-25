@@ -1,7 +1,7 @@
 {
   "emulator": "Daphne",
   "extensions": ["txt"],
-  "year": "19xx",
+  "year": "1992",
   "platformType": "Console",
   "romSets": {
     "GoodSet": null,
@@ -19,7 +19,7 @@
             "console": "xxx",
             "overview": "xxx",
             "developer": "xxx",
-            "manufacturer": "xxx",
+            "manufacturer": "Daphne",
             "cpu": "xxx",
             "memory": "xxx",
             "sound": "xxx",

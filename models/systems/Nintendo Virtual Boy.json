@@ -1,7 +1,7 @@
 {
   "emulator": "RetroArch",
   "extensions": ["vb"],
-  "year": "19xx",
+  "year": "1995",
   "platformType": "Handheld",
   "emuMoviesName": "Nintendo_Virtual_Boy",
   "romSets": {
