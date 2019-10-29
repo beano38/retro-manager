@@ -497,6 +497,18 @@ class Compressor(Paths):
             msg = line.decode().strip("\n\r")
             logger.debug(msg)
 
+    def compress_dir(self, dst_file, remove_source=True):
+        with zipfile.ZipFile(dst_file, "w", zipfile.ZIP_DEFLATED, allowZip64=True) as zf:
+            absolute_src = os.path.abspath(self.src_file)
+            for dirname, subdirs, files in os.walk(self.src_file):
+                for fname in files:
+                    absolute_name = os.path.join(dirname, fname)
+                    arcname = absolute_name[len(absolute_src) + 1:]
+                    zf.write(absolute_name, arcname)
+
+        if remove_source:
+            shutil.rmtree(self.src_file)
+
 
 class Arcade(Paths):
 

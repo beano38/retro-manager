@@ -3,6 +3,7 @@
   "extensions": ["pce"],
   "year": "1989",
   "platformType": "Console",
+  "emuMoviesName": "NEC_TurboGrafx_16",
   "romSets": {
     "GoodSet": "Good Sets_GoodPCE v1 09a",
     "NoIntro": "NEC - PC Engine - TurboGrafx 16",

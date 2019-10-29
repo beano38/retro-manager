@@ -495,13 +495,13 @@ class RocketLauncher(Databases, HyperList, System):
         for path in media_paths:
             src_dir = os.path.join(src_path, path)
             if action == "copy":
-                msg = "RL: Copying files from {}".format(src_dir)
+                msg = "Copying files from {}".format(src_dir)
             elif action == "move":
-                msg = "RL: Moving files from {}".format(src_dir)
+                msg = "Moving files from {}".format(src_dir)
             elif action == "link":
-                msg = "RL: Creating symbolic link from {}".format(src_dir)
+                msg = "Creating symbolic link from {}".format(src_dir)
             else:
-                msg = "RL: Action {} not permitted".format(action)
+                msg = "Action {} not permitted".format(action)
             logger.info(msg)
             files = os.listdir(src_dir)
 

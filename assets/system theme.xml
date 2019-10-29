@@ -1,0 +1,22 @@
+<Theme>
+    <video w="460"
+           h="300"
+           x="290"
+           y="390"
+           r="0"
+           below="no"
+           forceaspect="width"
+           time="0.5"
+           delay="0"
+           bsize="0"
+           bsize2="0"
+           bsize3="0"
+           bcolor="0"
+           bcolor2="0"
+           bcolor3="0"
+           bshape="square"
+           type="grow"
+           start="none"/>
+    <artwork1 x="320" y="70" time="0.5" delay ="0" type="none" start="top" rest="none"/>
+    <artwork3 x="470" y="540" r="0" time="0.5" delay ="0" type="grow" start="none" rest="none"/>
+</Theme>

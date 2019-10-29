@@ -2,17 +2,23 @@ import os
 import time
 
 from rocketlauncher import RocketLauncher
+from hyperspin import HyperSpin
 from models.system import System
 
 
 def install_arcade():
-    rl = RocketLauncher(system="Nintendo Entertainment System")
+    rl = RocketLauncher(system="MAME")
     rl.install()
+    hs = HyperSpin(system="MAME")
+    hs.install()
 
 
-def create_system(system):
+def create_system(system, fe="HyperSpin"):
     rl = RocketLauncher(system=system)
     rl.new_system()
+    if fe == "HyperSpin":
+        hs = HyperSpin(system=system)
+        hs.new_system(system=system, link=True, action="link", three_d=False)
 
     # Build ROM set
     platform = System(system=system)
@@ -53,6 +59,8 @@ def update_system1(system, source_set=[]):
 def delete_system(system, remove_assets=False):
     rl = RocketLauncher(system=system)
     rl.remove_system(remove_media=remove_assets)
+    hs = HyperSpin(system=system)
+    hs.remove_system(remove_media=remove_assets)
 
 
 def main():
@@ -93,16 +101,11 @@ def main():
     atari = [a26, a52, a78, jag, lynx]
     sega = [sg1k, sms, gen, pico, s32, gg]
 
-    # install_arcade()
-    # create_system(system=jag)
+    install_arcade()
+    create_system(system=tg16)
     # delete_system(system=jag, remove_assets=True)
 
-    update_system(system=nes, source_set=[r"N:\Arcade\ROMs\{}".format(nes), r"R:\Unmatched\Cart\{}".format(nes)])
-
-    platform = System(system=nes)
-    matches = platform.fuzzy_match_set(source_set=[r"N:\Arcade\ROMs\{}".format(nes), r"R:\Unmatched\Cart\{}".format(nes)])
-    # for i in matches:
-    #     print(i)
+    # update_system(system=tg16, source_set=[r"N:\Arcade\ROMs\{}".format(nes), r"R:\Unmatched\Cart\{}".format(nes)])
 
     # build = [create_system(build) for build in sega]
     # delete = [delete_system(system=delete, remove_assets=True) for delete in nintendo]
