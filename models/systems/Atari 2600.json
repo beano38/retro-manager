@@ -8,10 +8,10 @@
   "romSets": {
     "GoodSet": "Good Sets_Good2600 v3 14 (14 Miss)",
     "NoIntro": "Atari - 2600",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": ["a2600", "a2600_cass"],
     "TOSEC": "2600 & VCS",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
     "baseImgUrl": "http://thegamesdb.net/banners/",

@@ -3,13 +3,14 @@
   "extensions": ["bin"],
   "year": "1995",
   "platformType": "Console",
+  "emuMoviesName": "Funtech_Super_Acan",
   "romSets": {
-    "GoodSet": null,
+    "GoodSet": "",
     "NoIntro": "Funtech - Super Acan",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "supracan",
     "TOSEC": "Super Acan",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

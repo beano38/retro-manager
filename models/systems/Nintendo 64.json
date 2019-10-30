@@ -9,10 +9,10 @@
   "romSets": {
     "GoodSet": ".",
     "NoIntro": "Nintendo - Nintendo 64",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "n64",
     "TOSEC": "64",
-    "NoGoodSet": null
+    "NoGoodSet": "null"
   },
   "GamesDbData": {
     "baseImgUrl": "http://thegamesdb.net/banners/",

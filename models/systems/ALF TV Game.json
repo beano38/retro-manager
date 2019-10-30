@@ -3,13 +3,14 @@
   "extensions": ["ssd", "uef"],
   "year": "19xx",
   "platformType": "Computer",
+  "emuMoviesName": "Alf_TV_Game",
   "romSets": {
-    "GoodSet": null,
-    "NoIntro": null,
-    "Redump": null,
-    "SoftwareLists": null,
-    "TOSEC": null,
-    "NoGoodSet": null
+    "GoodSet": "",
+    "NoIntro": "",
+    "Redump": "",
+    "SoftwareLists": "",
+    "TOSEC": "",
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

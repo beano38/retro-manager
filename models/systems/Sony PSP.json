@@ -3,12 +3,13 @@
   "extensions": ["iso", "cso"],
   "year": "2004",
   "platformType": "Handheld",
+  "emuMoviesName": "Sony_PSP",
   "romSets": {
     "NoIntro": "Sony - PSP",
-    "SoftwareLists": null,
-    "TOSEC": null,
-    "GoodSet": null,
-    "NoGoodSet": null
+    "SoftwareLists": "",
+    "TOSEC": "",
+    "GoodSet": "",
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

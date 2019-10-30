@@ -6,29 +6,39 @@ from hyperspin import HyperSpin
 from models.system import System
 
 
-def install_arcade():
+def install_arcade(fe="HyperSpin"):
     rl = RocketLauncher(system="MAME")
     rl.install()
-    hs = HyperSpin(system="MAME")
-    hs.install()
+    if fe == "HyperSpin" or fe == "all":
+        hs = HyperSpin(system="MAME")
+        hs.install()
+    elif fe == "RetroFE" or fe == "all":
+        pass
+    elif fe == "MaLa" or fe == "all":
+        pass
 
 
 def create_system(system, fe="HyperSpin"):
     rl = RocketLauncher(system=system)
     rl.new_system()
-    if fe == "HyperSpin":
-        hs = HyperSpin(system=system)
-        hs.new_system(system=system, link=True, action="link", three_d=False)
 
     # Build ROM set
     platform = System(system=system)
     curated_sets = platform.tosec_dirs() + platform.software_lists + platform.nointro + platform.goodset
     platform.build_rom_set(source_set=curated_sets)
+
     # Set up Media
     rl.set_up_media(action="link")
+    if fe == "HyperSpin" or fe == "all":
+        hs = HyperSpin(system=system)
+        hs.new_system(action="link", three_d=False)
+    elif fe == "RetroFE" or fe == "all":
+        pass
+    elif fe == "MaLa" or fe == "all":
+        pass
 
 
-def update_system(system, source_set=[]):
+def update_system(system, source_set, action="copy", three_d=False, fe="HyperSpin", update_rl_media=False):
     # Build ROMs of missing ROMs
     platform = System(system=system)
     if len(source_set) == 0:
@@ -37,30 +47,41 @@ def update_system(system, source_set=[]):
     else:
         platform.build_rom_set(source_set=source_set)
     # Update the Media
-    rl = RocketLauncher(system=system)
-    # rl.set_up_media(action="link")
+    if update_rl_media:
+        rl = RocketLauncher(system=system)
+        rl.set_up_media(action="link")
+
+    if fe == "HyperSpin" or fe == "all":
+        hs = HyperSpin(system=system)
+        hs.update_system(action=action, three_d=three_d)
+    elif fe == "RetroFE" or fe == "all":
+        pass
+    elif fe == "MaLa" or fe == "all":
+        pass
 
 
-def update_system1(system, source_set=[]):
-    import concurrent.futures
-    # Build ROMs of missing ROMs
-    platform = System(system=system)
-    rl = RocketLauncher(system=system)
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        if len(source_set) == 0:
-            curated_sets = platform.tosec_dirs() + platform.software_lists + platform.nointro + platform.goodset
-            executor.submit(platform.build_rom_set, curated_sets)
-        else:
-            executor.submit(platform.build_rom_set, source_set)
-        # Update the Media
-        executor.submit(rl.set_up_media, action="link")
-
-
-def delete_system(system, remove_assets=False):
+def delete_system(system, fe="HyperSpin", remove_assets=False):
     rl = RocketLauncher(system=system)
     rl.remove_system(remove_media=remove_assets)
-    hs = HyperSpin(system=system)
-    hs.remove_system(remove_media=remove_assets)
+
+    if fe == "HyperSpin" or fe == "all":
+        hs = HyperSpin(system=system)
+        hs.remove_system(remove_media=remove_assets)
+    elif fe == "RetroFE" or fe == "all":
+        pass
+    elif fe == "MaLa" or fe == "all":
+        pass
+
+
+def bunch_of_new_stuff(group):
+    for i in group:
+        create_system(system=i, fe="all")
+        update_system(system=i,
+                      source_set=[r"N:\Arcade\ROMs\{}".format(i), r"R:\Unmatched\Cart\{}".format(i)],
+                      action="link",
+                      three_d=False,
+                      fe="all",
+                      update_rl_media=False)
 
 
 def main():
@@ -85,11 +106,15 @@ def main():
     pico = "Sega Pico"
     s32 = "Sega 32x"
     gg = "Sega Game Gear"
+    sfx = "NEC SuperGrafx"
     tg16 = "NEC TurboGrafx-16"
     pce = "NEC PC Engine"
     ngp = "SNK Neo Geo Pocket"
     ngc = "SNK Neo Geo Pocket Color"
+    aes = "SNK Neo Geo AES"
+    mvs = "SNK Neo Geo MVS"
     itv = "Mattel Intellivision"
+    cv = "ColecoVision"
     mame = "MAME"
     ps1 = "Sony Playstation"
     ps2 = "Sony Playstation 2"
@@ -100,19 +125,28 @@ def main():
     nintendo = [nes, nf, fds, snes, nsv, n64, gb, gba, gbc, vb]
     atari = [a26, a52, a78, jag, lynx]
     sega = [sg1k, sms, gen, pico, s32, gg]
+    nec = [sfx, tg16, pce]
+    snk = [ngp, ngc, aes, mvs]
+    carts = [itv, cv]
 
-    install_arcade()
-    create_system(system=tg16)
+    # install_arcade(fe="all")
+
+    system = lynx
+    # create_system(system=system, fe="all")
+    update_system(system=system,
+                  source_set=[r"N:\Arcade\ROMs\{}".format(system), r"R:\Unmatched\Cart\{}".format(system)],
+                  action="link",
+                  three_d=False,
+                  fe="all",
+                  update_rl_media=False)
+
     # delete_system(system=jag, remove_assets=True)
 
-    # update_system(system=tg16, source_set=[r"N:\Arcade\ROMs\{}".format(nes), r"R:\Unmatched\Cart\{}".format(nes)])
-
-    # build = [create_system(build) for build in sega]
-    # delete = [delete_system(system=delete, remove_assets=True) for delete in nintendo]
-
-    # for plat in atari:
-    #     other_sets = [r"N:\Arcade\ROMs\{}".format(plat), r"R:\Unmatched\Cart\{}".format(plat)]
-    #     update_system(system=plat, source_set=other_sets)
+    # platform = System(system=system)
+    # matches = platform.fuzzy_match_set(source_set=platform.nointro, assurance=.75, rename=True, compress=True)
+    # matches = platform.fuzzy_match_set(
+    #     source_set=[r"N:\Arcade\ROMs\{}".format(system), r"R:\Unmatched\Cart\{}".format(system)],
+    #     assurance=.75, rename=True, compress=True)
 
     t2 = time.perf_counter()
     print("This took {} seconds".format(t2-t1))

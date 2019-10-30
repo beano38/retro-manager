@@ -9,7 +9,7 @@
     "SoftwareLists": "pico",
     "TOSEC": "Pico",
     "GoodSet": "Good Sets_GoodPico v3 15 (5 Miss)",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

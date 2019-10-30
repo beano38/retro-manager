@@ -41,7 +41,7 @@ class Rom(Compressor):
         if ext != extension and ext not in exclude_ext and rom_path is not os.path.isdir(rom_path):
             dst = os.path.join(self.rom_path, self.system, f + extension)
             msg = "Renaming {} to {}".format(self.name, f + extension)
-            print(msg)
+
             os.rename(rom_path, dst)
         else:
             msg = "{}'s extension is named correctly".format(self.name)

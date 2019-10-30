@@ -3,7 +3,10 @@ import shutil
 import logging
 import configparser
 import time
+import math
 import xml.etree.cElementTree as ET
+
+from PIL import Image
 
 from general import Arcade, Compressor
 from utilities import Databases
@@ -271,7 +274,7 @@ class HyperSpin(Arcade, System):
         theme_path = os.path.join(self.media_path, "Themes")
         video_path = os.path.join(self.media_path, "Video")
 
-        dirs = [self.artwork1_path, self.artwork2_path, self.artwork3_path, self.artwork3_path, self. backgrounds_path,
+        dirs = [self.artwork1_path, self.artwork2_path, self.artwork3_path, self.artwork4_path, self. backgrounds_path,
                 self.genre_wheel_path, self.genre_backgrounds_path, self.letters_path, self.other_path,
                 self.particle_path, self.special_path, self.wheel_path, sound_path, theme_path, video_path]
 
@@ -316,21 +319,36 @@ class HyperSpin(Arcade, System):
 
         config.set("exe info", "rompath", os.path.relpath(os.path.join(self.rom_path, self.system), self.hs_path))
         config.set("exe info", "romextension", extension)
-        config.set("wheel", "alpha", "0")
+        config.set("wheel", "alpha", "1")
         config.set("wheel", "style", "vertical")
+
+        config.set("wheel", "y_rotation", "center")
+
+        config.set("wheel", "norm_large", "256")
+        config.set("wheel", "norm_small", "200")
+        config.set("wheel", "vert_large", "300")
+        config.set("wheel", "vert_small", "150")
+
+        config.set("wheel", "horz_wheel_y", "575")
+
+        config.set("video defaults", "path", os.path.join(self.media_path, "Video"))
+
         config.set("sounds", "game_sounds", "false")
         config.set("sounds", "wheel_click", "false")
+
+        config.set("navigation", "remove_info_wheel", "true")
+        config.set("navigation", "remove_info_text", "true")
 
         with open(ini, mode="w") as f:
             config.write(f, space_around_delimiters=False)
 
-    def _copy_genre_art(self, link):
+    def _copy_genre_art(self, action):
         """
         "_copy_genre_art" copies default Genre art, backgrounds and wheels to the new system
 
         Args:
             self
-            link (required): if true, uses a symbolic link, rather than copying the file
+            action (required): Sets the action to take, (copy, link)
 
         Returns:
             None
@@ -340,69 +358,49 @@ class HyperSpin(Arcade, System):
         """
         # If Linking files, remove the old file before appending the new symlinks
         links = []
-        batch_file = os.path.join(self.root_path, "{} Genre Links run as Admin.bat".format(self.system))
+        batch_file = os.path.join(self.temp_path, "{} Genre Links run as Admin.bat".format(self.system))
         if os.path.isfile(batch_file):
             os.remove(batch_file)
 
-        if link:
-            msg = "Linking Genre Art for {}".format(self.system)
-            logger.info(msg)
-        else:
-            msg = "Copying Genre Art for {}".format(self.system)
-            logger.info(msg)
+        # Set paths
+        src_path = os.path.join(self.hs_path, "Media", "MAME", "Images", "Genre")
+        src_logos = os.listdir(os.path.join(src_path, "Wheel"))
+        src_bgs = os.listdir(os.path.join(src_path, "Backgrounds"))
 
+        dirs = [self.genre_backgrounds_path, self.genre_wheel_path]
+
+        wheels = []
+        backgrounds = []
+        output = {}
+
+        # We will use the MAME assets as our base
         if not self.system == "MAME":
-            src_dir = os.path.join(self.hs_path, "Media", "MAME", "Images", "Genre")
-            dst_dir = os.path.join(self.hs_path, "Media", self.system, "Images", "Genre")
-
-            wheel_dir = os.path.join(dst_dir, "Wheel")
-            background_dir = os.path.join(dst_dir, "Backgrounds")
-            create_dirs = [wheel_dir, background_dir]
-
-            for directory in create_dirs:
-                if not os.path.exists(directory):
-                    os.makedirs(directory)
-
-            wheels = os.listdir(os.path.join(src_dir, "Wheel"))
-            for wheel in wheels:
-                src = os.path.join(src_dir, "Wheel", wheel)
-                dst = os.path.join(wheel_dir, wheel)
-                if link:
-                    links.append('mklink "{}" "{}"\n'.format(dst, src))
-                else:
-                    if not os.path.exists(dst):
-                        shutil.copy(src, dst)
-
-            backgrounds = os.listdir(os.path.join(src_dir, "Backgrounds"))
-            for background in backgrounds:
-                src = os.path.join(src_dir, "Backgrounds", background)
-                dst = os.path.join(background_dir, background)
-                if link:
-                    links.append('mklink "{}" "{}"\n'.format(dst, src))
-                else:
-                    if not os.path.exists(dst):
-                        shutil.copy(src, dst)
-
-            src_dir = os.path.join(self.hs_path, "Media", "MAME", "Images", "Special")
-            dst_dir = os.path.join(self.hs_path, "Media", self.system, "Images", "Special")
-
-            specials = os.listdir(src_dir)
-            for special in specials:
-                src = os.path.join(src_dir, special)
-                dst = os.path.join(dst_dir, special)
-                if link:
-                    links.append('mklink "{}" "{}"\n'.format(dst, src))
-                else:
-                    if not os.path.exists(dst):
-                        shutil.copy(src, dst)
+            for directory in dirs:
+                msg = "Setting Paths for {} directory".format(directory)
+                logger.info(msg)
+                if directory == self.genre_backgrounds_path:
+                    for fname in src_bgs:
+                        output["src"] = os.path.join(src_path, "Backgrounds", fname)
+                        output["dst"] = os.path.join(self.genre_backgrounds_path, fname)
+                        backgrounds.append(dict(output))
+                elif directory == self.genre_wheel_path:
+                    for fname in src_logos:
+                        output["src"] = os.path.join(src_path, "Wheel", fname)
+                        output["dst"] = os.path.join(self.genre_wheel_path, fname)
+                        wheels.append(dict(output))
         else:
-            msg = "MAME is base Genre Art and will not be copied"
+            msg = "{} is not a valid system".format(self.system)
             logger.debug(msg)
 
-        if len(links) > 0:
-            with open(batch_file, mode="a") as f:
-                for link in links:
-                    f.write(link)
+        if action == "link" or action == "copy":
+            self._do_media(wheels, action=action, batch_file=batch_file)
+            self._do_media(backgrounds, action=action, batch_file=batch_file)
+        elif action == "move":
+            self._do_media(wheels, action="copy", batch_file=batch_file)
+            self._do_media(backgrounds, action="copy", batch_file=batch_file)
+        else:
+            msg = "{} action is not permitted for Genre Art"
+            logger.debug(msg)
 
     def _read_hs_menu(self):
         """
@@ -447,7 +445,7 @@ class HyperSpin(Arcade, System):
 
         if remove:
             systems.remove(self.system)
-        else:
+        elif self.system not in systems:
             systems.append(self.system)
 
         platform = {}
@@ -615,7 +613,21 @@ class HyperSpin(Arcade, System):
         with open(xml, mode="w") as xml:
             xml.write(pretty)
 
-    def _do_media(self, files, action):
+    def resize_width(self, src, dst, width):
+        img = Image.open(src)
+        width_percent = width / img.size[0]
+        height = math.ceil(img.size[1] * width_percent)
+        new = img.resize((width, height), Image.ANTIALIAS)
+        new.save(dst)
+
+    def resize_width(self, src, dst, width):
+        img = Image.open(src)
+        width_percent = width / img.size[0]
+        height = math.ceil(img.size[1] * width_percent)
+        new = img.resize((width, height), Image.ANTIALIAS)
+        new.save(dst)
+
+    def _do_media(self, files, action, batch_file):
         """
         "_main_menu_ini" sets default values for the way the main menu looks in HyperSpin
 
@@ -640,14 +652,21 @@ class HyperSpin(Arcade, System):
                 if not os.path.isfile(f["dst"]):
                     shutil.copy(src=f["src"], dst=f["dst"])
             elif action == "link":
-                link = 'mklink "{}" "{}"\n'.format(f["dst"], f["src"])
-                links.append(link)
+                if not os.path.isfile(f["dst"]):
+                    link = 'mklink "{}" "{}"\n'.format(f["dst"], f["src"])
+                    links.append(link)
+            elif action == "resize":
+                if not os.path.isfile(f["dst"]):
+                    try:
+                        self.resize_width(src=f["src"], dst=f["dst"], width=180)
+                    except OSError:
+                        msg = "Error with file {}".format(f["src"])
+                        logger.debug(msg)
             else:
                 msg = "{} action is not permitted".format(action)
                 logger.debug(msg)
 
         if len(links) > 0:
-            batch_file = os.path.join(self.root_path, "{} HS Media Links run as Admin.bat".format(self.system))
             with open(batch_file, mode="a") as f:
                 for link in links:
                     f.write(link)
@@ -675,7 +694,7 @@ class HyperSpin(Arcade, System):
         # Just worried about the ROM name in the database
         names = [name["name"] for name in db]
 
-        batch_file = os.path.join(self.root_path, "{} HS Media Links run as Admin.bat".format(self.system))
+        batch_file = os.path.join(self.temp_path, "{} HS Media Links run as Admin.bat".format(self.system))
         if os.path.isfile(batch_file):
             os.remove(batch_file)
 
@@ -711,19 +730,19 @@ class HyperSpin(Arcade, System):
                     f, ext = os.path.splitext(fname)
                     if f in names and directory == three_d_cart and three_d:
                         output["src"] = os.path.join(directory, fname)
-                        output["dst"] = os.path.join(self.artwork3_path, fname)
+                        output["dst"] = os.path.join(self.artwork4_path, fname)
                         artwork4.append(dict(output))
                     elif f in names and directory == three_d_box and three_d:
                         output["src"] = os.path.join(directory, fname)
-                        output["dst"] = os.path.join(self.artwork4_path, fname)
+                        output["dst"] = os.path.join(self.artwork3_path, fname)
                         artwork3.append(dict(output))
-                    elif f in names and directory == cart:
+                    elif f in names and directory == cart and not three_d:
+                        output["src"] = os.path.join(directory, fname)
+                        output["dst"] = os.path.join(self.artwork4_path, fname)
+                        artwork4.append(dict(output))
+                    elif f in names and directory == box and not three_d:
                         output["src"] = os.path.join(directory, fname)
                         output["dst"] = os.path.join(self.artwork3_path, fname)
-                        artwork4.append(dict(output))
-                    elif f in names and directory == box:
-                        output["src"] = os.path.join(directory, fname)
-                        output["dst"] = os.path.join(self.artwork4_path, fname)
                         artwork3.append(dict(output))
                     elif f in names and directory == wheel:
                         output["src"] = os.path.join(directory, fname)
@@ -733,10 +752,10 @@ class HyperSpin(Arcade, System):
                         output["src"] = os.path.join(directory, fname)
                         output["dst"] = os.path.join(self.video_path, fname)
                         videos.append(dict(output))
-                    # elif f in names and directory == theme:
-                    #     output["src"] = os.path.join(directory, fname)
-                    #     output["dst"] = os.path.join(self.themes_path, fname)
-                    #     themes.append(dict(output))
+                    elif f in names and directory == theme:
+                        output["src"] = os.path.join(directory, fname)
+                        output["dst"] = os.path.join(self.themes_path, fname)
+                        themes.append(dict(output))
                     else:
                         output["src"] = ""
                         output["dst"] = ""
@@ -765,16 +784,20 @@ class HyperSpin(Arcade, System):
             sys_media["dst"] = logo_dst
             sys_medias.append(dict(sys_media))
         if len(sys_medias) > 0:
-            self._do_media(sys_medias, action=action)
+            self._do_media(sys_medias, action=action, batch_file=batch_file)
 
-        self._do_media(artwork3, action=action)
-        self._do_media(artwork4, action=action)
-        self._do_media(wheels, action=action)
-        self._do_media(videos, action=action)
-        # self._do_media(themes, action=action)
+        msg = "Re-sizing {}'s Box Art".format(self.system)
+        logger.info(msg)
+        self._do_media(artwork3, action="resize", batch_file=batch_file)
+        msg = "Re-sizing {}'s Game Media".format(self.system)
+        logger.info(msg)
+        self._do_media(artwork4, action="resize", batch_file=batch_file)
+        self._do_media(wheels, action=action, batch_file=batch_file)
+        self._do_media(videos, action=action, batch_file=batch_file)
+        # self._do_media(themes, action=action, batch_file=batch_file)
 
     def _build_theme(self):
-        msg = "Builing Main Menu Theme for {}".format(self.system)
+        msg = "Building Main Menu Theme for {}".format(self.system)
         logger.info(msg)
         main_bg = os.path.join("assets", "background.png")
         main_theme = os.path.join("assets", "main theme.xml")
@@ -797,7 +820,7 @@ class HyperSpin(Arcade, System):
         c = Compressor(src_file=temp_dir)
         c.compress_dir(dst_file=os.path.join(main_theme_dst, "{}.zip".format(self.system)))
 
-        msg = "Builing System Theme for {}".format(self.system)
+        msg = "Building System Theme for {}".format(self.system)
         logger.info(msg)
 
         system_bg = os.path.join("assets", "system background.png")
@@ -821,14 +844,13 @@ class HyperSpin(Arcade, System):
         c = Compressor(src_file=temp_sys_dir)
         c.compress_dir(dst_file=os.path.join(system_theme_dst, "Default.zip"))
 
-    def new_system(self, link=False, action="copy", three_d=False):
-
+    def new_system(self, action="copy", three_d=False):
         self._media_directories()
         self._system_ini()
         self._write_hs_menu(sort=True)
         self._create_hs_database()
         self._create_genres()
-        self._copy_genre_art(link)
+        self._copy_genre_art(action=action)
         self._set_up_media(action=action, three_d=three_d)
         self._build_theme()
 
@@ -898,7 +920,7 @@ class HyperSpin(Arcade, System):
 
     # Update systems from RocketLauncher
 
-    def build_systems_from_rl(self, link=False):
+    def build_systems_from_rl(self, action="link", three_d=False):
         """
         "build_systems_from_rl" builds the systems that exist in RocketLauncher into HyperSpin
 
@@ -914,12 +936,30 @@ class HyperSpin(Arcade, System):
         """
         rl = RocketLauncher(self.system)
         systems = rl.read_menu()
+        hs_systems = self._read_hs_menu()
+
         for system in systems:
-            hs = HyperSpin(system["name"])
-            hs.new_system(link)
+            if system["name"] not in hs_systems:
+                hs = HyperSpin(system["name"])
+                hs.new_system(action, three_d)
+            else:
+                msg = "System {} is in RocketLauncher and HyperSpin already".format(system["name"])
+                logger.info(msg)
+
+    # Update system
+    def update_system(self, action="Copy", three_d=False):
+        self._system_ini()
+        self._create_hs_database()
+        self._create_genres()
+        self._set_up_media(action=action, three_d=three_d)
+        self._build_theme()
 
 
 if __name__ == "__main__":
-    nes = "Nintendo Entertainment System"
-    atari = "Atari 5200"
-    hs = HyperSpin(atari)
+    nes = "Nintendo 64"
+    atari = "Atari 2600"
+    hs = HyperSpin("Sega 32X")
+    # hs.new_system(action="link", three_d=False)
+    hs.remove_system(remove_media=True)
+    # hs.build_systems_from_rl(action="link", three_d=False)
+

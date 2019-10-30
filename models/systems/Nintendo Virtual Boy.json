@@ -7,10 +7,10 @@
   "romSets": {
     "GoodSet": "Good Sets_GoodVBoy v3 1415",
     "NoIntro": "Nintendo - Virtual Boy",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "vboy",
     "TOSEC": "Virtual Boy",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

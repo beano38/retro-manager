@@ -3,13 +3,14 @@
   "extensions": ["wsc"],
   "year": "2000",
   "platformType": "Handheld",
+  "emuMoviesName": "Bandai_WonderSwan_Color",
   "romSets": {
     "GoodSet": "Good Sets_GoodWSx v3 14 (1 Miss)",
     "NoIntro": "Bandai - WonderSwan Color",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "wscolor",
     "TOSEC": "WonderSwan Color",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

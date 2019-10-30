@@ -7,10 +7,10 @@
   "romSets": {
     "GoodSet": "Good Sets_GoodGBA v3 23",
     "NoIntro": "Nintendo - Game Boy Advance",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "gba",
     "TOSEC": "Game Boy Advance",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

@@ -3,13 +3,14 @@
   "extensions": ["bin", "min"],
   "year": "2001",
   "platformType": "Handheld",
+  "emuMoviesName": "Nintendo_Pokemon_Mini",
   "romSets": {
-    "GoodSet": null,
+    "GoodSet": "",
     "NoIntro": "Nintendo - Pokemon Mini",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "pokemini",
     "TOSEC": "Pokemon Mini",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

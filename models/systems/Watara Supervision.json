@@ -3,12 +3,13 @@
   "extensions": ["bin", "sv"],
   "year": "1992",
   "platformType": "Handheld",
+  "emuMoviesName": "Watara_Supervision",
   "romSets": {
     "NoIntro": "Watara - Supervision",
     "SoftwareLists": "svision",
     "TOSEC": "Supervision",
     "GoodSet": "Good Sets_GoodSV v3 21",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

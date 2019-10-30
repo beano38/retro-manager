@@ -3,13 +3,14 @@
   "extensions": ["adf", "dsk", "rom", "uef"],
   "year": "1979",
   "platformType": "Computer",
+  "emuMoviesName": "Acorn_Atom",
   "romSets": {
-    "GoodSet": null,
-    "NoIntro": null,
-    "Redump": null,
+    "GoodSet": "",
+    "NoIntro": "",
+    "Redump": "",
     "SoftwareLists": ["atom_cart", "atom_cass", "atom_flop"],
-    "TOSEC": null,
-    "NoGoodSet": null
+    "TOSEC": "",
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

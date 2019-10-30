@@ -3,13 +3,14 @@
   "extensions": ["bin", "pce"],
   "year": "1993",
   "platformType": "Console",
+  "emuMoviesName": "Panasonic_3DO",
   "romSets": {
-    "GoodSet": null,
-    "NoIntro": null,
-    "Redump": null,
-    "SoftwareLists": null,
-    "TOSEC": null,
-    "NoGoodSet": null
+    "GoodSet": "",
+    "NoIntro": "",
+    "Redump": "",
+    "SoftwareLists": "",
+    "TOSEC": "",
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

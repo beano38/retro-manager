@@ -7,10 +7,10 @@
   "romSets": {
     "GoodSet": "Good Sets_GoodLynx v2 01",
     "NoIntro": "Atari - Lynx",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "lynx",
     "TOSEC": "Lynx",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

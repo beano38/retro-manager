@@ -3,12 +3,13 @@
   "extensions": ["dsk", "scl", "tap", "tzx", "z80"],
   "year": "1982",
   "platformType": "Console",
+  "emuMoviesName": "Sinclair_ZX_Spectrum",
   "romSets": {
     "NoIntro": "Sinclair - ZX Spectrum +3",
     "SoftwareLists": ["spectrum_cart", "spectrum_cass"],
     "TOSEC": "ZX Spectrum",
-    "GoodSet": null,
-    "NoGoodSet": null
+    "GoodSet": "",
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

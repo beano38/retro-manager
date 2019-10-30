@@ -3,13 +3,14 @@
   "extensions": ["txt", "bat", "singe"],
   "year": "1987",
   "platformType": "Console",
+  "emuMoviesName": "WoW_Action_Max",
   "romSets": {
-    "GoodSet": null,
-    "NoIntro": null,
-    "Redump": null,
-    "SoftwareLists": null,
-    "TOSEC": null,
-    "NoGoodSet": null
+    "GoodSet": "",
+    "NoIntro": "",
+    "Redump": "",
+    "SoftwareLists": "",
+    "TOSEC": "",
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

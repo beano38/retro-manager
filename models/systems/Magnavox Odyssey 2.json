@@ -3,13 +3,14 @@
   "extensions": ["bin"],
   "year": "1978",
   "platformType": "console",
+  "emuMoviesName": "Magnavox_Odyssey_2",
   "romSets": {
-    "GoodSet": null,
+    "GoodSet": "",
     "NoIntro": "Magnavox - Odyssey2",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "odyssey2",
     "TOSEC": "Odyssey2",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

@@ -7,10 +7,10 @@
   "romSets": {
     "GoodSet": "Good Sets_GoodJag v2 01",
     "NoIntro": "Atari - Jaguar (J64)",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "jaguar",
     "TOSEC": "Jaguar",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

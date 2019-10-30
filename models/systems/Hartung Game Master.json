@@ -3,13 +3,14 @@
   "extensions": ["bin"],
   "year": "1995",
   "platformType": "Handheld",
+  "emuMoviesName": "Hartung_Game_Master",
   "romSets": {
-    "GoodSet": null,
+    "GoodSet": "",
     "NoIntro": "Hartung - Game Master",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "gmaster",
-    "TOSEC": null,
-    "NoGoodSet": null
+    "TOSEC": "",
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

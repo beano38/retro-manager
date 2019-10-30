@@ -3,13 +3,14 @@
   "extensions": ["crt", "d64", "prg", "t64", "tap"],
   "year": "1980",
   "platformType": "Computer",
+  "emuMoviesName": "Commodore_VIC_20",
   "romSets": {
-    "GoodSet": null,
+    "GoodSet": "",
     "NoIntro": ["Commodore - VIC-20"],
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": ["vic1001_cart", "vic1001_cass", "vic1001_flop"],
     "TOSEC": "VIC20",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

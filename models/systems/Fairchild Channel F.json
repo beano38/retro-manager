@@ -3,13 +3,14 @@
   "extensions": ["bin"],
   "year": "1976",
   "platformType": "Console",
+  "emuMoviesName": "Fairchild_Channel_F",
   "romSets": {
-    "GoodSet": null,
+    "GoodSet": "",
     "NoIntro": "Fairchild - Channel F",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "channelf",
     "TOSEC": "VES & Channel F",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

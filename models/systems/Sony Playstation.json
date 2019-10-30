@@ -3,6 +3,7 @@
   "extensions": ["iso", "cso"],
   "year": "1994",
   "platformType": "Console",
+  "emuMoviesName": "Sony_Playstation",
   "romSets": {
     "NoIntro": "",
     "SoftwareLists": "",

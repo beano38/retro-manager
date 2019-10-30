@@ -3,13 +3,14 @@
   "extensions": ["ipf", "jag", "j64"],
   "year": "1985",
   "platformType": "Computer",
+  "emuMoviesName": "Atari_ST",
   "romSets": {
-    "GoodSet": null,
+    "GoodSet": "",
     "NoIntro": "Atari - ST",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": ["st_cart", "st_flop"],
     "TOSEC": "ST",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

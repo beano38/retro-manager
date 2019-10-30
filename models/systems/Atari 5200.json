@@ -7,10 +7,10 @@
   "romSets": {
     "GoodSet": "Good5200 V2.01",
     "NoIntro": "Atari - 5200",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "a5200",
     "TOSEC": "5200",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
     "baseImgUrl": "http://thegamesdb.net/banners/",

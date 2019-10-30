@@ -3,13 +3,14 @@
   "extensions": ["ds"],
   "year": "2001",
   "platformType": "Handheld",
+  "emuMoviesName": "Nintendo_DS",
   "romSets": {
-    "GoodSet": null,
+    "GoodSet": "",
     "NoIntro": "Nintendo - Nintendo DS",
-    "Redump": null,
-    "SoftwareLists": null,
-    "TOSEC": null,
-    "NoGoodSet": null
+    "Redump": "",
+    "SoftwareLists": "",
+    "TOSEC": "",
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

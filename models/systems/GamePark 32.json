@@ -3,13 +3,14 @@
   "extensions": ["bin", "smc"],
   "year": "1995",
   "platformType": "Handheld",
+  "emuMoviesName": "Gamepark_GP32",
   "romSets": {
-    "GoodSet": null,
+    "GoodSet": "",
     "NoIntro": "GamePark - GP32",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "gp32",
     "TOSEC": "GP32",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

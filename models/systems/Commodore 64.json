@@ -3,13 +3,14 @@
   "extensions": ["80", "a0", "arc", "crt", "d64", "d81", "g64", "lnx", "nbz", "nib", "p00", "prg", "t64", "tap", "z64"],
   "year": "1982",
   "platformType": "Computer",
+  "emuMoviesName": "Commodore_64",
   "romSets": {
-    "GoodSet": null,
+    "GoodSet": "",
     "NoIntro": ["Commodore - 64", "Commodore - 64 (PP)", "Commodore - 64 (Tapes)"],
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": ["c64_cart", "c64_cass", "c64_flop"],
     "TOSEC": "C64",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

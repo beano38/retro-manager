@@ -3,13 +3,14 @@
   "extensions": ["adf", "exe", "ipf"],
   "year": "1985",
   "platformType": "Computer",
+  "emuMoviesName": "Commodore_Amiga",
   "romSets": {
-    "GoodSet": null,
+    "GoodSet": "",
     "NoIntro": ["Commodore - Amiga"],
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": ["amiga_a1000", "amiga_a3000", "amiga_apps", "amiga_flop", "amiga_hardware", "amiga_workbench", "amigaaga_flop", "amigaecs_flop", "amigaocs_flop"],
     "TOSEC": "Amiga",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

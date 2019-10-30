@@ -3,13 +3,14 @@
   "extensions": ["ws", "bin"],
   "year": "1999",
   "platformType": "Handheld",
+  "emuMoviesName": "Bandai_WonderSwan",
   "romSets": {
     "GoodSet": "Good Sets_GoodWSx v3 14 (1 Miss)",
     "NoIntro": "Bandai - WonderSwan",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "wswan",
     "TOSEC": "WonderSwan",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

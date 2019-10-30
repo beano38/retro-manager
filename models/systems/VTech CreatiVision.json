@@ -3,13 +3,14 @@
   "extensions": ["bin"],
   "year": "1982",
   "platformType": "Console",
+  "emuMoviesName": "Vtech_CreatiVision",
   "romSets": {
-    "GoodSet": null,
+    "GoodSet": "",
     "NoIntro": "VTech - CreatiVision",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "crvision",
     "TOSEC": "Laser 2001 & CreatiVision",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

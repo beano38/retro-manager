@@ -3,13 +3,14 @@
   "extensions": ["ssd", "uef"],
   "year": "1983",
   "platformType": "Computer",
+  "emuMoviesName": "Acorn_Electron",
   "romSets": {
-    "GoodSet": null,
-    "NoIntro": null,
-    "Redump": null,
+    "GoodSet": "",
+    "NoIntro": "",
+    "Redump": "",
     "SoftwareLists": ["electron_cart", "electron_cass", "electron_flop"],
     "TOSEC": "Electron",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

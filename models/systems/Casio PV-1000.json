@@ -3,13 +3,14 @@
   "extensions": ["bin"],
   "year": "1983",
   "platformType": "Console",
+  "emuMoviesName": "Casio_PV_1000",
   "romSets": {
-    "GoodSet": null,
+    "GoodSet": "",
     "NoIntro": "Casio - PV-1000",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "pv1000",
-    "TOSEC": null,
-    "NoGoodSet": null
+    "TOSEC": "",
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

@@ -3,13 +3,14 @@
   "extensions": ["bin"],
   "year": "1997",
   "platformType": "Console",
+  "emuMoviesName": "Tiger_Game_Com",
   "romSets": {
-    "GoodSet": null,
+    "GoodSet": "",
     "NoIntro": "Tiger - Game.com",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "gamecom",
     "TOSEC": "Game.com",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

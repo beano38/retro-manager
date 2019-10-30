@@ -3,13 +3,14 @@
   "extensions": "bin",
   "platformType": "Console",
   "year": "1978",
+  "emuMoviesName": "RCA_Studio_II",
   "romSets": {
-    "GoodSet": null,
+    "GoodSet": "",
     "NoIntro": "RCA - Studio II",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "studio2",
     "TOSEC": "Studio II",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

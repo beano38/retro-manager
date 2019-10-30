@@ -3,13 +3,14 @@
   "extensions": ["bin", "pce"],
   "year": "1989",
   "platformType": "Console",
+  "emuMoviesName": "NEC_SuperGrafx",
   "romSets": {
-    "GoodSet": null,
+    "GoodSet": "",
     "NoIntro": "NEC - PC Engine SuperGrafx",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": ["sgx"],
     "TOSEC": "SuperGrafx",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

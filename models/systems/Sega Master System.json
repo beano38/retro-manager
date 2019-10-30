@@ -9,7 +9,7 @@
     "SoftwareLists": "sms",
     "TOSEC": "Mark III & Master System",
     "GoodSet": "Good Sets_GoodSMS v3 20",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

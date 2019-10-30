@@ -3,13 +3,14 @@
   "extensions": ["d64", "prg", "tap"],
   "year": "1984",
   "platformType": "Console",
+  "emuMoviesName": "Commodore_16",
   "romSets": {
-    "GoodSet": null,
+    "GoodSet": "",
     "NoIntro": "Commodore - Plus-4",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": ["plus4_cart", "plus4_cass", "plus4_flop"],
     "TOSEC": "C16, C116 & Plus-4",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

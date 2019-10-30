@@ -3,13 +3,14 @@
   "extensions": "bin",
   "platformType": "Console",
   "year": "1981",
+  "emuMoviesName": "Epoch_Epic_Cassette_Vision",
   "romSets": {
-    "GoodSet": null,
+    "GoodSet": "",
     "NoIntro": "Epoch - Super Cassette Vision",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "scv",
     "TOSEC": "Super Cassette Vision",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

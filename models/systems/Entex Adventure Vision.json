@@ -3,13 +3,14 @@
   "extensions": "bin",
   "platformType": "Console",
   "year": "1982",
+  "emuMoviesName": "Entex_Adventure_Vision",
   "romSets": {
-    "GoodSet": null,
+    "GoodSet": "",
     "NoIntro": "Entex - Adventure Vision",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "advision",
     "TOSEC": "Adventure Vision",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

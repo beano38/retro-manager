@@ -3,13 +3,14 @@
   "extensions": ["ssd", "uef"],
   "year": "1990",
   "platformType": "Computer",
+  "emuMoviesName": "American_Laser_Games",
   "romSets": {
-    "GoodSet": null,
-    "NoIntro": null,
-    "Redump": null,
-    "SoftwareLists": null,
-    "TOSEC": "null",
-    "NoGoodSet": null
+    "GoodSet": "",
+    "NoIntro": "",
+    "Redump": "",
+    "SoftwareLists": "",
+    "TOSEC": "",
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

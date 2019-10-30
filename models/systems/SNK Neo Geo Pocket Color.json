@@ -3,13 +3,14 @@
   "extensions": ["ngc"],
   "year": "1999",
   "platformType": "Handheld",
+  "emuMoviesName": "SNK_Neo_Geo_Pocket_Color",
   "romSets": {
     "GoodSet": "Good Sets_GoodNGPx v3 14",
     "NoIntro": "SNK - Neo Geo Pocket Color",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "ngpc",
     "TOSEC": "Neo-Geo Pocket Color",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

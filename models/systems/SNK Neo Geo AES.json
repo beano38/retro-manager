@@ -1,32 +1,33 @@
 {
-  "emulator": "RetroArch",
-  "extensions": ["bin"],
-  "year": "1996",
+  "emulator": "MAME",
+  "extensions": ["zip"],
+  "year": "1991",
   "platformType": "Console",
-  "emuMoviesName": "Casio_Loopy",
+  "emuMoviesName": "SNK_Neo_Geo",
   "romSets": {
     "GoodSet": "",
-    "NoIntro": "Casio - Loopy",
+    "NoIntro": "",
     "Redump": "",
-    "SoftwareLists": "casloopy",
-    "TOSEC": "Loopy",
+    "SoftwareLists": "",
+    "TOSEC": "",
     "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",
         "Platform": {
             "id": "xxx",
-            "Platform": "xxx",
+            "Platform": "Neo Geo Pocket AES",
             "console": "xxx",
-            "overview": "xxx",
-            "developer": "Casio",
-            "manufacturer": "Casio",
+            "overview": "",
+            "developer": "SNK",
+            "manufacturer": "SNK",
             "cpu": "xxx",
             "memory": "xxx",
+            "graphics": "xxx",
             "sound": "xxx",
             "display": "xxx",
+            "media": "Cartridge",
             "maxcontrollers": "1",
-            "Rating": "x"
         }
     }
 }

@@ -3,13 +3,14 @@
   "extensions": ["adf"],
   "year": "1987",
   "platformType": "Computer",
+  "emuMoviesName": "Acorn_Archimedes",
   "romSets": {
-    "GoodSet": null,
-    "NoIntro": null,
-    "Redump": null,
+    "GoodSet": "",
+    "NoIntro": "",
+    "Redump": "",
     "SoftwareLists": ["archimedes"],
     "TOSEC": "Archimedes",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

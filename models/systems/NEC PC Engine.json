@@ -3,13 +3,14 @@
   "extensions": ["pce"],
   "year": "1989",
   "platformType": "Console",
+  "emuMoviesName": "NEC_PC_Engine",
   "romSets": {
     "GoodSet": "Good Sets_GoodPCE v1 09a",
     "NoIntro": "NEC - PC Engine - TurboGrafx 16",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": ["pce", "tg16"],
     "TOSEC": "PC-Engine & TurboGrafx-16",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

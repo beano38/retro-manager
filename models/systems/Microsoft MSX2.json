@@ -3,13 +3,14 @@
   "extensions": ["cas", "dsk", "rom"],
   "year": "1983",
   "platformType": "computer",
+  "emuMoviesName": "MSX_2",
   "romSets": {
     "GoodSet": "Good Sets_GoodMSX2 v0 999 3 BETA",
     "NoIntro": "Microsoft - MSX2",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": ["msx2_cart", "msx2_cass", "msx2_flop", "msx2p_flop"],
     "TOSEC": "MSX2",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

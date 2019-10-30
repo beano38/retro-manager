@@ -3,13 +3,14 @@
   "extensions": "bin",
   "platformType": "Console",
   "year": "1982",
+  "emuMoviesName": "Emerson_Arcadia_2001",
   "romSets": {
-    "GoodSet": null,
+    "GoodSet": "",
     "NoIntro": "Emerson - Arcadia 2001",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "arcadia",
     "TOSEC": "Arcadia 2001",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

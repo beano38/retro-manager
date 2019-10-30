@@ -3,13 +3,14 @@
   "extensions": ["ngp"],
   "year": "1999",
   "platformType": "Arcade",
+  "emuMoviesName": "SNK_Neo_Geo",
   "romSets": {
     "GoodSet": "",
     "NoIntro": "",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "",
     "TOSEC": "",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

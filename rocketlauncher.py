@@ -488,7 +488,7 @@ class RocketLauncher(Databases, HyperList, System):
 
         # If Linking files, remove the old file before appending the new symlinks
         links = []
-        batch_file = os.path.join(self.root_path, "{} RL Media Links run as Admin.bat".format(self.system))
+        batch_file = os.path.join(self.temp_path, "{}_RL_Media_Links_run_as_Admin.bat".format(self.system))
         if os.path.isfile(batch_file):
             os.remove(batch_file)
 

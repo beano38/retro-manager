@@ -3,13 +3,14 @@
   "extensions": ["a52", "bin"],
   "year": "1982",
   "platformType": "Console",
+  "emuMoviesName": "Coleco_Vision",
   "romSets": {
     "GoodSet": "Good Sets_GoodCol v3 14",
     "NoIntro": "Coleco - ColecoVision",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "coleco",
     "TOSEC": "ColecoVision",
-    "NoGoodSet": null
+    "NoGoodSet": "",
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

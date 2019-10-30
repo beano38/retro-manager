@@ -18,5 +18,6 @@
            type="grow"
            start="none"/>
     <artwork1 x="320" y="70" time="0.5" delay ="0" type="none" start="top" rest="none"/>
-    <artwork3 x="470" y="540" r="0" time="0.5" delay ="0" type="grow" start="none" rest="none"/>
+    <artwork3 x="510" y="540" r="0" time="0.5" delay ="0" type="ease" start="none" rest="none"/>
+    <artwork4 x="470" y="540" r="0" time="1.0" delay ="0" type="flip" start="none" rest="none"/>
 </Theme>

@@ -3,13 +3,14 @@
   "extensions": ["ngp"],
   "year": "1999",
   "platformType": "Handheld",
+  "emuMoviesName": "SNK_Neo_Geo_Pocket",
   "romSets": {
     "GoodSet": "Good Sets_GoodNGPx v3 14",
     "NoIntro": "SNK - Neo Geo Pocket",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "ngp",
     "TOSEC": "Neo-Geo Pocket",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

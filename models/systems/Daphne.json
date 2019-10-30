@@ -3,13 +3,14 @@
   "extensions": ["txt"],
   "year": "1992",
   "platformType": "Console",
+  "emuMoviesName": "Daphne",
   "romSets": {
-    "GoodSet": null,
-    "NoIntro": null,
-    "Redump": null,
-    "SoftwareLists": null,
-    "TOSEC": null,
-    "NoGoodSet": null
+    "GoodSet": "",
+    "NoIntro": "",
+    "Redump": "",
+    "SoftwareLists": "",
+    "TOSEC": "",
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

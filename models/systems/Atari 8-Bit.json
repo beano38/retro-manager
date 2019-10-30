@@ -3,12 +3,13 @@
   "extensions": ["atr", "atx", "bas", "bin", "cas", "xex"],
   "year": "1979",
   "platformType": "Computer",
+  "emuMoviesName": "Atari_ST",
   "romSets": {
-    "NoIntro": null,
+    "NoIntro": "",
     "SoftwareLists": ["a800", "a800_flop"],
     "TOSEC": "8bit",
-    "GoodSet": null,
-    "NoGoodSet": null
+    "GoodSet": "",
+    "NoGoodSet": ""
   },
   "GamesDbData": {
     "baseImgUrl": "http://thegamesdb.net/banners/",

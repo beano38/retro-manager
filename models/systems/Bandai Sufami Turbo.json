@@ -3,6 +3,7 @@
   "extensions": ["bin", "sfc", "smc"],
   "year": "1990",
   "platformType": "Console",
+    "emuMoviesName": "Bandai_Sufami_Turbo",
   "romSets": {
     "NoIntro": "Nintendo - Sufami Turbo",
     "SoftwareLists": ["snes", "snes_strom"],

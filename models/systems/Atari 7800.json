@@ -7,10 +7,10 @@
   "romSets": {
     "GoodSet": "Good Sets_Good7800 v2 04",
     "NoIntro": "Atari - 7800",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "a7800",
     "TOSEC": "7800",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

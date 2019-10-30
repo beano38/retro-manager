@@ -7,10 +7,10 @@
   "romSets": {
     "GoodSet": "Good Sets_GoodGBx v3 14",
     "NoIntro": "Nintendo - Game Boy",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "gameboy",
     "TOSEC": "Game Boy",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

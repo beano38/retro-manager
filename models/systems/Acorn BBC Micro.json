@@ -3,13 +3,14 @@
   "extensions": ["adl", "bin", "dsd", "ssd", "uef"],
   "year": "1980",
   "platformType": "Computer",
+  "emuMoviesName": "Acorn_BBC_Micro",
   "romSets": {
-    "GoodSet": null,
-    "NoIntro": null,
-    "Redump": null,
+    "GoodSet": "",
+    "NoIntro": "",
+    "Redump": "",
     "SoftwareLists": ["bbcbc", "bbcm_cart", "bbcm_cass", "bbcmc_flop", "bbcm_flop", "bbca_cass", "bbcb_cass_de", "bbcb_flop_us", "bbcb_cass", "bbcb_flop", "bbcb_flop_orig"],
     "TOSEC": "BBC",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",

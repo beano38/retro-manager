@@ -3,13 +3,14 @@
   "extensions": ["ndd", "bin"],
   "year": "1996",
   "platformType": "console",
+    "emuMoviesName": "Nintendo_64DD",
   "romSets": {
-    "GoodSet": null,
+    "GoodSet": "",
     "NoIntro": "Nintendo - Nintendo 64DD",
-    "Redump": null,
+    "Redump": "",
     "SoftwareLists": "n64dd",
     "TOSEC": "64DD",
-    "NoGoodSet": null
+    "NoGoodSet": ""
   },
   "GamesDbData": {
         "baseImgUrl": "http://thegamesdb.net/banners/",
