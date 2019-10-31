@@ -22,9 +22,14 @@ def create_system(system, fe="HyperSpin"):
     rl = RocketLauncher(system=system)
     rl.new_system()
 
+    dont_search = ["Commodore 64", "Commodore VIC-20", "MAME", "Sega CD", "Sega Dreamcast", "Nintendo DS"]
+
     # Build ROM set
     platform = System(system=system)
-    curated_sets = platform.tosec_dirs() + platform.software_lists + platform.nointro + platform.goodset
+    if system in dont_search:
+        curated_sets = platform.software_lists + platform.nointro + platform.goodset
+    else:
+        curated_sets = platform.tosec_dirs() + platform.software_lists + platform.nointro + platform.goodset
     platform.build_rom_set(source_set=curated_sets)
 
     # Set up Media
@@ -38,14 +43,15 @@ def create_system(system, fe="HyperSpin"):
         pass
 
 
-def update_system(system, source_set, action="copy", three_d=False, fe="HyperSpin", update_rl_media=False):
+def update_system(system, source_set, update_roms=True, action="copy", three_d=False, fe="HyperSpin", update_rl_media=False):
     # Build ROMs of missing ROMs
     platform = System(system=system)
-    if len(source_set) == 0:
-        curated_sets = platform.tosec_dirs() + platform.software_lists + platform.nointro + platform.goodset
-        platform.build_rom_set(source_set=curated_sets)
-    else:
-        platform.build_rom_set(source_set=source_set)
+    if update_roms:
+        if len(source_set) == 0:
+            curated_sets = platform.tosec_dirs() + platform.software_lists + platform.nointro + platform.goodset
+            platform.build_rom_set(source_set=curated_sets)
+        else:
+            platform.build_rom_set(source_set=source_set)
     # Update the Media
     if update_rl_media:
         rl = RocketLauncher(system=system)
@@ -53,7 +59,7 @@ def update_system(system, source_set, action="copy", three_d=False, fe="HyperSpi
 
     if fe == "HyperSpin" or fe == "all":
         hs = HyperSpin(system=system)
-        hs.update_system(action=action, three_d=three_d)
+        hs.update_system(update_roms=update_roms, action=action, three_d=three_d)
     elif fe == "RetroFE" or fe == "all":
         pass
     elif fe == "MaLa" or fe == "all":
@@ -91,10 +97,15 @@ def main():
     snes = "Super Nintendo Entertainment System"
     nsv = "Nintendo Satellaview"
     n64 = "Nintendo 64"
+    n64dd = "Nintendo 64DD"
+    gc = "Nintendo GameCube"
+    wii = "Nintendo Wii"
     gb = "Nintendo Game Boy"
     gba = "Nintendo Game Boy Advance"
     gbc = "Nintendo Game Boy Color"
     vb = "Nintendo Virtual Boy"
+    ds = "Nintendo DS"
+    poke = "Nintendo Pokemon Mini"
     a26 = "Atari 2600"
     a52 = "Atari 5200"
     a78 = "Atari 7800"
@@ -104,6 +115,8 @@ def main():
     sms = "Sega Master System"
     gen = "Sega Genesis"
     pico = "Sega Pico"
+    scd = "Sega CD"
+    dc = "Sega Dreamcast"
     s32 = "Sega 32x"
     gg = "Sega Game Gear"
     sfx = "NEC SuperGrafx"
@@ -115,10 +128,41 @@ def main():
     mvs = "SNK Neo Geo MVS"
     itv = "Mattel Intellivision"
     cv = "ColecoVision"
+    arcadia = "Emerson Arcadia 2001"
     mame = "MAME"
     ps1 = "Sony Playstation"
     ps2 = "Sony Playstation 2"
     psp = "Sony PSP"
+    ws = "Bandai WonderSwan"
+    wsc = "Bandai WonderSwan Color"
+    bst = "Bandai Sufami Turbo"
+    arch = "Acorn Archimedes"
+    atom = "Acorn Atom"
+    bbc = "Acorn BBC Micro"
+    elec = "Acorn Electron"
+    alf = "ALF TV Game"
+    alg = "American Laser Games"
+    loopy = "Casio Loopy"
+    pv = "Casio PV-1000"
+    amiga = "Commodore Amiga"
+    vic = "Commodore VIC-20"
+    c64 = "Commodore 64"
+    dap = "Daphne"
+    adv = "Entex Adventure Vision"
+    epoch = "Epoch Super Cassette Vision"
+    chanf = "Fairchild Channel F"
+    acan = "Funtech Super Acan"
+    gp32 = "GamePark 32"
+    vec = "GCE Vectrex"
+    gm = "Hartung Game Master"
+    mo2 = "Magnavox Odyssey 2"
+    msx = "Microsoft MSX"
+    msx2 = "Microsoft MSX2"
+    do3 = "Panasonic 3DO"
+    rca = "RCA Studio II"
+    tig = "Tiger Game.com"
+    wat = "Watara Supervision"
+    wow = "WoW Action Max"
 
     t1 = time.perf_counter()
 
@@ -127,16 +171,17 @@ def main():
     sega = [sg1k, sms, gen, pico, s32, gg]
     nec = [sfx, tg16, pce]
     snk = [ngp, ngc, aes, mvs]
-    carts = [itv, cv]
+    carts = [itv, cv, arcadia]
 
     # install_arcade(fe="all")
 
-    system = lynx
-    # create_system(system=system, fe="all")
+    system = ds
+    create_system(system=system, fe="all")
     update_system(system=system,
                   source_set=[r"N:\Arcade\ROMs\{}".format(system), r"R:\Unmatched\Cart\{}".format(system)],
+                  update_roms=False,
                   action="link",
-                  three_d=False,
+                  three_d=True,
                   fe="all",
                   update_rl_media=False)
 
@@ -149,7 +194,7 @@ def main():
     #     assurance=.75, rename=True, compress=True)
 
     t2 = time.perf_counter()
-    print("This took {} seconds".format(t2-t1))
+    print("This took {} seconds, or {} minutes".format(t2-t1, (t2-t1)/60))
 
 
 if __name__ == "__main__":

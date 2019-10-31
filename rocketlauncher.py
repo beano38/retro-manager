@@ -1,6 +1,7 @@
 import logging
 import time
 import os
+import sys
 import shutil
 import configparser
 import xml.etree.cElementTree as ET
@@ -402,37 +403,6 @@ class RocketLauncher(Databases, HyperList, System):
         msg = "Launch RocketLauncherUI and perform an update!!!!!!!!!!!!!"
         logger.info(msg)
 
-    def new_system(self):
-        """
-        "new_system" that creates a new menu item in RocketLauncher, it's database and
-        default settings
-
-        Args:
-            self
-
-        Returns:
-            None
-
-        Raises:
-            None
-        """
-        msg = "Adding {} to the RocketLauncher Menu".format(self.system)
-        logger.info(msg)
-        self._download_db()
-        # self.update_db()  # Method from utilities.py, HyperList Class
-        self.write_emulator_ini()
-        try:
-            systems = self.read_menu()
-        except:
-            systems = []
-        syss = [sys["name"] for sys in systems]
-        if self.system in syss:
-            msg = "{} is already in RocketLauncher Menu and will not be added".format(self.system)
-            logger.info(msg)
-        else:
-            systems.append(self.full_sys)
-        self.write_menu(systems)
-
     def remove_system(self, remove_media=False):
         """
         "remove_system" removes the system from RocketLauncher, it's database, default
@@ -463,6 +433,42 @@ class RocketLauncher(Databases, HyperList, System):
         systems = self.read_menu()
         systems = [d for d in systems if d.get('name') != self.system]
         self.write_menu(systems)
+
+    def new_system(self):
+        """
+        "new_system" that creates a new menu item in RocketLauncher, it's database and
+        default settings
+
+        Args:
+            self
+
+        Returns:
+            None
+
+        Raises:
+            None
+        """
+        msg = "Adding {} to the RocketLauncher Menu".format(self.system)
+        logger.info(msg)
+        response = self._download_db()
+        if response:
+            # self.update_db()  # Method from utilities.py, HyperList Class
+            self.write_emulator_ini()
+            try:
+                systems = self.read_menu()
+            except:
+                systems = []
+            syss = [sys["name"] for sys in systems]
+            if self.system in syss:
+                msg = "{} is already in RocketLauncher Menu and will not be added".format(self.system)
+                logger.info(msg)
+            else:
+                systems.append(self.full_sys)
+            self.write_menu(systems)
+        else:
+            msg = "No database found from HyperList for {}, consider building one".format(self.system)
+            logging.debug(msg)
+            sys.exit(msg)
 
     # RocketLauncher Media
     def set_up_media(self, action="copy"):

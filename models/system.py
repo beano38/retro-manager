@@ -179,23 +179,27 @@ class System(Paths):
         index_id = 0
 
         for source_group in source_set:
-            rom_names = os.listdir(source_group)
-            num_of_roms = len(rom_names)
-            msg = "Found {} files in {}".format(num_of_roms, source_group)
-            logger.info(msg)
+            if os.path.isdir(source_group):
+                rom_names = os.listdir(source_group)
+                num_of_roms = len(rom_names)
+                msg = "Found {} files in {}".format(num_of_roms, source_group)
+                logger.info(msg)
 
-            for rom_file in rom_names:
-                source_file = os.path.join(source_group, rom_file)
-                if os.path.isfile(source_file):
-                    c = Compressor(src_file=source_file)
-                    try:
-                        rom_crc_list = c.get_crc()
-                    except:
-                        msg = "Error with file: {}".format(rom_file)
-                        logger.debug(msg)
-                    for rom_name in rom_crc_list:
-                        rom_name["name"] = source_file
-                        crc_names.append(rom_name)
+                for rom_file in rom_names:
+                    source_file = os.path.join(source_group, rom_file)
+                    if os.path.isfile(source_file):
+                        c = Compressor(src_file=source_file)
+                        try:
+                            rom_crc_list = c.get_crc()
+                        except:
+                            msg = "Error with file: {}".format(rom_file)
+                            logger.debug(msg)
+                        for rom_name in rom_crc_list:
+                            rom_name["name"] = source_file
+                            crc_names.append(rom_name)
+            else:
+                msg = "{} not a valid directory".format(source_group)
+                logger.debug(msg)
 
         msg = "Found {} ROMs in the folders".format(len(crc_names))
         logger.info(msg)
@@ -383,9 +387,10 @@ def main():
     atari = "Atari Jaguar"
     itv = "Mattel Intellivision"
     gg = "Sega Game Gear"
+    random = "ColecoVision"
 
-    platform = System(system=atari)
-    matches = platform.fuzzy_match_set(source_set=platform.nointro, assurance=.60, rename=True, compress=True)
+    platform = System(system=random)
+    # matches = platform.fuzzy_match_set(source_set=platform.nointro, assurance=.60, rename=True, compress=True)
 
 
 if __name__ == "__main__":

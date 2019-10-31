@@ -620,13 +620,6 @@ class HyperSpin(Arcade, System):
         new = img.resize((width, height), Image.ANTIALIAS)
         new.save(dst)
 
-    def resize_width(self, src, dst, width):
-        img = Image.open(src)
-        width_percent = width / img.size[0]
-        height = math.ceil(img.size[1] * width_percent)
-        new = img.resize((width, height), Image.ANTIALIAS)
-        new.save(dst)
-
     def _do_media(self, files, action, batch_file):
         """
         "_main_menu_ini" sets default values for the way the main menu looks in HyperSpin
@@ -701,6 +694,8 @@ class HyperSpin(Arcade, System):
         # Set Paths
         src_path = os.path.join(self.emu_movies_path, self.emu_movies_name)
         cart = os.path.join(src_path, "Cart")
+        disc = os.path.join(src_path, "Disc")
+        cd = os.path.join(src_path, "CD")
         box = os.path.join(src_path, "Box")
         three_d_cart = os.path.join(src_path, "Cart_3D")
         three_d_box = os.path.join(src_path, "Box_3D")
@@ -710,7 +705,7 @@ class HyperSpin(Arcade, System):
         theme = os.path.join(src_path, "Video_Themes_MP4")
         sys_intro = os.path.join(src_path, "Video_System_Intro_MP4")
 
-        dirs = [three_d_cart, three_d_box, cart, box, wheel, video1, video2, theme]
+        dirs = [three_d_cart, three_d_box, cart, disc, cd, box, wheel, video1, video2, theme]
 
         # Holders for adding the media content to
         artwork3 = []
@@ -736,7 +731,7 @@ class HyperSpin(Arcade, System):
                         output["src"] = os.path.join(directory, fname)
                         output["dst"] = os.path.join(self.artwork3_path, fname)
                         artwork3.append(dict(output))
-                    elif f in names and directory == cart and not three_d:
+                    elif f in names and directory == cart or directory == disc  or directory == cd and not three_d:
                         output["src"] = os.path.join(directory, fname)
                         output["dst"] = os.path.join(self.artwork4_path, fname)
                         artwork4.append(dict(output))
@@ -926,7 +921,8 @@ class HyperSpin(Arcade, System):
 
         Args:
             self
-            link (optional, default=False): Link the genre artwork
+            action (optional, default=link): Sets the action to take, (copy, move, link)
+            three_d (optional, default=False): If 3D art is required, set to True
 
         Returns:
             None
@@ -947,10 +943,11 @@ class HyperSpin(Arcade, System):
                 logger.info(msg)
 
     # Update system
-    def update_system(self, action="Copy", three_d=False):
+    def update_system(self, update_roms=True, action="Copy", three_d=False):
         self._system_ini()
-        self._create_hs_database()
-        self._create_genres()
+        if update_roms:
+            self._create_hs_database()
+            self._create_genres()
         self._set_up_media(action=action, three_d=three_d)
         self._build_theme()
 

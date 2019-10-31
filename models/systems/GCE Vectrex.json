@@ -1,0 +1,32 @@
+{
+  "emulator": "RetroArch",
+  "extensions": ["bin", "smc"],
+  "year": "1995",
+  "platformType": "Handheld",
+  "emuMoviesName": "GCE_Vectrex",
+  "romSets": {
+    "GoodSet": "",
+    "NoIntro": "GCE - Vectrex",
+    "Redump": "",
+    "SoftwareLists": "vectrex",
+    "TOSEC": "Vectrex",
+    "NoGoodSet": ""
+  },
+  "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "id": "xxx",
+            "Platform": "xxx",
+            "console": "xxx",
+            "overview": "xxx",
+            "developer": "xxx",
+            "manufacturer": "GCE",
+            "cpu": "xxx",
+            "memory": "xxx",
+            "sound": "xxx",
+            "display": "xxx",
+            "maxcontrollers": "1",
+            "Rating": "x"
+        }
+    }
+}
