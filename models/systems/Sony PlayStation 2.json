@@ -1,0 +1,26 @@
+{
+    "emulator": "PCSX2",
+    "extensions": [
+        "iso",
+        "img",
+        "bin"
+    ],
+    "year": "2000",
+    "platformType": "Console",
+    "emuMoviesName": "Sony_Playstation_2",
+    "romSets": {
+        "GoodSet": "",
+        "NoIntro": "",
+        "Redump": "",
+        "SoftwareLists": "",
+        "TOSEC": "",
+        "NoGoodSet": ""
+    },
+    "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "developer": "Sony Interactive Entertainment",
+            "manufacturer": "Sony"
+        }
+    }
+}

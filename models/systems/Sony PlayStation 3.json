@@ -1,0 +1,24 @@
+{
+    "emulator": "RPCS3",
+    "extensions": [
+        "iso"
+    ],
+    "year": "2006",
+    "platformType": "Console",
+    "emuMoviesName": "Sony_PlayStation_3",
+    "romSets": {
+        "GoodSet": "",
+        "NoIntro": "",
+        "Redump": "",
+        "SoftwareLists": "",
+        "TOSEC": "",
+        "NoGoodSet": ""
+    },
+    "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "developer": "",
+            "manufacturer": "Sony"
+        }
+    }
+}

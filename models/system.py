@@ -2,6 +2,7 @@ import logging
 import time
 import json
 import os
+import sys
 
 from general import Paths, Compressor
 from utilities import Databases
@@ -64,11 +65,7 @@ class System(Paths):
         self.software_lists = None
         self.no_good_set = None
 
-        try:
-            self.read_model()
-        except FileNotFoundError:
-            msg = "SYS: Model for {} not defined".format(self.system)
-            logger.info(msg)
+        self.read_model()
 
         # ----- ROM Set Paths -----
         try:
@@ -114,51 +111,85 @@ class System(Paths):
         Raises:
             None
         """
-        model = os.path.join(os.path.dirname(__file__), "systems", self.system + ".json")
-        with open(model, mode="r") as f:
-            data = json.load(f)
+        model = os.path.join(os.path.dirname(__file__), "systems", "{}.json".format(self.system))
+        if os.path.isfile(model):
+            with open(model, mode="r") as f:
+                data = json.load(f)
 
-        if "emulator" in data:
-            self.emulator = data["emulator"]
-        if "extensions" in data:
-            if type(data["extensions"]) is str:
-                self.extensions = [data["extensions"]]
-            else:
-                self.extensions = data["extensions"]
-        if "year" in data:
-            self.year = data["year"]
-        if "platformType" in data:
-            self.platform_type = data["platformType"]
-        if "emuMoviesName" in data:
-            self.emu_movies_name = data["emuMoviesName"]
+            if "emulator" in data:
+                self.emulator = data["emulator"]
+            if "extensions" in data:
+                if type(data["extensions"]) is str:
+                    self.extensions = [data["extensions"]]
+                else:
+                    self.extensions = data["extensions"]
+            if "year" in data:
+                self.year = data["year"]
+            if "platformType" in data:
+                self.platform_type = data["platformType"]
+            if "emuMoviesName" in data:
+                self.emu_movies_name = data["emuMoviesName"]
 
-        if data["romSets"]["TOSEC"] is not None:
-            self.tosec = data["romSets"]["TOSEC"]
-        if data["romSets"]["GoodSet"] is not None:
-            self.goodset = [os.path.join(self.mstr_good_set, data["romSets"]["GoodSet"])]
-        if data["romSets"]["NoIntro"] is not None:
+            if data["romSets"]["TOSEC"] is not None:
+                self.tosec = data["romSets"]["TOSEC"]
+            if data["romSets"]["GoodSet"] is not None:
+                self.goodset = [os.path.join(self.mstr_good_set, data["romSets"]["GoodSet"])]
+            if data["romSets"]["NoIntro"] is not None:
 
-            if type(data["romSets"]["NoIntro"]) is str:
-                self.nointro = [os.path.join(self.mstr_no_intro, data["romSets"]["NoIntro"])]
-            else:
-                dirs = []
-                for stuff in data["romSets"]["NoIntro"]:
-                    dirs.append(os.path.join(self.mstr_no_intro, stuff))
-                self.nointro = dirs
-        if data["romSets"]["SoftwareLists"] is not None:
-            if type(data["romSets"]["SoftwareLists"]) is str:
-                self.software_lists = [os.path.join(self.mstr_sl, data["romSets"]["SoftwareLists"])]
-            else:
-                dirs = []
-                for stuff in data["romSets"]["SoftwareLists"]:
-                    dirs.append(os.path.join(self.mstr_sl, stuff))
-                self.software_lists = dirs
-        if data["romSets"]["NoGoodSet"] is not None:
-            self.no_good_set = [os.path.join(self.mstr_non_good_set, data["romSets"]["NoGoodSet"])]
-        #     self.software_lists = [os.path.join(self.mstr_sl, data["romSets"]["SoftwareLists"])]
+                if type(data["romSets"]["NoIntro"]) is str:
+                    self.nointro = [os.path.join(self.mstr_no_intro, data["romSets"]["NoIntro"])]
+                else:
+                    dirs = []
+                    for stuff in data["romSets"]["NoIntro"]:
+                        dirs.append(os.path.join(self.mstr_no_intro, stuff))
+                    self.nointro = dirs
+            if data["romSets"]["SoftwareLists"] is not None:
+                if type(data["romSets"]["SoftwareLists"]) is str:
+                    self.software_lists = [os.path.join(self.mstr_sl, data["romSets"]["SoftwareLists"])]
+                else:
+                    dirs = []
+                    for stuff in data["romSets"]["SoftwareLists"]:
+                        dirs.append(os.path.join(self.mstr_sl, stuff))
+                    self.software_lists = dirs
+            if data["romSets"]["NoGoodSet"] is not None:
+                self.no_good_set = [os.path.join(self.mstr_non_good_set, data["romSets"]["NoGoodSet"])]
+            #     self.software_lists = [os.path.join(self.mstr_sl, data["romSets"]["SoftwareLists"])]
 
-        games_db = data["GamesDbData"]["Platform"]
-        self.manufacturer = games_db["manufacturer"]
+            games_db = data["GamesDbData"]["Platform"]
+            self.manufacturer = games_db["manufacturer"]
+        else:
+            msg = "No system model exists for {}, will create a sample one".format(self.system)
+            logger.info(msg)
+            self.create_minimal_model()
+            msg = "Stopping here, fill in the system model for {}".format(self.system)
+            sys.exit(msg)
+
+    def create_minimal_model(self):
+        model = {
+            "emulator": "RetroArch",
+            "extensions": [""],
+            "year": "",
+            "platformType": "",
+            "emuMoviesName": "",
+            "romSets": {
+                "GoodSet": "",
+                "NoIntro": "",
+                "Redump": "",
+                "SoftwareLists": "",
+                "TOSEC": "",
+                "NoGoodSet": ""
+            },
+            "GamesDbData": {
+                "baseImgUrl": "http://thegamesdb.net/banners/",
+                "Platform": {
+                    "developer": "",
+                    "manufacturer": "",
+                }
+            }
+        }
+        system_file = os.path.join(os.path.dirname(__file__), "systems", "{}.json".format(self.system))
+        with open(system_file, mode="w") as f:
+            f.write(json.dumps(model, indent=4))
 
     # ----- Build ROM Set and helper functions -----
 

@@ -22,7 +22,7 @@ def create_system(system, fe="HyperSpin"):
     rl = RocketLauncher(system=system)
     rl.new_system()
 
-    dont_search = ["Commodore 64", "Commodore VIC-20", "MAME", "Sega CD", "Sega Dreamcast", "Nintendo DS"]
+    dont_search = ["Commodore 64", "Commodore VIC-20", "MAME", "Sega CD", "Sega Dreamcast", "Nintendo DS", "Sony PlayStation"]
 
     # Build ROM set
     platform = System(system=system)
@@ -117,7 +117,7 @@ def main():
     pico = "Sega Pico"
     scd = "Sega CD"
     dc = "Sega Dreamcast"
-    s32 = "Sega 32x"
+    s32 = "Sega 32X"
     gg = "Sega Game Gear"
     sfx = "NEC SuperGrafx"
     tg16 = "NEC TurboGrafx-16"
@@ -130,8 +130,11 @@ def main():
     cv = "ColecoVision"
     arcadia = "Emerson Arcadia 2001"
     mame = "MAME"
-    ps1 = "Sony Playstation"
-    ps2 = "Sony Playstation 2"
+    ps1 = "Sony PlayStation"
+    ps2 = "Sony PlayStation 2"
+    ps3 = "Sony PlayStation 3"
+    ps4 = "Sony PlayStation 4"
+    pock = "Sony PocketStation"
     psp = "Sony PSP"
     ws = "Bandai WonderSwan"
     wsc = "Bandai WonderSwan Color"
@@ -175,8 +178,8 @@ def main():
 
     # install_arcade(fe="all")
 
-    system = ds
-    create_system(system=system, fe="all")
+    system = alf
+    # create_system(system=system, fe="all")
     update_system(system=system,
                   source_set=[r"N:\Arcade\ROMs\{}".format(system), r"R:\Unmatched\Cart\{}".format(system)],
                   update_roms=False,

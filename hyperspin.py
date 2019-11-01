@@ -731,7 +731,7 @@ class HyperSpin(Arcade, System):
                         output["src"] = os.path.join(directory, fname)
                         output["dst"] = os.path.join(self.artwork3_path, fname)
                         artwork3.append(dict(output))
-                    elif f in names and directory == cart or directory == disc  or directory == cd and not three_d:
+                    elif f in names and directory == cart or directory == disc or directory == cd and not three_d:
                         output["src"] = os.path.join(directory, fname)
                         output["dst"] = os.path.join(self.artwork4_path, fname)
                         artwork4.append(dict(output))
@@ -808,7 +808,11 @@ class HyperSpin(Arcade, System):
         if os.path.isfile(main_theme):
             shutil.copy(main_theme, os.path.join(temp_dir, "Theme.xml"))
         if os.path.isfile(main_console):
-            shutil.copy(main_console, os.path.join(temp_dir, "Artwork2.png"))
+            img = Image.open(main_console)
+            if img.size[0] > 250:
+                self.resize_width(src=main_console, dst=os.path.join(temp_dir, "Artwork2.png"), width=250)
+            else:
+                shutil.copy(main_console, os.path.join(temp_dir, "Artwork2.png"))
         if os.path.isfile(os.path.join(main_theme_dst, "{}.zip".format(self.system))):
             os.remove(os.path.join(main_theme_dst, "{}.zip".format(self.system)))
 
@@ -820,6 +824,7 @@ class HyperSpin(Arcade, System):
 
         system_bg = os.path.join("assets", "system background.png")
         system_theme = os.path.join("assets", "system theme.xml")
+        system_logo_em = os.path.join(self.emu_movies_path, self.emu_movies_name, "System_Logo", "system_logo.png")
         system_logo = os.path.join(self.hs_path, "Media", "Main Menu", "Images", "Wheel", "{}.png".format(self.system))
         system_theme_dst = os.path.join(self.hs_path, "Media", self.system, "Themes")
 
@@ -831,7 +836,9 @@ class HyperSpin(Arcade, System):
             shutil.copy(system_bg, os.path.join(temp_sys_dir, "Background.png"))
         if os.path.isfile(system_theme):
             shutil.copy(system_theme, os.path.join(temp_sys_dir, "Theme.xml"))
-        if os.path.isfile(system_logo):
+        if os.path.isfile(system_logo_em):
+            shutil.copy(system_logo_em, os.path.join(temp_sys_dir, "Artwork1.png"))
+        elif os.path.isfile(system_logo):
             shutil.copy(system_logo, os.path.join(temp_sys_dir, "Artwork1.png"))
         if os.path.isfile(os.path.join(system_theme_dst, "default.zip".lower())):
             os.remove(os.path.join(system_theme_dst, "default.zip".lower()))
