@@ -430,7 +430,7 @@ class NoIntro(Arcade):
 
     def create_db_from_no_intro(self,
                                 roms="",
-                                regions=("Europe", "USA", "World"),
+                                regions=("World", "USA", "Europe"),
                                 unlicensed=True,
                                 prototype=True,
                                 beta=True,
@@ -441,7 +441,11 @@ class NoIntro(Arcade):
         if not roms:
             roms = self.read_database()
 
-        print(len(roms))
+        msg = "Found {} games in the {} No Intro database".format(len(roms), self.system)
+        logger.info(msg)
+
+        if not include_bios:
+            roms = [rom for rom in roms if not "bios" in rom]
 
         for rom in roms:
             if "region" in rom and type(rom["region"]) is list:
@@ -463,8 +467,11 @@ class NoIntro(Arcade):
                     rom["description"] = "{} [b]".format(rom["description"])
 
         build = [rom for rom in roms if "description" in rom]
+        print(len(build))
 
-        # Filter out duplicates
+        # Sort by World, USA, Europe
+
+        # Filter out duplicate names by short description
         all_roms = []
         final_roms = []
         for rom in build:
@@ -473,7 +480,8 @@ class NoIntro(Arcade):
                 all_roms.append(description)
                 final_roms.append(dict(rom))
 
-        print(len(final_roms))
+        msg = "Writing {} to the RocketLauncher database".format(len(final_roms))
+        logger.info(msg)
 
         if not xml:
             xml = "{}.xml".format(self.system)
