@@ -559,7 +559,7 @@ class HyperSpin(Arcade, System):
             logger.debug(msg)
             return genre
         else:
-            hs_db.write_rom_xml(games=output, xml=xml, listname="{} {}".format(self.system, genre_name))
+            hs_db.write_rom_xml(games=output, xml=xml, list_name="{} {}".format(self.system, genre_name))
             return ""
 
     def _create_genres(self):

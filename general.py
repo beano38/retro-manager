@@ -33,27 +33,6 @@ logger.addHandler(stream_handler)
 class Paths:
 
     def __init__(self):
-        # self.root_drive = None
-        # self.root_path = None
-        # self.emulator_path = None
-        # self.rom_path = None
-        # self.log_path = None
-        # self.temp_path = None
-        # self.utilities_path = None
-        # self.frontends_path = None
-        #
-        # self.mstr_no_intro = None
-        # self.mstr_mame = None
-        # self.mstr_sl = None
-        # self.mstr_good_set = None
-        # self.mstr_non_good_set = None
-        # self.mstr_redump = None
-        # self.mstr_tosec = None
-        #
-        # self.emu_movies = None
-        #
-        # self.seven_zip_exe = None
-        # self.rar_exe = None
 
         self._load_paths()
 
@@ -104,6 +83,7 @@ class Paths:
         self.hs_path = config.get("FrontEnds", "HyperSpin")
         # Utilities
         self.notepad = config.get("Utilities", "Notepad++")
+        self.clrmamepro = config.get("Utilities", "clrmamepro")
         # Archives
         self.rocket_launcher_archive = config.get("Installs", "RocketLauncher")
         self.rocket_launcher_media_archive = config.get("Installs", "RocketLauncher_Media")

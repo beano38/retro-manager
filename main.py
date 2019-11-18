@@ -4,6 +4,7 @@ import time
 from rocketlauncher import RocketLauncher
 from hyperspin import HyperSpin
 from models.system import System
+from utilities import EmuMovies
 
 
 def install_arcade(fe="HyperSpin"):
@@ -31,6 +32,8 @@ def create_system(system, fe="HyperSpin"):
     else:
         curated_sets = platform.tosec_dirs() + platform.software_lists + platform.nointro + platform.goodset
     platform.build_rom_set(source_set=curated_sets)
+    emu = EmuMovies(system=system)
+    emu.create_blanks()
 
     # Set up Media
     rl.set_up_media(action="link")
@@ -47,6 +50,8 @@ def update_system(system, source_set, update_roms=True, action="copy", three_d=F
     # Build ROMs of missing ROMs
     platform = System(system=system)
     if update_roms:
+        emu = EmuMovies(system=system)
+        emu.create_blanks()
         if len(source_set) == 0:
             curated_sets = platform.tosec_dirs() + platform.software_lists + platform.nointro + platform.goodset
             platform.build_rom_set(source_set=curated_sets)
@@ -126,16 +131,13 @@ def main():
     ngc = "SNK Neo Geo Pocket Color"
     aes = "SNK Neo Geo AES"
     mvs = "SNK Neo Geo MVS"
-    itv = "Mattel Intellivision"
-    cv = "ColecoVision"
-    arcadia = "Emerson Arcadia 2001"
-    mame = "MAME"
     ps1 = "Sony PlayStation"
     ps2 = "Sony PlayStation 2"
     ps3 = "Sony PlayStation 3"
     ps4 = "Sony PlayStation 4"
     pock = "Sony PocketStation"
     psp = "Sony PSP"
+    mame = "MAME"
     ws = "Bandai WonderSwan"
     wsc = "Bandai WonderSwan Color"
     bst = "Bandai Sufami Turbo"
@@ -147,10 +149,12 @@ def main():
     alg = "American Laser Games"
     loopy = "Casio Loopy"
     pv = "Casio PV-1000"
+    cv = "ColecoVision"
     amiga = "Commodore Amiga"
     vic = "Commodore VIC-20"
     c64 = "Commodore 64"
     dap = "Daphne"
+    arcadia = "Emerson Arcadia 2001"
     adv = "Entex Adventure Vision"
     epoch = "Epoch Super Cassette Vision"
     chanf = "Fairchild Channel F"
@@ -158,6 +162,7 @@ def main():
     gp32 = "GamePark 32"
     vec = "GCE Vectrex"
     gm = "Hartung Game Master"
+    itv = "Mattel Intellivision"
     mo2 = "Magnavox Odyssey 2"
     msx = "Microsoft MSX"
     msx2 = "Microsoft MSX2"
@@ -178,7 +183,7 @@ def main():
 
     # install_arcade(fe="all")
 
-    system = alf
+    system = ds
     # create_system(system=system, fe="all")
     update_system(system=system,
                   source_set=[r"N:\Arcade\ROMs\{}".format(system), r"R:\Unmatched\Cart\{}".format(system)],
