@@ -342,9 +342,9 @@ class NoIntro(Arcade):
         Raises:
             None
         """
-        from models.system import System
         root_path = os.path.join(self.clrmamepro, "datfiles", "NoIntro")
         files = os.listdir(root_path)
+        from models.system import System
         platform = System(self.system)
         db = ""
         for fname in files:
@@ -391,19 +391,19 @@ class NoIntro(Arcade):
                     elif i == "Demo":
                         rom["demo"] = True
                     elif "Kiosk" in i:
-                        rom["kiosk"] = True
+                        rom["Kiosk"] = True
                     elif i == "Unl":
                         rom["unl"] = True
                     elif "Rev" in i:
                         rom["rev"] = i
                     elif "NDSi Enhanced" in i:
-                        rom["ndsi_enhanced"] = True
+                        rom["NDSi Enhanced"] = True
                     elif "SGB Enhanced" in i:
-                        rom["sgb_enhanced"] = True
+                        rom["SGB Enhanced"] = True
                     elif "GB Compatible" in i:
-                        rom["gb_compatible"] = True
+                        rom["GB Compatible"] = True
                     elif "Wii Virtual Console" in i:
-                        rom["wii_virtual_console"] = True
+                        rom["Wii Virtual Console"] = True
                     elif "iQue" in i:
                         rom["iQue"] = True
                     elif "Proto" in i:
@@ -427,6 +427,58 @@ class NoIntro(Arcade):
                 elif rom_list[1] in regions:
                     rom["region"] = rom_list[1]
         return roms
+
+    def create_db_from_no_intro(self,
+                                roms="",
+                                regions=("Europe", "USA", "World"),
+                                unlicensed=True,
+                                prototype=True,
+                                beta=True,
+                                include_bios=False,
+                                include_bad_dumps=False,
+                                xml=None
+                                ):
+        if not roms:
+            roms = self.read_database()
+
+        print(len(roms))
+
+        for rom in roms:
+            if "region" in rom and type(rom["region"]) is list:
+                for i in rom["region"]:
+                    if i in regions:
+                        rom["description"] = "{} ({})".format(rom["short_desc"], " ,".join(rom["region"]))
+            if "region" in rom and rom["region"] in regions:
+                if "region" in rom:
+                    rom["description"] = "{} ({})".format(rom["short_desc"], rom["region"])
+                if unlicensed and "unl" in rom:
+                    rom["description"] = "{} (Unl)".format(rom["description"])
+                if prototype and "prototype" in rom:
+                    rom["description"] = "{} (Proto)".format(rom["description"])
+                if beta and "beta" in rom:
+                    rom["description"] = "{} (Beta)".format(rom["description"])
+                if include_bios and "bios" in rom:
+                    rom["description"] = "{} [BIOS]".format(rom["description"])
+                if include_bad_dumps and "bad_dump" in rom:
+                    rom["description"] = "{} [b]".format(rom["description"])
+
+        build = [rom for rom in roms if "description" in rom]
+
+        # Filter out duplicates
+        all_roms = []
+        final_roms = []
+        for rom in build:
+            description = rom["short_desc"]
+            if description not in all_roms:
+                all_roms.append(description)
+                final_roms.append(dict(rom))
+
+        print(len(final_roms))
+
+        if not xml:
+            xml = "{}.xml".format(self.system)
+        sys_db = Databases(self.system)
+        sys_db.write_rom_xml(final_roms, xml)
 
 
 class EmuMovies(Arcade):
@@ -484,18 +536,10 @@ class EmuMovies(Arcade):
 
 
 if __name__ == "__main__":
-    system = "Atari 5200"
+    system = "Nintendo DS"
     stuff = NoIntro(system=system)
-    roms = stuff.read_database()
     # xml = "Nintendo DS.xml"
     # db = Databases(system=system)
     # db.write_rom_xml(games=roms, xml=xml)
 
-    # for rom in roms:
-    #     if type(rom["region"]) is list:
-    #         rom["description"] = "{} ({})".format(rom["short_desc"], " ,".join(rom["region"]))
-    #     elif "region" in rom:
-    #         rom["description"] = "{} ({})".format(rom["short_desc"], rom["region"])
-
-    for r in roms:
-        print(r)
+    stuff.create_db_from_no_intro()

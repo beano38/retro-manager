@@ -33,37 +33,37 @@ class System(Paths):
         Paths.__init__(self,)
         self.system = system
 
-        # --- GamesDB Attributes ---
-        self.games_db_name = None
-        self.games_db_id = None
-        self.overview = None
-        self.developer = None
-        self.manufacturer = None
-        self.cpu = None
-        self.memory = None
-        self.graphics = None
-        self.sound = None
-        self.display = None
-        self.media = None
-        self.maxcontrollers = None
-        self.rating = None
-        self.banners = None
-        self.fanarts = None
-        self.consoleart = None
-        self.controllerart = None
-
-        # ----- Model Attributes -----
-        self.emulator = None
-        self.extensions = None
-        self.year = None
-        self.platform_type = None
-        self.emu_movies_name = None
-
-        self.tosec = None
-        self.goodset = None
-        self.nointro = None
-        self.software_lists = None
-        self.no_good_set = None
+        # # --- GamesDB Attributes ---
+        # self.games_db_name = None
+        # self.games_db_id = None
+        # self.overview = None
+        # self.developer = None
+        # self.manufacturer = None
+        # self.cpu = None
+        # self.memory = None
+        # self.graphics = None
+        # self.sound = None
+        # self.display = None
+        # self.media = None
+        # self.maxcontrollers = None
+        # self.rating = None
+        # self.banners = None
+        # self.fanarts = None
+        # self.consoleart = None
+        # self.controllerart = None
+        #
+        # # ----- Model Attributes -----
+        # self.emulator = None
+        # self.extensions = None
+        # self.year = None
+        # self.platform_type = None
+        # self.emu_movies_name = None
+        #
+        # self.tosec = None
+        # self.goodset = None
+        # self.nointro = None
+        # self.software_lists = None
+        # self.no_good_set = None
 
         self.read_model()
 
@@ -138,6 +138,7 @@ class System(Paths):
 
                 if type(data["romSets"]["NoIntro"]) is str:
                     self.nointro = [os.path.join(self.mstr_no_intro, data["romSets"]["NoIntro"])]
+                    self.nointro_db = data["romSets"]["NoIntro"]
                 else:
                     dirs = []
                     for stuff in data["romSets"]["NoIntro"]:

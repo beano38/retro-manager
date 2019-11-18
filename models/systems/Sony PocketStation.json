@@ -1,0 +1,24 @@
+{
+    "emulator": "RetroArch",
+    "extensions": [
+        "gme", "bin"
+    ],
+    "year": "1999",
+    "platformType": "Handheld",
+    "emuMoviesName": "Sony_PocketStation",
+    "romSets": {
+        "GoodSet": "",
+        "NoIntro": "",
+        "Redump": "",
+        "SoftwareLists": "",
+        "TOSEC": "PocketStation",
+        "NoGoodSet": ""
+    },
+    "GamesDbData": {
+        "baseImgUrl": "http://thegamesdb.net/banners/",
+        "Platform": {
+            "developer": "Sony",
+            "manufacturer": "Sony"
+        }
+    }
+}
